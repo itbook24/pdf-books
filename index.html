@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Books Collection</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --success-color: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        h1 {
+            color: var(--dark-color);
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .view-toggle button {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .view-toggle button.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .view-toggle button:hover {
+            background: #eee;
+        }
+        
+        .view-toggle button.active:hover {
+            background: var(--secondary-color);
+        }
+        
+        /* Card View */
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .book-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .book-cover {
+            height: 180px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .book-cover img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .book-info {
+            padding: 15px;
+        }
+        
+        .book-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .book-author {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .book-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.9em;
+        }
+        
+        .btn-demo {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-demo:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .btn-download {
+            background-color: var(--success-color);
+            color: white;
+        }
+        
+        .btn-download:hover {
+            background-color: #27ae60;
+        }
+        
+        /* List View */
+        .books-list {
+            display: none;
+        }
+        
+        .books-list.active {
+            display: block;
+        }
+        
+        .book-item {
+            background: white;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+        
+        .book-item:hover {
+            transform: translateX(5px);
+        }
+        
+        .list-cover {
+            width: 60px;
+            height: 80px;
+            background-color: #eee;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .list-cover img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .list-info {
+            flex-grow: 1;
+        }
+        
+        .list-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .list-author {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .list-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .books-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .book-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .list-cover {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .list-actions {
+                margin-top: 15px;
+                width: 100%;
+            }
+            
+            .list-actions .btn {
+                flex: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>PDF Books Collection</h1>
+            <div class="view-toggle">
+                <button id="grid-view" class="active">Grid View</button>
+                <button id="list-view">List View</button>
+            </div>
+        </header>
+        
+        <main>
+            <!-- Grid View -->
+            <div class="books-grid" id="grid-container">
+                <!-- Books will be inserted here by JavaScript -->
+            </div>
+            
+            <!-- List View -->
+            <div class="books-list" id="list-container">
+                <!-- Books will be inserted here by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Sample book data
+        const books = [
+            {
+                id: 1,
+                title: "JavaScript: The Definitive Guide",
+                author: "David Flanagan",
+                cover: "https://m.media-amazon.com/images/I/91hU6VY0uEL._AC_UF1000,1000_QL80_.jpg",
+                demoUrl: "https://example.com/demo/1",
+                downloadUrl: "https://example.com/download/1"
+            },
+            {
+                id: 2,
+                title: "Eloquent JavaScript",
+                author: "Marijn Haverbeke",
+                cover: "https://eloquentjavascript.net/img/cover.jpg",
+                demoUrl: "https://example.com/demo/2",
+                downloadUrl: "https://example.com/download/2"
+            },
+            {
+                id: 3,
+                title: "You Don't Know JS Yet",
+                author: "Kyle Simpson",
+                cover: "https://m.media-amazon.com/images/I/71iQ4hVtRzL._AC_UF1000,1000_QL80_.jpg",
+                demoUrl: "https://example.com/demo/3",
+                downloadUrl: "https://example.com/download/3"
+            },
+            {
+                id: 4,
+                title: "JavaScript: The Good Parts",
+                author: "Douglas Crockford",
+                cover: "https://m.media-amazon.com/images/I/81kqrwS1nNL._AC_UF1000,1000_QL80_.jpg",
+                demoUrl: "https://example.com/demo/4",
+                downloadUrl: "https://example.com/download/4"
+            },
+            {
+                id: 5,
+                title: "Head First JavaScript Programming",
+                author: "Eric Freeman, Elisabeth Robson",
+                cover: "https://m.media-amazon.com/images/I/91asIC1fRwL._AC_UF1000,1000_QL80_.jpg",
+                demoUrl: "https://example.com/demo/5",
+                downloadUrl: "https://example.com/download/5"
+            },
+            {
+                id: 6,
+                title: "Learning JavaScript Design Patterns",
+                author: "Addy Osmani",
+                cover: "https://m.media-amazon.com/images/I/81v7o6hxQFL._AC_UF1000,1000_QL80_.jpg",
+                demoUrl: "https://example.com/demo/6",
+                downloadUrl: "https://example.com/download/6"
+            }
+        ];
+
+        // DOM elements
+        const gridContainer = document.getElementById('grid-container');
+        const listContainer = document.getElementById('list-container');
+        const gridViewBtn = document.getElementById('grid-view');
+        const listViewBtn = document.getElementById('list-view');
+
+        // Render books in grid view
+        function renderGridView() {
+            gridContainer.innerHTML = '';
+            books.forEach(book => {
+                const bookCard = document.createElement('div');
+                bookCard.className = 'book-card';
+                bookCard.innerHTML = `
+                    <div class="book-cover">
+                        <img src="${book.cover}" alt="${book.title}">
+                    </div>
+                    <div class="book-info">
+                        <div class="book-title">${book.title}</div>
+                        <div class="book-author">${book.author}</div>
+                        <div class="book-actions">
+                            <a href="${book.demoUrl}" class="btn btn-demo">Demo</a>
+                            <a href="${book.downloadUrl}" class="btn btn-download">Download</a>
+                        </div>
+                    </div>
+                `;
+                gridContainer.appendChild(bookCard);
+            });
+        }
+
+        // Render books in list view
+        function renderListView() {
+            listContainer.innerHTML = '';
+            books.forEach(book => {
+                const bookItem = document.createElement('div');
+                bookItem.className = 'book-item';
+                bookItem.innerHTML = `
+                    <div class="list-cover">
+                        <img src="${book.cover}" alt="${book.title}">
+                    </div>
+                    <div class="list-info">
+                        <div class="list-title">${book.title}</div>
+                        <div class="list-author">${book.author}</div>
+                    </div>
+                    <div class="list-actions">
+                        <a href="${book.demoUrl}" class="btn btn-demo">Demo</a>
+                        <a href="${book.downloadUrl}" class="btn btn-download">Download</a>
+                    </div>
+                `;
+                listContainer.appendChild(bookItem);
+            });
+        }
+
+        // Toggle between grid and list views
+        gridViewBtn.addEventListener('click', () => {
+            gridViewBtn.classList.add('active');
+            listViewBtn.classList.remove('active');
+            gridContainer.style.display = 'grid';
+            listContainer.style.display = 'none';
+        });
+
+        listViewBtn.addEventListener('click', () => {
+            listViewBtn.classList.add('active');
+            gridViewBtn.classList.remove('active');
+            gridContainer.style.display = 'none';
+            listContainer.style.display = 'block';
+        });
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderGridView();
+            renderListView();
+        });
+
+        // For demo purposes, prevent actual navigation
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-demo') || e.target.classList.contains('btn-download')) {
+                e.preventDefault();
+                alert(`This would normally navigate to: ${e.target.getAttribute('href')}`);
+            }
+        });
+    </script>
+</body>
+</html>
