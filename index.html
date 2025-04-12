@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Books Collection - Browse and Download Books</title>
-    <meta name="description" content="Browse our collection of PDF books across various categories including programming, design, business, and science.">
+    <title>PDF Books Collection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -16,22 +15,6 @@
             --warning-color: #f39c12;
             --danger-color: #e74c3c;
             --gray-color: #95a5a6;
-            --background-color: #f5f5f5;
-            --text-color: #333;
-            --card-bg: white;
-            --border-color: #ddd;
-        }
-        
-        /* Dark mode variables */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --background-color: #1a1a1a;
-                --text-color: #f0f0f0;
-                --card-bg: #2d2d2d;
-                --border-color: #444;
-                --dark-color: #ecf0f1;
-                --light-color: #2c3e50;
-            }
         }
         
         * {
@@ -42,8 +25,8 @@
         }
         
         body {
-            background-color: var(--background-color);
-            color: var(--text-color);
+            background-color: #f5f5f5;
+            color: #333;
             line-height: 1.6;
         }
         
@@ -56,7 +39,7 @@
         header {
             margin-bottom: 30px;
             padding-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid #ddd;
         }
         
         .header-top {
@@ -86,11 +69,9 @@
         .search-box input {
             width: 100%;
             padding: 10px 15px 10px 40px;
-            border: 1px solid var(--border-color);
+            border: 1px solid #ddd;
             border-radius: 4px;
             font-size: 1em;
-            background-color: var(--card-bg);
-            color: var(--text-color);
         }
         
         .search-box i {
@@ -107,16 +88,11 @@
             align-items: center;
         }
         
-        label {
-            color: var(--text-color);
-        }
-        
         select {
             padding: 10px;
-            border: 1px solid var(--border-color);
+            border: 1px solid #ddd;
             border-radius: 4px;
-            background: var(--card-bg);
-            color: var(--text-color);
+            background: white;
             cursor: pointer;
         }
         
@@ -126,13 +102,12 @@
         }
         
         .view-toggle button {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
+            background: white;
+            border: 1px solid #ddd;
             padding: 8px 15px;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s;
-            color: var(--text-color);
         }
         
         .view-toggle button.active {
@@ -142,12 +117,23 @@
         }
         
         .view-toggle button:hover {
-            background: var(--secondary-color);
-            color: white;
+            background: #eee;
         }
         
         .view-toggle button.active:hover {
             background: var(--secondary-color);
+        }
+        
+        /* Language selector */
+        .language-selector {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .language-selector select {
+            padding: 8px;
+            border-radius: 4px;
         }
         
         /* Card View */
@@ -158,7 +144,7 @@
         }
         
         .book-card {
-            background: var(--card-bg);
+            background: white;
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -174,7 +160,7 @@
         
         .book-cover {
             height: 180px;
-            background-color: var(--border-color);
+            background-color: #eee;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -197,7 +183,6 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            aspect-ratio: 2/3;
         }
         
         .book-info {
@@ -210,17 +195,13 @@
         .book-title {
             font-weight: bold;
             margin-bottom: 5px;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            min-height: 2.4em;
-            line-height: 1.2;
         }
         
         .book-author {
-            color: var(--gray-color);
+            color: #666;
             font-size: 0.9em;
             margin-bottom: 10px;
         }
@@ -283,7 +264,6 @@
             color: white;
             flex: 0;
             padding: 8px 10px;
-            min-width: 36px;
         }
         
         .btn-favorite:hover {
@@ -300,7 +280,7 @@
         }
         
         .book-item {
-            background: var(--card-bg);
+            background: white;
             border-radius: 8px;
             padding: 15px 20px;
             margin-bottom: 15px;
@@ -317,7 +297,7 @@
         .list-cover {
             width: 60px;
             height: 80px;
-            background-color: var(--border-color);
+            background-color: #eee;
             margin-right: 20px;
             display: flex;
             align-items: center;
@@ -342,24 +322,19 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            aspect-ratio: 2/3;
         }
         
         .list-info {
             flex-grow: 1;
-            min-width: 0;
         }
         
         .list-title {
             font-weight: bold;
             margin-bottom: 5px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
         }
         
         .list-author {
-            color: var(--gray-color);
+            color: #666;
             font-size: 0.9em;
             margin-bottom: 5px;
         }
@@ -369,7 +344,6 @@
             gap: 15px;
             font-size: 0.8em;
             color: var(--gray-color);
-            flex-wrap: wrap;
         }
         
         .list-rating {
@@ -379,7 +353,6 @@
         .list-actions {
             display: flex;
             gap: 10px;
-            flex-shrink: 0;
         }
         
         /* Pagination */
@@ -392,12 +365,11 @@
         
         .page-btn {
             padding: 8px 12px;
-            border: 1px solid var(--border-color);
-            background: var(--card-bg);
+            border: 1px solid #ddd;
+            background: white;
             border-radius: 4px;
             cursor: pointer;
             transition: all 0.3s;
-            color: var(--text-color);
         }
         
         .page-btn.active {
@@ -407,8 +379,7 @@
         }
         
         .page-btn:hover:not(.active) {
-            background: var(--secondary-color);
-            color: white;
+            background: #eee;
         }
         
         .page-btn.disabled {
@@ -420,7 +391,7 @@
         .empty-state {
             text-align: center;
             padding: 50px 20px;
-            background: var(--card-bg);
+            background: white;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
@@ -437,7 +408,7 @@
         }
         
         .empty-state p {
-            color: var(--gray-color);
+            color: #666;
             max-width: 500px;
             margin: 0 auto;
         }
@@ -457,7 +428,7 @@
         }
         
         .modal-content {
-            background-color: var(--card-bg);
+            background-color: white;
             border-radius: 8px;
             width: 90%;
             max-width: 800px;
@@ -474,8 +445,6 @@
             font-size: 1.5em;
             cursor: pointer;
             color: var(--gray-color);
-            background: none;
-            border: none;
         }
         
         .close-modal:hover {
@@ -495,13 +464,10 @@
         .modal-cover img {
             max-height: 300px;
             max-width: 100%;
-            aspect-ratio: 2/3;
-            object-fit: contain;
         }
         
         .modal-info h2 {
             margin-bottom: 10px;
-            color: var(--dark-color);
         }
         
         .modal-meta {
@@ -515,34 +481,16 @@
             display: flex;
             align-items: center;
             gap: 5px;
-            color: var(--text-color);
         }
         
         .modal-description {
             line-height: 1.6;
-            color: var(--text-color);
         }
         
         .modal-actions {
             display: flex;
             gap: 10px;
             margin-top: 20px;
-        }
-        
-        /* Loading Skeleton */
-        .skeleton {
-            background-color: var(--border-color);
-            border-radius: 4px;
-            animation: pulse 1.5s infinite ease-in-out;
-        }
-        
-        @keyframes pulse {
-            0%, 100% {
-                opacity: 0.6;
-            }
-            50% {
-                opacity: 0.3;
-            }
         }
         
         /* Responsive */
@@ -598,77 +546,56 @@
                 flex: 2;
             }
         }
-        
-        /* Focus styles for accessibility */
-        button:focus, input:focus, select:focus, a:focus {
-            outline: 2px solid var(--primary-color);
-            outline-offset: 2px;
-        }
-        
-        /* Skip to content link */
-        .skip-link {
-            position: absolute;
-            top: -40px;
-            left: 0;
-            background: var(--primary-color);
-            color: white;
-            padding: 8px;
-            z-index: 100;
-            transition: top 0.3s;
-        }
-        
-        .skip-link:focus {
-            top: 0;
-        }
     </style>
 </head>
 <body>
-    <a href="#main-content" class="skip-link">Skip to content</a>
     <div class="container">
         <header>
             <div class="header-top">
-                <h1>PDF Books Collection</h1>
-                <div class="view-toggle">
-                    <button id="grid-view" class="active" aria-label="Grid view">
-                        <i class="fas fa-th" aria-hidden="true"></i> Grid
-                    </button>
-                    <button id="list-view" aria-label="List view">
-                        <i class="fas fa-list" aria-hidden="true"></i> List
-                    </button>
+                <h1 id="app-title">PDF Books Collection</h1>
+                <div class="language-selector">
+                    <select id="language-selector">
+                        <option value="en">English</option>
+                        <option value="bn">বাংলা</option>
+                    </select>
+                    <div class="view-toggle">
+                        <button id="grid-view" class="active"><i class="fas fa-th"></i> <span class="grid-text">Grid</span></button>
+                        <button id="list-view"><i class="fas fa-list"></i> <span class="list-text">List</span></button>
+                    </div>
                 </div>
             </div>
             
             <div class="controls">
                 <div class="search-box">
-                    <i class="fas fa-search" aria-hidden="true"></i>
-                    <input type="text" id="search-input" placeholder="Search books..." aria-label="Search books">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="search-input" placeholder="Search books...">
                 </div>
                 
                 <div class="filter-group">
-                    <label for="category-filter"><i class="fas fa-filter" aria-hidden="true"></i></label>
-                    <select id="category-filter" aria-label="Filter by category">
-                        <option value="all">All Categories</option>
-                        <option value="programming">Programming</option>
-                        <option value="design">Design</option>
-                        <option value="business">Business</option>
-                        <option value="science">Science</option>
+                    <label for="category-filter"><i class="fas fa-filter"></i></label>
+                    <select id="category-filter">
+                        <option value="all" data-i18n="all_categories">All Categories</option>
+                        <option value="programming" data-i18n="programming">Programming</option>
+                        <option value="design" data-i18n="design">Design</option>
+                        <option value="business" data-i18n="business">Business</option>
+                        <option value="science" data-i18n="science">Science</option>
                     </select>
                 </div>
                 
                 <div class="filter-group">
-                    <label for="sort-by"><i class="fas fa-sort" aria-hidden="true"></i></label>
-                    <select id="sort-by" aria-label="Sort by">
-                        <option value="title-asc">Title (A-Z)</option>
-                        <option value="title-desc">Title (Z-A)</option>
-                        <option value="date-newest">Newest First</option>
-                        <option value="date-oldest">Oldest First</option>
-                        <option value="rating">Highest Rated</option>
+                    <label for="sort-by"><i class="fas fa-sort"></i></label>
+                    <select id="sort-by">
+                        <option value="title-asc" data-i18n="title_asc">Title (A-Z)</option>
+                        <option value="title-desc" data-i18n="title_desc">Title (Z-A)</option>
+                        <option value="date-newest" data-i18n="date_newest">Newest First</option>
+                        <option value="date-oldest" data-i18n="date_oldest">Oldest First</option>
+                        <option value="rating" data-i18n="rating">Highest Rated</option>
                     </select>
                 </div>
             </div>
         </header>
         
-        <main id="main-content">
+        <main>
             <!-- Grid View -->
             <div class="books-grid" id="grid-container">
                 <!-- Books will be inserted here by JavaScript -->
@@ -681,9 +608,9 @@
             
             <!-- Empty State (hidden by default) -->
             <div class="empty-state" id="empty-state" style="display: none;">
-                <i class="fas fa-book-open" aria-hidden="true"></i>
-                <h3>No Books Found</h3>
-                <p>Try adjusting your search or filter criteria to find what you're looking for.</p>
+                <i class="fas fa-book-open"></i>
+                <h3 id="empty-state-title">No Books Found</h3>
+                <p id="empty-state-message">Try adjusting your search or filter criteria to find what you're looking for.</p>
             </div>
             
             <!-- Pagination -->
@@ -694,35 +621,30 @@
     </div>
 
     <!-- Book Details Modal -->
-    <div class="modal" id="book-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description">
+    <div class="modal" id="book-modal">
         <div class="modal-content">
-            <button class="close-modal" aria-label="Close modal">&times;</button>
+            <span class="close-modal">&times;</span>
             <div class="modal-body">
                 <div class="modal-cover">
-                    <img id="modal-cover-img" src="" alt="Book Cover" loading="lazy">
+                    <img id="modal-cover-img" src="" alt="Book Cover">
                 </div>
                 <div class="modal-info">
                     <h2 id="modal-title"></h2>
                     <div class="modal-meta">
-                        <div><i class="fas fa-user" aria-hidden="true"></i> <span id="modal-author"></span></div>
-                        <div><i class="fas fa-book" aria-hidden="true"></i> <span id="modal-pages"></span> pages</div>
-                        <div><i class="fas fa-star" aria-hidden="true"></i> <span id="modal-rating"></span></div>
-                        <div><i class="fas fa-calendar-alt" aria-hidden="true"></i> <span id="modal-date"></span></div>
-                        <div><i class="fas fa-tag" aria-hidden="true"></i> <span id="modal-category"></span></div>
+                        <div><i class="fas fa-user"></i> <span id="modal-author"></span></div>
+                        <div><i class="fas fa-book"></i> <span id="modal-pages"></span> <span id="pages-text">pages</span></div>
+                        <div><i class="fas fa-star"></i> <span id="modal-rating"></span></div>
+                        <div><i class="fas fa-calendar-alt"></i> <span id="modal-date"></span></div>
+                        <div><i class="fas fa-tag"></i> <span id="modal-category"></span></div>
                     </div>
                     <div class="modal-description" id="modal-description">
                         <!-- Description will be inserted here -->
                     </div>
                     <div class="modal-actions">
-                        <a href="#" class="btn btn-demo" id="modal-demo-btn" aria-label="View book demo">
-                            <i class="fas fa-eye" aria-hidden="true"></i> View Demo
-                        </a>
-                        <a href="#" class="btn btn-download" id="modal-download-btn" aria-label="Download book">
-                            <i class="fas fa-download" aria-hidden="true"></i> Download PDF
-                        </a>
-                        <button class="btn btn-favorite" id="modal-favorite-btn" aria-label="Add to favorites">
-                            <i class="far fa-heart" aria-hidden="true"></i>
-                            <span class="sr-only">Favorite</span>
+                        <a href="#" class="btn btn-demo" id="modal-demo-btn"><i class="fas fa-eye"></i> <span class="view-text">View Demo</span></a>
+                        <a href="#" class="btn btn-download" id="modal-download-btn"><i class="fas fa-download"></i> <span class="download-text">Download PDF</span></a>
+                        <button class="btn btn-favorite" id="modal-favorite-btn">
+                            <i class="far fa-heart"></i>
                         </button>
                     </div>
                 </div>
@@ -731,28 +653,42 @@
     </div>
 
     <script>
-        // Enhanced book data
+        // Enhanced book data with English and Bengali support
         const books = [
             {
                 id: 1,
-                title: "আকাশের ওপারে আকাশ pdf",
-                author: "লস্ট মডেস্টি ব্লগ",
+                title: {
+                    en: "JavaScript: The Definitive Guide",
+                    bn: "জাভাস্ক্রিপ্ট: দ্য ডেফিনিটিভ গাইড"
+                },
+                author: {
+                    en: "David Flanagan",
+                    bn: "ডেভিড ফ্লানাগান"
+                },
                 category: "programming",
                 cover: "https://m.media-amazon.com/images/I/91hU6VY0uEL._AC_UF1000,1000_QL80_.jpg",
-                demoUrl: "https://drive.google.com/file/d/1kqhbk3SZrWQSy1bDVTBLehklp61g3sRh/view",
-                downloadUrl: "https://www.justboipdf.com/2023/02/blog-post-60-plus-islamic-pdf-boi.html",
+                demoUrl: "https://example.com/demo/1",
+                downloadUrl: "https://example.com/download/1",
                 pages: 704,
                 rating: 4.5,
                 date: "2020-05-15",
                 featured: true,
                 favorite: false,
-                description: "একটা অদ্ভুত সমস্যার মধ্যে আছি আমরা।
-পরিবারের ভাঙন আর গন্তব্যহীন প্রজন্ম। আমরা দেখি, ক্রাশ কনফেশনস এর কেলেঙ্কারির গল্প। আমরা দেখি শরীরের যথেচ্ছ ব্যবহার, বিয়ের প্রলোভনে ধর্ষণ।."
+                description: {
+                    en: "This book is a programmer's guide and comprehensive reference to the core JavaScript language and the client-side JavaScript APIs defined by web browsers.",
+                    bn: "এই বইটি একজন প্রোগ্রামারের জন্য একটি গাইড এবং ওয়েব ব্রাউজার দ্বারা সংজ্ঞায়িত কোর জাভাস্ক্রিপ্ট ভাষা এবং ক্লায়েন্ট-সাইড জাভাস্ক্রিপ্ট API-এর একটি ব্যাপক রেফারেন্স।"
+                }
             },
             {
                 id: 2,
-                title: "Eloquent JavaScript",
-                author: "Marijn Haverbeke",
+                title: {
+                    en: "Eloquent JavaScript",
+                    bn: "স্পষ্ট জাভাস্ক্রিপ্ট"
+                },
+                author: {
+                    en: "Marijn Haverbeke",
+                    bn: "মারিজন হ্যাভারবেকে"
+                },
                 category: "programming",
                 cover: "https://eloquentjavascript.net/img/cover.jpg",
                 demoUrl: "https://example.com/demo/2",
@@ -762,12 +698,21 @@
                 date: "2018-12-04",
                 featured: false,
                 favorite: true,
-                description: "This is a book about JavaScript, programming, and the wonders of the digital. You can read it online here, or get your own paperback copy. The book contains three parts: Language (the basic language features), Browser (how JavaScript is used to program web browsers), and Node (JavaScript as a general purpose language)."
+                description: {
+                    en: "This is a book about JavaScript, programming, and the wonders of the digital. You can read it online here, or get your own paperback copy.",
+                    bn: "এটি জাভাস্ক্রিপ্ট, প্রোগ্রামিং এবং ডিজিটাল জগতের বিস্ময় সম্পর্কে একটি বই। আপনি এখানে অনলাইনে এটি পড়তে পারেন, বা আপনার নিজস্ব কাগজের কপি পেতে পারেন।"
+                }
             },
             {
                 id: 3,
-                title: "You Don't Know JS Yet",
-                author: "Kyle Simpson",
+                title: {
+                    en: "You Don't Know JS Yet",
+                    bn: "আপনি এখনও জেএস জানেন না"
+                },
+                author: {
+                    en: "Kyle Simpson",
+                    bn: "কাইল সিম্পসন"
+                },
                 category: "programming",
                 cover: "https://m.media-amazon.com/images/I/71iQ4hVtRzL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/3",
@@ -777,12 +722,21 @@
                 date: "2021-03-22",
                 featured: true,
                 favorite: false,
-                description: "This is a series of books diving deep into the core mechanisms of the JavaScript language. The first edition of the series is now complete, and the second edition is in progress. The books are intended for programmers who already have some experience with JavaScript and want to truly understand how it works at a deeper level."
+                description: {
+                    en: "This is a series of books diving deep into the core mechanisms of the JavaScript language. The first edition of the series is now complete, and the second edition is in progress.",
+                    bn: "এটি জাভাস্ক্রিপ্ট ভাষার মূল প্রক্রিয়াগুলিতে গভীরভাবে ডুব দেওয়ার জন্য একটি বইয়ের সিরিজ। সিরিজের প্রথম সংস্করণ এখন সম্পূর্ণ হয়েছে এবং দ্বিতীয় সংস্করণ চলছে।"
+                }
             },
             {
                 id: 4,
-                title: "JavaScript: The Good Parts",
-                author: "Douglas Crockford",
+                title: {
+                    en: "JavaScript: The Good Parts",
+                    bn: "জাভাস্ক্রিপ্ট: দ্য গুড পার্টস"
+                },
+                author: {
+                    en: "Douglas Crockford",
+                    bn: "ডগলাস ক্রকফোর্ড"
+                },
                 category: "programming",
                 cover: "https://m.media-amazon.com/images/I/81kqrwS1nNL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/4",
@@ -792,12 +746,21 @@
                 date: "2008-05-01",
                 featured: false,
                 favorite: false,
-                description: "Most programming languages contain good and bad parts, but JavaScript has more than its share of the bad, having been developed and released in a hurry before it could be refined. This authoritative book scrapes away these bad features to reveal a subset of JavaScript that's more reliable, readable, and maintainable."
+                description: {
+                    en: "Most programming languages contain good and bad parts, but JavaScript has more than its share of the bad, having been developed and released in a hurry before it could be refined.",
+                    bn: "অধিকাংশ প্রোগ্রামিং ভাষায় ভাল এবং খারাপ অংশ থাকে, কিন্তু জাভাস্ক্রিপ্টে খারাপ অংশের পরিমাণ বেশি, কারণ এটি পরিশোধিত হওয়ার আগেই তাড়াহুড়ো করে তৈরি এবং প্রকাশ করা হয়েছিল।"
+                }
             },
             {
                 id: 5,
-                title: "Head First JavaScript Programming",
-                author: "Eric Freeman, Elisabeth Robson",
+                title: {
+                    en: "Head First JavaScript Programming",
+                    bn: "হেড ফার্স্ট জাভাস্ক্রিপ্ট প্রোগ্রামিং"
+                },
+                author: {
+                    en: "Eric Freeman, Elisabeth Robson",
+                    bn: "এরিক ফ্রিম্যান, এলিজাবেথ রবসন"
+                },
                 category: "programming",
                 cover: "https://m.media-amazon.com/images/I/91asIC1fRwL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/5",
@@ -807,12 +770,21 @@
                 date: "2014-03-10",
                 featured: false,
                 favorite: false,
-                description: "This brain-friendly guide teaches you everything from JavaScript language fundamentals to advanced topics, including objects, functions, and the browser's document object model. You won't just be reading—you'll be playing games, solving puzzles, pondering mysteries, and interacting with JavaScript in ways you never imagined."
+                description: {
+                    en: "This brain-friendly guide teaches you everything from JavaScript language fundamentals to advanced topics, including objects, functions, and the browser's document object model.",
+                    bn: "এই মস্তিষ্ক-বান্ধব গাইড আপনাকে জাভাস্ক্রিপ্ট ভাষার মৌলিক বিষয় থেকে উন্নত বিষয় পর্যন্ত সবকিছু শেখায়, যার মধ্যে অবজেক্ট, ফাংশন এবং ব্রাউজারের ডকুমেন্ট অবজেক্ট মডেল অন্তর্ভুক্ত।"
+                }
             },
             {
                 id: 6,
-                title: "Learning JavaScript Design Patterns",
-                author: "Addy Osmani",
+                title: {
+                    en: "Learning JavaScript Design Patterns",
+                    bn: "জাভাস্ক্রিপ্ট ডিজাইন প্যাটার্ন শেখা"
+                },
+                author: {
+                    en: "Addy Osmani",
+                    bn: "অ্যাডি ওসমানি"
+                },
                 category: "programming",
                 cover: "https://m.media-amazon.com/images/I/81v7o6hxQFL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/6",
@@ -822,12 +794,21 @@
                 date: "2012-08-15",
                 featured: false,
                 favorite: false,
-                description: "With Learning JavaScript Design Patterns, you'll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language. If you want to keep your code efficient, more manageable, and up-to-date with the latest best practices, this book is for you."
+                description: {
+                    en: "With Learning JavaScript Design Patterns, you'll learn how to write beautiful, structured, and maintainable JavaScript by applying classical and modern design patterns to the language.",
+                    bn: "জাভাস্ক্রিপ্ট ডিজাইন প্যাটার্ন শেখার মাধ্যমে, আপনি ক্লাসিক্যাল এবং আধুনিক ডিজাইন প্যাটার্নগুলি ভাষায় প্রয়োগ করে কীভাবে সুন্দর, কাঠামোগত এবং রক্ষণাবেক্ষণযোগ্য জাভাস্ক্রিপ্ট লিখতে হয় তা শিখবেন।"
+                }
             },
             {
                 id: 7,
-                title: "Don't Make Me Think",
-                author: "Steve Krug",
+                title: {
+                    en: "Don't Make Me Think",
+                    bn: "আমাকে ভাবতে বাধ্য করবেন না"
+                },
+                author: {
+                    en: "Steve Krug",
+                    bn: "স্টিভ ক্রুগ"
+                },
                 category: "design",
                 cover: "https://m.media-amazon.com/images/I/71Q6WEUQfFL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/7",
@@ -837,12 +818,21 @@
                 date: "2014-01-01",
                 featured: true,
                 favorite: false,
-                description: "Since Don't Make Me Think was first published in 2000, hundreds of thousands of Web designers and developers have relied on usability guru Steve Krug's guide to help them understand the principles of intuitive navigation and information design. Witty, commonsensical, and eminently practical, it's one of the best-loved and most recommended books on the subject."
+                description: {
+                    en: "Since Don't Make Me Think was first published in 2000, hundreds of thousands of Web designers and developers have relied on usability guru Steve Krug's guide to help them understand the principles of intuitive navigation and information design.",
+                    bn: "২০০০ সালে প্রথম প্রকাশিত হওয়ার পর থেকে, লক্ষাধিক ওয়েব ডিজাইনার এবং ডেভেলপার ব্যবহারযোগ্যতা গুরু স্টিভ ক্রুগের গাইডের উপর নির্ভর করেছেন স্বজ্ঞাত নেভিগেশন এবং তথ্য ডিজাইনের নীতিগুলি বুঝতে সাহায্য করার জন্য।"
+                }
             },
             {
                 id: 8,
-                title: "Atomic Habits",
-                author: "James Clear",
+                title: {
+                    en: "Atomic Habits",
+                    bn: "অ্যাটমিক হ্যাবিটস"
+                },
+                author: {
+                    en: "James Clear",
+                    bn: "জেমস ক্লিয়ার"
+                },
                 category: "business",
                 cover: "https://m.media-amazon.com/images/I/91bYsX41DVL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/8",
@@ -852,12 +842,21 @@
                 date: "2018-10-16",
                 featured: true,
                 favorite: false,
-                description: "No matter your goals, Atomic Habits offers a proven framework for improving—every day. James Clear, one of the world's leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results."
+                description: {
+                    en: "No matter your goals, Atomic Habits offers a proven framework for improving—every day. James Clear, one of the world's leading experts on habit formation, reveals practical strategies that will teach you exactly how to form good habits, break bad ones, and master the tiny behaviors that lead to remarkable results.",
+                    bn: "আপনার লক্ষ্য যাই হোক না কেন, অ্যাটমিক হ্যাবিটস প্রতিদিন উন্নতির জন্য একটি প্রমাণিত কাঠামো প্রদান করে। অভ্যাস গঠনের বিশ্বের শীর্ষস্থানীয় বিশেষজ্ঞদের একজন জেমস ক্লিয়ার ব্যবহারিক কৌশলগুলি প্রকাশ করেছেন যা আপনাকে সঠিকভাবে ভাল অভ্যাস গঠন, খারাপ অভ্যাস ভাঙতে এবং অসাধারণ ফলাফলের দিকে নিয়ে যাওয়া ক্ষুদ্র আচরণগুলিতে দক্ষ হতে শেখাবে।"
+                }
             },
             {
                 id: 9,
-                title: "A Brief History of Time",
-                author: "Stephen Hawking",
+                title: {
+                    en: "A Brief History of Time",
+                    bn: "সময়ের সংক্ষিপ্ত ইতিহাস"
+                },
+                author: {
+                    en: "Stephen Hawking",
+                    bn: "স্টিফেন হকিং"
+                },
                 category: "science",
                 cover: "https://m.media-amazon.com/images/I/81aY1lxk+9L._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/9",
@@ -867,12 +866,21 @@
                 date: "1998-09-01",
                 featured: false,
                 favorite: false,
-                description: "A landmark volume in science writing by one of the great minds of our time, Stephen Hawking's book explores such profound questions as: How did the universe begin—and what made its start possible? Does time always flow forward? Is the universe unending—or are there boundaries? Are there other dimensions in space? What will happen when it all ends?"
+                description: {
+                    en: "A landmark volume in science writing by one of the great minds of our time, Stephen Hawking's book explores such profound questions as: How did the universe begin—and what made its start possible? Does time always flow forward? Is the universe unending—or are there boundaries? Are there other dimensions in space? What will happen when it all ends?",
+                    bn: "আমাদের সময়ের মহান মস্তিষ্কগুলির মধ্যে একজন স্টিফেন হকিংয়ের বিজ্ঞান লেখার একটি মাইলফলক ভলিউম, এই বইটি এমন গভীর প্রশ্নগুলি অন্বেষণ করে: মহাবিশ্ব কীভাবে শুরু হয়েছিল - এবং কী এর সূচনা সম্ভব করেছিল? সময় কি সবসময় সামনের দিকে প্রবাহিত হয়? মহাবিশ্ব কি অবিরাম - নাকি সেখানে সীমানা আছে? মহাকাশে কি অন্যান্য মাত্রা আছে? সব শেষ হলে কি হবে?"
+                }
             },
             {
                 id: 10,
-                title: "Clean Code",
-                author: "Robert C. Martin",
+                title: {
+                    en: "Clean Code",
+                    bn: "ক্লিন কোড"
+                },
+                author: {
+                    en: "Robert C. Martin",
+                    bn: "রবার্ট সি. মার্টিন"
+                },
                 category: "programming",
                 cover: "https://m.media-amazon.com/images/I/41xShlnTZTL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/10",
@@ -882,9 +890,60 @@
                 date: "2008-08-01",
                 featured: true,
                 favorite: false,
-                description: "Even bad code can function. But if code isn't clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn't have to be that way. Noted software expert Robert C. Martin presents a revolutionary paradigm with Clean Code: A Handbook of Agile Software Craftsmanship."
+                description: {
+                    en: "Even bad code can function. But if code isn't clean, it can bring a development organization to its knees. Every year, countless hours and significant resources are lost because of poorly written code. But it doesn't have to be that way. Noted software expert Robert C. Martin presents a revolutionary paradigm with Clean Code: A Handbook of Agile Software Craftsmanship.",
+                    bn: "খারাপ কোডও কাজ করতে পারে। কিন্তু কোড যদি পরিষ্কার না হয়, তবে এটি একটি উন্নয়ন সংস্থাকে হাঁটু মুড়ে বসতে বাধ্য করতে পারে। প্রতিবছর, অসংখ্য ঘন্টা এবং উল্লেখযোগ্য সম্পদ খারাপভাবে লেখা কোডের কারণে হারিয়ে যায়। কিন্তু এটি এমন হতে হবে না। বিখ্যাত সফ্টওয়্যার বিশেষজ্ঞ রবার্ট সি. মার্টিন ক্লিন কোডের সাথে একটি বিপ্লবী দৃষ্টান্ত উপস্থাপন করেছেন: একটি অ্যাজাইল সফ্টওয়্যার কারিগরি হ্যান্ডবুক।"
+                }
             }
         ];
+
+        // Language translations for English and Bengali
+        const translations = {
+            en: {
+                app_title: "PDF Books Collection",
+                search_placeholder: "Search books...",
+                all_categories: "All Categories",
+                programming: "Programming",
+                design: "Design",
+                business: "Business",
+                science: "Science",
+                title_asc: "Title (A-Z)",
+                title_desc: "Title (Z-A)",
+                date_newest: "Newest First",
+                date_oldest: "Oldest First",
+                rating: "Highest Rated",
+                grid: "Grid",
+                list: "List",
+                no_books: "No Books Found",
+                empty_message: "Try adjusting your search or filter criteria to find what you're looking for.",
+                view_demo: "View Demo",
+                download: "Download PDF",
+                pages: "pages",
+                featured: "Featured"
+            },
+            bn: {
+                app_title: "পিডিএফ বইয়ের সংগ্রহ",
+                search_placeholder: "বই খুঁজুন...",
+                all_categories: "সমস্ত বিভাগ",
+                programming: "প্রোগ্রামিং",
+                design: "ডিজাইন",
+                business: "ব্যবসা",
+                science: "বিজ্ঞান",
+                title_asc: "শিরোনাম (A-Z)",
+                title_desc: "শিরোনাম (Z-A)",
+                date_newest: "সর্বশেষ প্রথম",
+                date_oldest: "প্রাচীনতম প্রথম",
+                rating: "সর্বোচ্চ রেটিং",
+                grid: "গ্রিড",
+                list: "তালিকা",
+                no_books: "কোন বই পাওয়া যায়নি",
+                empty_message: "আপনি যা খুঁজছেন তা খুঁজে পেতে আপনার অনুসন্ধান বা ফিল্টার মানদণ্ড সামঞ্জস্য করুন।",
+                view_demo: "ডেমো দেখুন",
+                download: "পিডিএফ ডাউনলোড করুন",
+                pages: "পৃষ্ঠা",
+                featured: "বিশেষ"
+            }
+        };
 
         // DOM elements
         const gridContainer = document.getElementById('grid-container');
@@ -895,7 +954,11 @@
         const categoryFilter = document.getElementById('category-filter');
         const sortBy = document.getElementById('sort-by');
         const emptyState = document.getElementById('empty-state');
+        const emptyStateTitle = document.getElementById('empty-state-title');
+        const emptyStateMessage = document.getElementById('empty-state-message');
         const pagination = document.getElementById('pagination');
+        const appTitle = document.getElementById('app-title');
+        const languageSelector = document.getElementById('language-selector');
         
         // Modal elements
         const bookModal = document.getElementById('book-modal');
@@ -903,6 +966,7 @@
         const modalTitle = document.getElementById('modal-title');
         const modalAuthor = document.getElementById('modal-author');
         const modalPages = document.getElementById('modal-pages');
+        const pagesText = document.getElementById('pages-text');
         const modalRating = document.getElementById('modal-rating');
         const modalDate = document.getElementById('modal-date');
         const modalCategory = document.getElementById('modal-category');
@@ -917,45 +981,48 @@
         let currentPage = 1;
         let filteredBooks = [...books];
         let currentModalBookId = null;
+        let currentLanguage = 'en';
 
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            loadFavorites();
+        // Set language and update UI
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Update UI translations
+            appTitle.textContent = translations[lang].app_title;
+            searchInput.placeholder = translations[lang].search_placeholder;
+            
+            // Update category filter options
+            document.querySelectorAll('#category-filter option').forEach(option => {
+                const key = option.getAttribute('data-i18n');
+                if (key) {
+                    option.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update sort options
+            document.querySelectorAll('#sort-by option').forEach(option => {
+                const key = option.getAttribute('data-i18n');
+                if (key) {
+                    option.textContent = translations[lang][key];
+                }
+            });
+            
+            // Update view toggle buttons
+            document.querySelector('.grid-text').textContent = translations[lang].grid;
+            document.querySelector('.list-text').textContent = translations[lang].list;
+            
+            // Update empty state
+            emptyStateTitle.textContent = translations[lang].no_books;
+            emptyStateMessage.textContent = translations[lang].empty_message;
+            
+            // Update modal texts
+            document.querySelector('.view-text').textContent = translations[lang].view_demo;
+            document.querySelector('.download-text').textContent = translations[lang].download;
+            pagesText.textContent = translations[lang].pages;
+            
+            // Re-render books with new language
             filterAndSortBooks();
-            
-            // Focus management for modal
-            bookModal.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') {
-                    closeBookModal();
-                }
-                
-                // Trap focus inside modal when open
-                if (e.key === 'Tab') {
-                    const focusableElements = bookModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-                    const firstElement = focusableElements[0];
-                    const lastElement = focusableElements[focusableElements.length - 1];
-                    
-                    if (e.shiftKey) {
-                        if (document.activeElement === firstElement) {
-                            lastElement.focus();
-                            e.preventDefault();
-                        }
-                    } else {
-                        if (document.activeElement === lastElement) {
-                            firstElement.focus();
-                            e.preventDefault();
-                        }
-                    }
-                }
-            });
-            
-            // Close modal when clicking outside
-            bookModal.addEventListener('click', (e) => {
-                if (e.target === bookModal) {
-                    closeBookModal();
-                }
-            });
-        });
+        }
 
         // Render books in grid view
         function renderGridView(booksToRender) {
@@ -971,31 +1038,25 @@
             }
             
             booksToRender.forEach(book => {
-                const bookCard = document.createElement('article');
+                const bookCard = document.createElement('div');
                 bookCard.className = 'book-card';
-                bookCard.setAttribute('aria-labelledby', `book-title-${book.id}`);
                 bookCard.innerHTML = `
                     <div class="book-cover">
-                        <img src="${book.cover}" alt="${book.title}" loading="lazy">
-                        ${book.featured ? '<span class="book-badge">Featured</span>' : ''}
+                        <img src="${book.cover}" alt="${book.title[currentLanguage]}">
+                        ${book.featured ? `<span class="book-badge">${translations[currentLanguage].featured}</span>` : ''}
                     </div>
                     <div class="book-info">
-                        <h3 class="book-title" id="book-title-${book.id}">${book.title}</h3>
-                        <div class="book-author">${book.author}</div>
+                        <div class="book-title">${book.title[currentLanguage]}</div>
+                        <div class="book-author">${book.author[currentLanguage]}</div>
                         <div class="book-meta">
-                            <span>${book.pages} pages</span>
-                            <span class="book-rating"><i class="fas fa-star" aria-hidden="true"></i> ${book.rating}</span>
+                            <span>${book.pages} ${translations[currentLanguage].pages}</span>
+                            <span class="book-rating"><i class="fas fa-star"></i> ${book.rating}</span>
                         </div>
                         <div class="book-actions">
-                            <button class="btn btn-demo view-details" data-id="${book.id}" aria-label="View details for ${book.title}">
-                                <i class="fas fa-eye" aria-hidden="true"></i> Demo
-                            </button>
-                            <a href="${book.downloadUrl}" class="btn btn-download" aria-label="Download ${book.title}">
-                                <i class="fas fa-download" aria-hidden="true"></i> Download
-                            </a>
-                            <button class="btn btn-favorite" data-id="${book.id}" aria-label="${book.favorite ? 'Remove from favorites' : 'Add to favorites'}">
-                                <i class="${book.favorite ? 'fas' : 'far'} fa-heart" aria-hidden="true"></i>
-                                <span class="sr-only">Favorite</span>
+                            <button class="btn btn-demo view-details" data-id="${book.id}"><i class="fas fa-eye"></i> ${translations[currentLanguage].view_demo}</button>
+                            <a href="${book.downloadUrl}" class="btn btn-download"><i class="fas fa-download"></i> ${translations[currentLanguage].download}</a>
+                            <button class="btn btn-favorite" data-id="${book.id}">
+                                <i class="${book.favorite ? 'fas' : 'far'} fa-heart"></i>
                             </button>
                         </div>
                     </div>
@@ -1021,33 +1082,27 @@
             }
             
             booksToRender.forEach(book => {
-                const bookItem = document.createElement('article');
+                const bookItem = document.createElement('div');
                 bookItem.className = 'book-item';
-                bookItem.setAttribute('aria-labelledby', `list-title-${book.id}`);
                 bookItem.innerHTML = `
                     <div class="list-cover">
-                        <img src="${book.cover}" alt="${book.title}" loading="lazy">
-                        ${book.featured ? '<span class="list-badge">Featured</span>' : ''}
+                        <img src="${book.cover}" alt="${book.title[currentLanguage]}">
+                        ${book.featured ? `<span class="list-badge">${translations[currentLanguage].featured}</span>` : ''}
                     </div>
                     <div class="list-info">
-                        <h3 class="list-title" id="list-title-${book.id}">${book.title}</h3>
-                        <div class="list-author">${book.author}</div>
+                        <div class="list-title">${book.title[currentLanguage]}</div>
+                        <div class="list-author">${book.author[currentLanguage]}</div>
                         <div class="list-meta">
-                            <span>${book.pages} pages</span>
-                            <span class="list-rating"><i class="fas fa-star" aria-hidden="true"></i> ${book.rating}</span>
+                            <span>${book.pages} ${translations[currentLanguage].pages}</span>
+                            <span class="list-rating"><i class="fas fa-star"></i> ${book.rating}</span>
                             <span>${new Date(book.date).toLocaleDateString()}</span>
                         </div>
                     </div>
                     <div class="list-actions">
-                        <button class="btn btn-demo view-details" data-id="${book.id}" aria-label="View details for ${book.title}">
-                            <i class="fas fa-eye" aria-hidden="true"></i> Demo
-                        </button>
-                        <a href="${book.downloadUrl}" class="btn btn-download" aria-label="Download ${book.title}">
-                            <i class="fas fa-download" aria-hidden="true"></i> Download
-                        </a>
-                        <button class="btn btn-favorite" data-id="${book.id}" aria-label="${book.favorite ? 'Remove from favorites' : 'Add to favorites'}">
-                            <i class="${book.favorite ? 'fas' : 'far'} fa-heart" aria-hidden="true"></i>
-                            <span class="sr-only">Favorite</span>
+                        <button class="btn btn-demo view-details" data-id="${book.id}"><i class="fas fa-eye"></i> ${translations[currentLanguage].view_demo}</button>
+                        <a href="${book.downloadUrl}" class="btn btn-download"><i class="fas fa-download"></i> ${translations[currentLanguage].download}</a>
+                        <button class="btn btn-favorite" data-id="${book.id}">
+                            <i class="${book.favorite ? 'fas' : 'far'} fa-heart"></i>
                         </button>
                     </div>
                 `;
@@ -1066,15 +1121,6 @@
                     const bookId = parseInt(this.getAttribute('data-id'));
                     toggleFavorite(bookId);
                 });
-                
-                // Add keyboard support
-                btn.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        const bookId = parseInt(btn.getAttribute('data-id'));
-                        toggleFavorite(bookId);
-                    }
-                });
             });
             
             // View details buttons
@@ -1082,15 +1128,6 @@
                 btn.addEventListener('click', function() {
                     const bookId = parseInt(this.getAttribute('data-id'));
                     showBookDetails(bookId);
-                });
-                
-                // Add keyboard support
-                btn.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        const bookId = parseInt(btn.getAttribute('data-id'));
-                        showBookDetails(bookId);
-                    }
                 });
             });
         }
@@ -1103,20 +1140,13 @@
                 
                 // Update UI
                 const favoriteIcons = document.querySelectorAll(`.btn-favorite[data-id="${bookId}"] i`);
-                const favoriteButtons = document.querySelectorAll(`.btn-favorite[data-id="${bookId}"]`);
-                
                 favoriteIcons.forEach(icon => {
                     icon.className = books[bookIndex].favorite ? 'fas fa-heart' : 'far fa-heart';
                 });
                 
-                favoriteButtons.forEach(button => {
-                    button.setAttribute('aria-label', books[bookIndex].favorite ? 'Remove from favorites' : 'Add to favorites');
-                });
-                
                 // Update modal if open
                 if (currentModalBookId === bookId) {
-                    modalFavoriteBtn.innerHTML = `<i class="${books[bookIndex].favorite ? 'fas' : 'far'} fa-heart" aria-hidden="true"></i> <span class="sr-only">Favorite</span>`;
-                    modalFavoriteBtn.setAttribute('aria-label', books[bookIndex].favorite ? 'Remove from favorites' : 'Add to favorites');
+                    modalFavoriteBtn.innerHTML = `<i class="${books[bookIndex].favorite ? 'fas' : 'far'} fa-heart"></i>`;
                 }
                 
                 // Save to localStorage
@@ -1147,18 +1177,21 @@
             
             // Populate modal
             modalCoverImg.src = book.cover;
-            modalCoverImg.alt = book.title;
-            modalTitle.textContent = book.title;
-            modalAuthor.textContent = book.author;
+            modalCoverImg.alt = book.title[currentLanguage];
+            modalTitle.textContent = book.title[currentLanguage];
+            modalAuthor.textContent = book.author[currentLanguage];
             modalPages.textContent = book.pages;
             modalRating.textContent = book.rating;
             modalDate.textContent = new Date(book.date).toLocaleDateString();
-            modalCategory.textContent = book.category.charAt(0).toUpperCase() + book.category.slice(1);
-            modalDescription.textContent = book.description;
+            
+            // Translate category
+            const categoryKey = document.querySelector(`#category-filter option[value="${book.category}"]`).getAttribute('data-i18n');
+            modalCategory.textContent = translations[currentLanguage][categoryKey];
+            
+            modalDescription.textContent = book.description[currentLanguage];
             modalDemoBtn.href = book.demoUrl;
             modalDownloadBtn.href = book.downloadUrl;
-            modalFavoriteBtn.innerHTML = `<i class="${book.favorite ? 'fas' : 'far'} fa-heart" aria-hidden="true"></i> <span class="sr-only">Favorite</span>`;
-            modalFavoriteBtn.setAttribute('aria-label', book.favorite ? 'Remove from favorites' : 'Add to favorites');
+            modalFavoriteBtn.innerHTML = `<i class="${book.favorite ? 'fas' : 'far'} fa-heart"></i>`;
             
             // Add event listener to modal favorite button
             modalFavoriteBtn.onclick = () => {
@@ -1167,21 +1200,12 @@
             
             // Show modal
             bookModal.style.display = 'flex';
-            
-            // Focus first interactive element in modal
-            modalFavoriteBtn.focus();
         }
 
         // Close modal
         function closeBookModal() {
             bookModal.style.display = 'none';
             currentModalBookId = null;
-            
-            // Return focus to the element that opened the modal
-            const focusedElementBeforeModal = document.querySelector('.view-details:focus');
-            if (focusedElementBeforeModal) {
-                focusedElementBeforeModal.focus();
-            }
         }
 
         // Filter and sort books based on current criteria
@@ -1192,19 +1216,25 @@
             
             // Filter by search term and category
             filteredBooks = books.filter(book => {
-                const matchesSearch = book.title.toLowerCase().includes(searchTerm) || 
-                                    book.author.toLowerCase().includes(searchTerm);
+                const title = book.title[currentLanguage] || book.title['en'];
+                const author = book.author[currentLanguage] || book.author['en'];
+                
+                const matchesSearch = title.toLowerCase().includes(searchTerm) || 
+                                    author.toLowerCase().includes(searchTerm);
                 const matchesCategory = category === 'all' || book.category === category;
                 return matchesSearch && matchesCategory;
             });
             
             // Sort books
             filteredBooks.sort((a, b) => {
+                const titleA = a.title[currentLanguage] || a.title['en'];
+                const titleB = b.title[currentLanguage] || b.title['en'];
+                
                 switch (sortOption) {
                     case 'title-asc':
-                        return a.title.localeCompare(b.title);
+                        return titleA.localeCompare(titleB);
                     case 'title-desc':
-                        return b.title.localeCompare(a.title);
+                        return titleB.localeCompare(titleA);
                     case 'date-newest':
                         return new Date(b.date) - new Date(a.date);
                     case 'date-oldest':
@@ -1251,8 +1281,7 @@
             // Previous button
             const prevBtn = document.createElement('button');
             prevBtn.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
-            prevBtn.innerHTML = '<i class="fas fa-chevron-left" aria-hidden="true"></i>';
-            prevBtn.setAttribute('aria-label', 'Previous page');
+            prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
             prevBtn.addEventListener('click', () => {
                 if (currentPage > 1) {
                     currentPage--;
@@ -1274,7 +1303,6 @@
                 const firstPageBtn = document.createElement('button');
                 firstPageBtn.className = 'page-btn';
                 firstPageBtn.textContent = '1';
-                firstPageBtn.setAttribute('aria-label', 'Go to page 1');
                 firstPageBtn.addEventListener('click', () => {
                     currentPage = 1;
                     filterAndSortBooks();
@@ -1293,7 +1321,6 @@
                 const pageBtn = document.createElement('button');
                 pageBtn.className = 'page-btn' + (i === currentPage ? ' active' : '');
                 pageBtn.textContent = i;
-                pageBtn.setAttribute('aria-label', `Go to page ${i}`);
                 pageBtn.addEventListener('click', () => {
                     currentPage = i;
                     filterAndSortBooks();
@@ -1312,7 +1339,6 @@
                 const lastPageBtn = document.createElement('button');
                 lastPageBtn.className = 'page-btn';
                 lastPageBtn.textContent = totalPages;
-                lastPageBtn.setAttribute('aria-label', `Go to page ${totalPages}`);
                 lastPageBtn.addEventListener('click', () => {
                     currentPage = totalPages;
                     filterAndSortBooks();
@@ -1323,8 +1349,7 @@
             // Next button
             const nextBtn = document.createElement('button');
             nextBtn.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
-            nextBtn.innerHTML = '<i class="fas fa-chevron-right" aria-hidden="true"></i>';
-            nextBtn.setAttribute('aria-label', 'Next page');
+            nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
             nextBtn.addEventListener('click', () => {
                 if (currentPage < totalPages) {
                     currentPage++;
@@ -1333,6 +1358,29 @@
             });
             pagination.appendChild(nextBtn);
         }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load favorites from localStorage
+            loadFavorites();
+            
+            // Set initial language based on browser preference or default to English
+            const browserLang = navigator.language.split('-')[0];
+            const supportedLangs = ['en', 'bn'];
+            const initialLang = supportedLangs.includes(browserLang) ? browserLang : 'en';
+            
+            // Set language selector to initial language
+            languageSelector.value = initialLang;
+            setLanguage(initialLang);
+            
+            // Add language selector event listener
+            languageSelector.addEventListener('change', (e) => {
+                setLanguage(e.target.value);
+            });
+            
+            // Initial render
+            filterAndSortBooks();
+        });
 
         // Toggle between grid and list views
         gridViewBtn.addEventListener('click', () => {
@@ -1354,8 +1402,8 @@
 
         // Modal event listeners
         closeModal.addEventListener('click', closeBookModal);
-        closeModal.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
+        window.addEventListener('click', (e) => {
+            if (e.target === bookModal) {
                 closeBookModal();
             }
         });
@@ -1368,19 +1416,6 @@
                 const url = e.target.getAttribute('href') || 
                            e.target.parentElement.getAttribute('href');
                 alert(`This would normally download: ${url}`);
-            }
-        });
-
-        // Keyboard navigation for view toggle
-        gridViewBtn.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
-                listViewBtn.focus();
-            }
-        });
-
-        listViewBtn.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') {
-                gridViewBtn.focus();
             }
         });
     </script>
