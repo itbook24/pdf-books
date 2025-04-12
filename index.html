@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>পিডিএফ বইয়ের সংগ্রহ</title>
+    <title>PDF Books Collection</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -540,10 +540,10 @@
     <div class="container">
         <header>
             <div class="header-top">
-                <h1>পিডিএফ বইয়ের সংগ্রহ</h1>
+                <h1>PDF Books Collection</h1>
                 <div class="view-toggle">
-                    <button id="grid-view" class="active"><i class="fas fa-th"></i> গ্রিড</button>
-                    <button id="list-view"><i class="fas fa-list"></i> তালিকা</button>
+                    <button id="grid-view" class="active"><i class="fas fa-th"></i> Grid</button>
+                    <button id="list-view"><i class="fas fa-list"></i> List</button>
                 </div>
             </div>
             
@@ -556,7 +556,7 @@
                 <div class="filter-group">
                     <label for="category-filter"><i class="fas fa-filter"></i></label>
                     <select id="category-filter">
-                        <option value="all">সমস্ত বিভাগ</option>
+                        <option value="all"> ইসলামিক বই</option>
                         <option value="programming">প্রোগ্রামিং</option>
                         <option value="design">ডিজাইন</option>
                         <option value="business">ব্যবসা</option>
@@ -623,8 +623,8 @@
                         <!-- Description will be inserted here -->
                     </div>
                     <div class="modal-actions">
-                        <a href="#" class="btn btn-demo" id="modal-demo-btn"><i class="fas fa-eye"></i> ডেমো দেখুন</a>
-                        <a href="#" class="btn btn-download" id="modal-download-btn"><i class="fas fa-download"></i> পিডিএফ ডাউনলোড করুন</a>
+                        <a href="#" class="btn btn-demo" id="modal-demo-btn"><i class="fas fa-eye"></i>View Demo</a>
+                        <a href="#" class="btn btn-download" id="modal-download-btn"><i class="fas fa-download"></i>Download PDF</a>
                         <button class="btn btn-favorite" id="modal-favorite-btn">
                             <i class="far fa-heart"></i>
                         </button>
@@ -850,8 +850,8 @@
                             <span class="book-rating"><i class="fas fa-star"></i> ${book.rating}</span>
                         </div>
                         <div class="book-actions">
-                            <button class="btn btn-demo view-details" data-id="${book.id}"><i class="fas fa-eye"></i> ডেমো দেখুন</button>
-                            <a href="${book.downloadUrl}" class="btn btn-download"><i class="fas fa-download"></i> পিডিএফ ডাউনলোড করুন</a>
+                            <button class="btn btn-demo view-details" data-id="${book.id}"><i class="fas fa-eye"></i> View Demo</button>
+                            <a href="${book.downloadUrl}" class="btn btn-download"><i class="fas fa-download"></i> Download PDF</a>
                             <button class="btn btn-favorite" data-id="${book.id}">
                                 <i class="${book.favorite ? 'fas' : 'far'} fa-heart"></i>
                             </button>
@@ -896,8 +896,8 @@
                         </div>
                     </div>
                     <div class="list-actions">
-                        <button class="btn btn-demo view-details" data-id="${book.id}"><i class="fas fa-eye"></i> ডেমো দেখুন</button>
-                        <a href="${book.downloadUrl}" class="btn btn-download"><i class="fas fa-download"></i> পিডিএফ ডাউনলোড করুন</a>
+                        <button class="btn btn-demo view-details" data-id="${book.id}"><i class="fas fa-eye"></i> View Demo</button>
+                        <a href="${book.downloadUrl}" class="btn btn-download"><i class="fas fa-download"></i> Download PDF</a>
                         <button class="btn btn-favorite" data-id="${book.id}">
                             <i class="${book.favorite ? 'fas' : 'far'} fa-heart"></i>
                         </button>
@@ -983,7 +983,7 @@
             
             // Translate category
             const categoryMap = {
-                "programming": "প্রোগ্রামিং",
+                "Islamic books": "ইসলামিক বই",
                 "design": "ডিজাইন",
                 "business": "ব্যবসা",
                 "science": "বিজ্ঞান"
