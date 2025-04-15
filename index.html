@@ -345,7 +345,7 @@
         
         /* Pagination */
         .pagination {
-            display: flex;
+            display: none; /* Hide traditional pagination */
             justify-content: center;
             margin-top: 30px;
             gap: 5px;
@@ -373,6 +373,18 @@
         .page-btn.disabled {
             opacity: 0.5;
             cursor: not-allowed;
+        }
+        
+        /* Load More Button */
+        .load-more-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        
+        #load-more-btn {
+            padding: 10px 30px;
+            font-size: 1em;
         }
         
         /* Empty State */
@@ -595,9 +607,16 @@
                 <p>আপনি যা খুঁজছেন তা খুঁজে পেতে আপনার অনুসন্ধান বা ফিল্টার মানদণ্ড সামঞ্জস্য করুন।</p>
             </div>
             
-            <!-- Pagination -->
+            <!-- Pagination (hidden by default) -->
             <div class="pagination" id="pagination">
                 <!-- Pagination buttons will be inserted here by JavaScript -->
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="load-more-container">
+                <button id="load-more-btn" class="btn btn-demo">
+                    <i class="fas fa-plus"></i> Load 15 More Books
+                </button>
             </div>
         </main>
     </div>
@@ -923,7 +942,7 @@
                 description: "খারাপ কোডও কাজ করতে পারে। কিন্তু কোড যদি পরিষ্কার না হয়, তবে এটি একটি উন্নয়ন সংস্থাকে হাঁটু মুড়ে বসতে বাধ্য করতে পারে। প্রতিবছর, অসংখ্য ঘন্টা এবং উল্লেখযোগ্য সম্পদ খারাপভাবে লেখা কোডের কারণে হারিয়ে যায়। কিন্তু এটি এমন হতে হবে না। বিখ্যাত সফ্টওয়্যার বিশেষজ্ঞ রবার্ট সি. মার্টিন ক্লিন কোডের সাথে একটি বিপ্লবী দৃষ্টান্ত উপস্থাপন করেছেন: একটি অ্যাজাইল সফ্টওয়্যার কারিগরি হ্যান্ডবুক।"
             },
             {
-                id: 19,
+                id: 20,
                 title: "ক্লিন কোড",
                 author: "রবার্ট সি. মার্টিন",
                 category: "programming",
@@ -949,6 +968,7 @@
         const sortBy = document.getElementById('sort-by');
         const emptyState = document.getElementById('empty-state');
         const pagination = document.getElementById('pagination');
+        const loadMoreBtn = document.getElementById('load-more-btn');
         
         // Modal elements
         const bookModal = document.getElementById('book-modal');
@@ -966,18 +986,23 @@
         const closeModal = document.querySelector('.close-modal');
 
         // Pagination variables
-        const booksPerPage = 6;
+        const booksPerPage = 15; // Load 15 books at a time
         let currentPage = 1;
         let filteredBooks = [...books];
         let currentModalBookId = null;
 
         // Render books in grid view
         function renderGridView(booksToRender) {
-            gridContainer.innerHTML = '';
+            if (currentPage === 1) {
+                gridContainer.innerHTML = '';
+                listContainer.style.display = 'none';
+                gridContainer.style.display = 'grid';
+            }
             
-            if (booksToRender.length === 0) {
+            if (booksToRender.length === 0 && currentPage === 1) {
                 emptyState.style.display = 'block';
                 gridContainer.style.display = 'none';
+                loadMoreBtn.style.display = 'none';
                 return;
             } else {
                 emptyState.style.display = 'none';
@@ -1011,17 +1036,30 @@
                 gridContainer.appendChild(bookCard);
             });
             
-            // Add event listeners
+            // Hide load more button if no more books
+            const startIndex = (currentPage - 1) * booksPerPage;
+            const endIndex = startIndex + booksPerPage;
+            if (endIndex >= filteredBooks.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+            }
+            
             addEventListeners();
         }
 
         // Render books in list view
         function renderListView(booksToRender) {
-            listContainer.innerHTML = '';
+            if (currentPage === 1) {
+                listContainer.innerHTML = '';
+                gridContainer.style.display = 'none';
+                listContainer.style.display = 'block';
+            }
             
-            if (booksToRender.length === 0) {
+            if (booksToRender.length === 0 && currentPage === 1) {
                 emptyState.style.display = 'block';
                 listContainer.style.display = 'none';
+                loadMoreBtn.style.display = 'none';
                 return;
             } else {
                 emptyState.style.display = 'none';
@@ -1056,7 +1094,15 @@
                 listContainer.appendChild(bookItem);
             });
             
-            // Add event listeners
+            // Hide load more button if no more books
+            const startIndex = (currentPage - 1) * booksPerPage;
+            const endIndex = startIndex + booksPerPage;
+            if (endIndex >= filteredBooks.length) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'block';
+            }
+            
             addEventListeners();
         }
 
@@ -1195,9 +1241,6 @@
             // Reset to first page when filtering/sorting
             currentPage = 1;
             
-            // Update pagination
-            updatePagination();
-            
             // Get books for current page
             const startIndex = (currentPage - 1) * booksPerPage;
             const endIndex = startIndex + booksPerPage;
@@ -1211,98 +1254,26 @@
             }
         }
 
-        // Update pagination controls
-        function updatePagination() {
-            const totalPages = Math.ceil(filteredBooks.length / booksPerPage);
+        // Load more books when button is clicked
+        function loadMoreBooks() {
+            currentPage++;
+            const startIndex = (currentPage - 1) * booksPerPage;
+            const endIndex = startIndex + booksPerPage;
+            const additionalBooks = filteredBooks.slice(startIndex, endIndex);
             
-            pagination.innerHTML = '';
-            
-            if (totalPages <= 1) {
-                pagination.style.display = 'none';
-                return;
+            if (gridViewBtn.classList.contains('active')) {
+                renderGridView(additionalBooks);
+            } else {
+                renderListView(additionalBooks);
             }
             
-            pagination.style.display = 'flex';
-            
-            // Previous button
-            const prevBtn = document.createElement('button');
-            prevBtn.className = 'page-btn' + (currentPage === 1 ? ' disabled' : '');
-            prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
-            prevBtn.addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    filterAndSortBooks();
-                }
-            });
-            pagination.appendChild(prevBtn);
-            
-            // Page buttons
-            const maxVisiblePages = 5;
-            let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
-            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
-            
-            if (endPage - startPage + 1 < maxVisiblePages) {
-                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            // Scroll to bottom of new items
+            if (additionalBooks.length > 0) {
+                const lastBookElement = gridViewBtn.classList.contains('active') 
+                    ? gridContainer.lastElementChild 
+                    : listContainer.lastElementChild;
+                lastBookElement.scrollIntoView({ behavior: 'smooth', block: 'end' });
             }
-            
-            if (startPage > 1) {
-                const firstPageBtn = document.createElement('button');
-                firstPageBtn.className = 'page-btn';
-                firstPageBtn.textContent = '1';
-                firstPageBtn.addEventListener('click', () => {
-                    currentPage = 1;
-                    filterAndSortBooks();
-                });
-                pagination.appendChild(firstPageBtn);
-                
-                if (startPage > 2) {
-                    const ellipsis = document.createElement('span');
-                    ellipsis.textContent = '...';
-                    ellipsis.style.padding = '8px 12px';
-                    pagination.appendChild(ellipsis);
-                }
-            }
-            
-            for (let i = startPage; i <= endPage; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.className = 'page-btn' + (i === currentPage ? ' active' : '');
-                pageBtn.textContent = i;
-                pageBtn.addEventListener('click', () => {
-                    currentPage = i;
-                    filterAndSortBooks();
-                });
-                pagination.appendChild(pageBtn);
-            }
-            
-            if (endPage < totalPages) {
-                if (endPage < totalPages - 1) {
-                    const ellipsis = document.createElement('span');
-                    ellipsis.textContent = '...';
-                    ellipsis.style.padding = '8px 12px';
-                    pagination.appendChild(ellipsis);
-                }
-                
-                const lastPageBtn = document.createElement('button');
-                lastPageBtn.className = 'page-btn';
-                lastPageBtn.textContent = totalPages;
-                lastPageBtn.addEventListener('click', () => {
-                    currentPage = totalPages;
-                    filterAndSortBooks();
-                });
-                pagination.appendChild(lastPageBtn);
-            }
-            
-            // Next button
-            const nextBtn = document.createElement('button');
-            nextBtn.className = 'page-btn' + (currentPage === totalPages ? ' disabled' : '');
-            nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
-            nextBtn.addEventListener('click', () => {
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    filterAndSortBooks();
-                }
-            });
-            pagination.appendChild(nextBtn);
         }
 
         // Initialize the page
@@ -1315,12 +1286,14 @@
         gridViewBtn.addEventListener('click', () => {
             gridViewBtn.classList.add('active');
             listViewBtn.classList.remove('active');
+            currentPage = 1; // Reset to first page when switching views
             filterAndSortBooks();
         });
 
         listViewBtn.addEventListener('click', () => {
             listViewBtn.classList.add('active');
             gridViewBtn.classList.remove('active');
+            currentPage = 1; // Reset to first page when switching views
             filterAndSortBooks();
         });
 
@@ -1328,6 +1301,9 @@
         searchInput.addEventListener('input', filterAndSortBooks);
         categoryFilter.addEventListener('change', filterAndSortBooks);
         sortBy.addEventListener('change', filterAndSortBooks);
+
+        // Load more button event listener
+        loadMoreBtn.addEventListener('click', loadMoreBooks);
 
         // Modal event listeners
         closeModal.addEventListener('click', closeBookModal);
