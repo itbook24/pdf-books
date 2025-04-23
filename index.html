@@ -991,6 +991,16 @@
         let filteredBooks = [...books];
         let currentModalBookId = null;
 
+        // Function to trigger file download
+        function downloadFile(url, filename) {
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename || url.split('/').pop();
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
         // Render books in grid view
         function renderGridView(booksToRender) {
             if (currentPage === 1) {
@@ -1026,7 +1036,7 @@
                         </div>
                         <div class="book-actions">
                             <button class="btn btn-demo view-details" data-id="${book.id}"><i class="fas fa-eye"></i>Demo</button>
-                            <a href="${book.downloadUrl}" class="btn btn-download"><i class="fas fa-download"></i>Download</a>
+                            <a href="${book.downloadUrl}" class="btn btn-download" data-id="${book.id}"><i class="fas fa-download"></i>Download</a>
                             <button class="btn btn-favorite" data-id="${book.id}">
                                 <i class="${book.favorite ? 'fas' : 'far'} fa-heart"></i>
                             </button>
@@ -1085,7 +1095,7 @@
                     </div>
                     <div class="list-actions">
                         <button class="btn btn-demo view-details" data-id="${book.id}"><i class="fas fa-eye"></i> View Demo</button>
-                        <a href="${book.downloadUrl}" class="btn btn-download"><i class="fas fa-download"></i> Download PDF</a>
+                        <a href="${book.downloadUrl}" class="btn btn-download" data-id="${book.id}"><i class="fas fa-download"></i> Download PDF</a>
                         <button class="btn btn-favorite" data-id="${book.id}">
                             <i class="${book.favorite ? 'fas' : 'far'} fa-heart"></i>
                         </button>
@@ -1124,6 +1134,29 @@
                 });
             });
         }
+
+        // Handle download button clicks
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-download') || 
+                e.target.parentElement.classList.contains('btn-download')) {
+                e.preventDefault();
+                const url = e.target.getAttribute('href') || 
+                           e.target.parentElement.getAttribute('href');
+                const bookId = e.target.getAttribute('data-id') || 
+                             e.target.parentElement.getAttribute('data-id');
+                
+                if (bookId) {
+                    const book = books.find(b => b.id === parseInt(bookId));
+                    if (book) {
+                        downloadFile(url, `${book.title}.pdf`);
+                    } else {
+                        downloadFile(url);
+                    }
+                } else {
+                    downloadFile(url);
+                }
+            }
+        });
 
         // Toggle favorite status
         function toggleFavorite(bookId) {
@@ -1194,6 +1227,12 @@
             // Add event listener to modal favorite button
             modalFavoriteBtn.onclick = () => {
                 toggleFavorite(bookId);
+            };
+            
+            // Handle modal download button click
+            modalDownloadBtn.onclick = (e) => {
+                e.preventDefault();
+                downloadFile(book.downloadUrl, `${book.title}.pdf`);
             };
             
             // Show modal
@@ -1310,17 +1349,6 @@
         window.addEventListener('click', (e) => {
             if (e.target === bookModal) {
                 closeBookModal();
-            }
-        });
-
-        // For demo purposes, prevent actual navigation
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('btn-download') || 
-                e.target.parentElement.classList.contains('btn-download')) {
-                e.preventDefault();
-                const url = e.target.getAttribute('href') || 
-                           e.target.parentElement.getAttribute('href');
-                alert(`এই লিঙ্কটি সাধারণত ডাউনলোড করবে: ${url}`);
             }
         });
     </script>
