@@ -546,6 +546,26 @@
                 flex: 2;
             }
         }
+
+        /* Embed Viewer Modal Styles */
+        #embed-modal {
+            display: none;
+        }
+
+        #embed-modal .modal-content {
+            width: 90%;
+            max-width: 900px;
+            height: 80vh;
+            padding: 10px;
+        }
+
+        #embed-viewer {
+            width: 100%;
+            height: calc(100% - 20px);
+            border: none;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -653,6 +673,16 @@
         </div>
     </div>
 
+    <!-- Embed Viewer Modal -->
+    <div class="modal" id="embed-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-embed">&times;</span>
+            <div class="modal-body">
+                <iframe id="embed-viewer"></iframe>
+            </div>
+        </div>
+    </div>
+
     <script>
         // Bengali book data
         const books = [
@@ -677,7 +707,7 @@
                 author: "মারিজন হ্যাভারবেকে",
                 category: "programming",
                 cover: "https://eloquentjavascript.net/img/cover.jpg",
-                demoUrl: "https://example.com/demo/2",
+                demoUrl: "https://eloquentjavascript.net/Eloquent_JavaScript.pdf",
                 downloadUrl: "https://example.com/download/2",
                 pages: 472,
                 rating: 4.7,
@@ -686,7 +716,6 @@
                 favorite: true,
                 description: "এটি জাভাস্ক্রিপ্ট, প্রোগ্রামিং এবং ডিজিটাল জগতের বিস্ময় সম্পর্কে একটি বই। আপনি এখানে অনলাইনে এটি পড়তে পারেন, বা আপনার নিজস্ব কাগজের কপি পেতে পারেন।"
             },
-            
         ];
 
         // DOM elements
@@ -715,6 +744,11 @@
         const modalDownloadBtn = document.getElementById('modal-download-btn');
         const modalFavoriteBtn = document.getElementById('modal-favorite-btn');
         const closeModal = document.querySelector('.close-modal');
+
+        // Embed modal elements
+        const embedModal = document.getElementById('embed-modal');
+        const embedViewer = document.getElementById('embed-viewer');
+        const closeEmbedBtn = document.getElementById('close-embed');
 
         // Pagination variables
         const booksPerPage = 15; // Load 15 books at a time
@@ -960,6 +994,20 @@
                 toggleFavorite(bookId);
             };
             
+            // Handle modal demo button click to show embed
+            modalDemoBtn.onclick = (e) => {
+                e.preventDefault();
+                if (book.demoUrl.includes('drive.google.com')) {
+                    // Convert Google Drive view URL to embeddable format
+                    const fileId = book.demoUrl.match(/\/file\/d\/([^\/]+)/)[1];
+                    embedViewer.src = `https://drive.google.com/file/d/${fileId}/preview`;
+                } else {
+                    // For other PDFs, use Google Docs viewer
+                    embedViewer.src = `https://docs.google.com/gview?url=${encodeURIComponent(book.demoUrl)}&embedded=true`;
+                }
+                embedModal.style.display = 'flex';
+            };
+            
             // Handle modal download button click
             modalDownloadBtn.onclick = (e) => {
                 e.preventDefault();
@@ -974,6 +1022,12 @@
         function closeBookModal() {
             bookModal.style.display = 'none';
             currentModalBookId = null;
+        }
+
+        // Close embed modal
+        function closeEmbedModal() {
+            embedModal.style.display = 'none';
+            embedViewer.src = '';
         }
 
         // Filter and sort books based on current criteria
@@ -1077,15 +1131,19 @@
 
         // Modal event listeners
         closeModal.addEventListener('click', closeBookModal);
+        closeEmbedBtn.addEventListener('click', closeEmbedModal);
+        
         window.addEventListener('click', (e) => {
             if (e.target === bookModal) {
                 closeBookModal();
             }
+            if (e.target === embedModal) {
+                closeEmbedModal();
+            }
         });
     </script>
-</body>
 
-           <!-- Footer Section -->
+    <!-- Footer Section -->
     <footer style="
         background-color: var(--dark-color); 
         color: var(--light-color);
@@ -1368,15 +1426,6 @@
                     <!-- Replace this div with your actual ad code -->
                     <div><script type="text/javascript" src="https://udbaa.com/bnr.php?section=General&pub=225212&format=300x250&ga=g"></script>
 <noscript><a href="https://yllix.com/publishers/225212" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/300x250.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" alt="ylliX - Online Advertising Network" /></a></noscript></div>
-                    
-                    <!-- Example of real ad code (uncomment and replace with yours):
-                    <script type="text/javascript" src="https://udbaa.com/bnr.php?section=General&pub=225212&format=300x250&ga=g"></script>
-<noscript><a href="https://yllix.com/publishers/225212" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/300x250.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" alt="ylliX - Online Advertising Network" /></a></noscript>
-                         style="display:inline-block;width:300px;height:250px"
-                         data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
-                         data-ad-slot="XXXXXXXXXX"></ins>
-                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-                    -->
                 </div>
         </div>
         
@@ -1413,5 +1462,5 @@
             </div>
         </div>
     </footer>
-    
+</body>
 </html>
