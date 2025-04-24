@@ -1160,53 +1160,23 @@
         });
 
         // Handle demo button clicks
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('btn-demo') || 
-                e.target.parentElement.classList.contains('btn-demo')) {
-                e.preventDefault();
-                const url = e.target.getAttribute('href') || 
-                           e.target.parentElement.getAttribute('href');
-                const bookId = e.target.getAttribute('data-id') || 
-                             e.target.parentElement.getAttribute('data-id');
-                
-                if (bookId) {
-                    const book = books.find(b => b.id === parseInt(bookId));
-                    if (book) {
-                        // Check if the book has a specific target for demo
-                        if (book.demoTarget === "_blank") {
-                            window.open(url, '_blank');
-                        } else {
-                            // Open in popup window
-                            const width = 800;
-                            const height = 600;
-                            const left = (screen.width - width) / 2;
-                            const top = (screen.height - height) / 2;
-                            
-                            window.open(url, 'bookDemo', 
-                                `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no`);
-                        }
-                    } else {
-                        // Default popup behavior if no book found
-                        const width = 800;
-                        const height = 600;
-                        const left = (screen.width - width) / 2;
-                        const top = (screen.height - height) / 2;
-                        
-                        window.open(url, 'bookDemo', 
-                            `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no`);
-                    }
-                } else {
-                    // Default popup behavior if no book ID
-                    const width = 800;
-                    const height = 600;
-                    const left = (screen.width - width) / 2;
-                    const top = (screen.height - height) / 2;
-                    
-                    window.open(url, 'bookDemo', 
-                        `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no`);
-                }
-            }
-        });
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('btn-demo') || 
+        e.target.parentElement.classList.contains('btn-demo')) {
+        e.preventDefault();
+        const url = e.target.getAttribute('href') || 
+                   e.target.parentElement.getAttribute('href');
+        
+        // Always open in popup window
+        const width = 800;
+        const height = 600;
+        const left = (screen.width - width) / 2;
+        const top = (screen.height - height) / 2;
+        
+        window.open(url, 'bookDemo', 
+            `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no`);
+    }
+});
 
         // Toggle favorite status
         function toggleFavorite(bookId) {
@@ -1244,21 +1214,17 @@
             });
         }
 
-        // Show book details in modal
-        function showBookDetails(bookId) {
-            const book = books.find(b => b.id === bookId);
-            if (!book) return;
-            
-            currentModalBookId = bookId;
-            
-            // Populate modal
-            modalCoverImg.src = book.cover;
-            modalCoverImg.alt = book.title;
-            modalTitle.textContent = book.title;
-            modalAuthor.textContent = book.author;
-            modalPages.textContent = book.pages;
-            modalRating.textContent = book.rating;
-            modalDate.textContent = new Date(book.date).toLocaleDateString();
+        // In the showBookDetails function:
+modalDemoBtn.onclick = (e) => {
+    e.preventDefault();
+    const width = 800;
+    const height = 600;
+    const left = (screen.width - width) / 2;
+    const top = (screen.height - height) / 2;
+    
+    window.open(book.demoUrl, 'bookDemo', 
+        `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no`);
+};
             
             // Translate category
             const categoryMap = {
