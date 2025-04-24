@@ -493,6 +493,23 @@
             margin-top: 20px;
         }
         
+        /* Embed Viewer Modal */
+        #embed-modal .modal-content {
+            width: 640px;
+            height: 750px;
+            max-width: 640px;
+            max-height: 750px;
+            padding: 10px;
+        }
+
+        #embed-viewer {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: #f5f5f5;
+            border-radius: 4px;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .header-top {
@@ -531,6 +548,14 @@
             .modal-body {
                 flex-direction: column;
             }
+
+            /* Make embed modal responsive on small screens */
+            #embed-modal .modal-content {
+                width: 95%;
+                height: 80vh;
+                max-width: 95%;
+                max-height: 80vh;
+            }
         }
         
         @media (min-width: 992px) {
@@ -546,23 +571,6 @@
                 flex: 2;
             }
         }
-
-       /* Embed Viewer Modal Styles */
-#embed-modal .modal-content {
-    width: 640px;
-    height: 750px;
-    max-width: 640px;
-    max-height: 750px;
-    padding: 10px;
-}
-
-#embed-viewer {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: #f5f5f5;
-    border-radius: 4px;
-}
     </style>
 </head>
 <body>
@@ -671,14 +679,14 @@
     </div>
 
     <!-- Embed Viewer Modal -->
-<div class="modal" id="embed-modal">
-    <div class="modal-content">
-        <span class="close-modal" id="close-embed">&times;</span>
-        <div class="modal-body" style="height: 100%;">
-            <iframe id="embed-viewer"></iframe>
+    <div class="modal" id="embed-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-embed">&times;</span>
+            <div class="modal-body" style="height: 100%;">
+                <iframe id="embed-viewer"></iframe>
+            </div>
         </div>
     </div>
-</div>
 
     <script>
         // Bengali book data
@@ -713,7 +721,6 @@
                 favorite: true,
                 description: "এটি জাভাস্ক্রিপ্ট, প্রোগ্রামিং এবং ডিজিটাল জগতের বিস্ময় সম্পর্কে একটি বই। আপনি এখানে অনলাইনে এটি পড়তে পারেন, বা আপনার নিজস্ব কাগজের কপি পেতে পারেন।"
             },
-
             {
                 id: 3,
                 title: "আপনি এখনও জেএস জানেন না",
