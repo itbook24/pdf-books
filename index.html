@@ -615,7 +615,7 @@
             <!-- Load More Button -->
             <div class="load-more-container">
                 <button id="load-more-btn" class="btn btn-demo">
-                    <i class="fas fa-plus"></i> <center> Load 15 More Books</center>
+                    <i class="fas fa-plus"></i> Load 15 More Books
                 </button>
             </div>
         </main>
@@ -1159,6 +1159,55 @@
             }
         });
 
+        // Handle demo button clicks
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-demo') || 
+                e.target.parentElement.classList.contains('btn-demo')) {
+                e.preventDefault();
+                const url = e.target.getAttribute('href') || 
+                           e.target.parentElement.getAttribute('href');
+                const bookId = e.target.getAttribute('data-id') || 
+                             e.target.parentElement.getAttribute('data-id');
+                
+                if (bookId) {
+                    const book = books.find(b => b.id === parseInt(bookId));
+                    if (book) {
+                        // Check if the book has a specific target for demo
+                        if (book.demoTarget === "_blank") {
+                            window.open(url, '_blank');
+                        } else {
+                            // Open in popup window
+                            const width = 800;
+                            const height = 600;
+                            const left = (screen.width - width) / 2;
+                            const top = (screen.height - height) / 2;
+                            
+                            window.open(url, 'bookDemo', 
+                                `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no`);
+                        }
+                    } else {
+                        // Default popup behavior if no book found
+                        const width = 800;
+                        const height = 600;
+                        const left = (screen.width - width) / 2;
+                        const top = (screen.height - height) / 2;
+                        
+                        window.open(url, 'bookDemo', 
+                            `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no`);
+                    }
+                } else {
+                    // Default popup behavior if no book ID
+                    const width = 800;
+                    const height = 600;
+                    const left = (screen.width - width) / 2;
+                    const top = (screen.height - height) / 2;
+                    
+                    window.open(url, 'bookDemo', 
+                        `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no`);
+                }
+            }
+        });
+
         // Toggle favorite status
         function toggleFavorite(bookId) {
             const bookIndex = books.findIndex(book => book.id === bookId);
@@ -1228,6 +1277,22 @@
             // Add event listener to modal favorite button
             modalFavoriteBtn.onclick = () => {
                 toggleFavorite(bookId);
+            };
+            
+            // Handle modal demo button click
+            modalDemoBtn.onclick = (e) => {
+                e.preventDefault();
+                if (book.demoTarget === "_blank") {
+                    window.open(book.demoUrl, '_blank');
+                } else {
+                    const width = 800;
+                    const height = 600;
+                    const left = (screen.width - width) / 2;
+                    const top = (screen.height - height) / 2;
+                    
+                    window.open(book.demoUrl, 'bookDemo', 
+                        `width=${width},height=${height},left=${left},top=${top},resizable=yes,scrollbars=yes,toolbar=no,location=no,directories=no,status=no,menubar=no`);
+                }
             };
             
             // Handle modal download button click
@@ -1662,7 +1727,7 @@
                     color: rgba(255,255,255,0.7);
                     font-size: 0.9rem;
                 ">
-                    &copy; 2023 PDF Books Collection. All Rights Reserved. | 
+                    &copy; 2025 PDF Books Collection. All Rights Reserved. | 
                     <a href="#" style="
                         color: rgba(255,255,255,0.7);
                         text-decoration: none;
