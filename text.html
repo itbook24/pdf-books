@@ -343,29 +343,9 @@
             gap: 10px;
         }
         
-        /* Ad Container Styles */
-        .ad-container {
-            grid-column: 1 / -1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(0,0,0,0.03);
-            border: 1px dashed rgba(0,0,0,0.1);
-            border-radius: 4px;
-        }
-        
-        .ad-placeholder {
-            width: 100%;
-            text-align: center;
-            color: #999;
-            font-size: 0.9em;
-        }
-        
         /* Pagination */
         .pagination {
-            display: none;
+            display: none; /* Hide traditional pagination */
             justify-content: center;
             margin-top: 30px;
             gap: 5px;
@@ -645,6 +625,13 @@
                 <!-- Books will be inserted here by JavaScript -->
             </div>
             
+            <!-- New Ad Section -->
+            <div style="margin: 30px; text-align: center;">
+              <a href="https://your-link-here.com" target="_blank">
+                <img src="https://via.placeholder.com/250x180.png?text=Your+Ad+Here" alt="Ad Image" style="width:250px; height:180px; border:1px solid #ccc; border-radius: 8px;">
+              </a>
+            </div>
+            
             <!-- Empty State (hidden by default) -->
             <div class="empty-state" id="empty-state" style="display: none;">
                 <i class="fas fa-book-open"></i>
@@ -717,8 +704,8 @@
                 author: "জাকারিয়া মাসুদ",
                 category: "ইসলামিক বই",
                 cover: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh00uqcUiXxcvfffSxDNlFCMAj7Q-wh1JbS6haQArCwajXNshRuH0EhT2vsskbLwsKF1B7x-FDj5Rmtd7z2sQtIBK9f_wYsT5uh9EJzn1IJ9BQVp5k5uS-wZiWYLejhJK2EbR0dlT1wRm2kI4oIaMndkkZ81l5OQ7Fu39zk3YqqCIcFMlo9gg5-_VWdJ4bK/s389/Biyer-Epith-Opthit-pdf-download.webp",
-                demoUrl: "https://drive.google.com/file/d/1kqhbk3SZrWQSy1bDVTBLehklp61g3sRh/view",
-                downloadUrl: "https://www.dropbox.com/scl/fi/wq45urbwl9kz2qon6xefk/JustBoipdf.com.pdf?rlkey=77f7owyqk6306b5z2f4zm0tu0&st=070w38b4&dl=1",
+                demoUrl: "https://www.justboipdf.com/2024/05/biyer-epith-opith-pdf.html",
+                downloadUrl: "https://www.justboipdf.com/2024/05/biyer-epith-opith-pdf.html",
                 pages: 704,
                 rating: 4.5,
                 date: "2020-05-15",
@@ -743,199 +730,124 @@
             },
             {
                 id: 3,
-                title: "প্রোগ্রামিংয়ের হাতেখড়ি",
-                author: "তামিম শাহরিয়ার",
+                title: "আপনি এখনও জেএস জানেন না",
+                author: "কাইল সিম্পসন",
                 category: "programming",
-                cover: "https://example.com/covers/programming-basics.jpg",
+                cover: "https://m.media-amazon.com/images/I/71iQ4hVtRzL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/3",
                 downloadUrl: "https://example.com/download/3",
-                pages: 320,
-                rating: 4.2,
-                date: "2021-03-10",
-                featured: false,
+                pages: 280,
+                rating: 4.8,
+                date: "2021-03-22",
+                featured: true,
                 favorite: false,
-                description: "প্রোগ্রামিং শেখার জন্য আদর্শ বই, বিশেষ করে যারা নতুন শুরু করছেন তাদের জন্য।"
+                description: "এটি জাভাস্ক্রিপ্ট ভাষার মূল প্রক্রিয়াগুলিতে গভীরভাবে ডুব দেওয়ার জন্য একটি বইয়ের সিরিজ। সিরিজের প্রথম সংস্করণ এখন সম্পূর্ণ হয়েছে এবং দ্বিতীয় সংস্করণ চলছে।"
             },
             {
                 id: 4,
-                title: "ব্যবসায় সফল হওয়ার উপায়",
-                author: "আবুল কালাম আজাদ",
-                category: "business",
-                cover: "https://example.com/covers/business-success.jpg",
+                title: "জাভাস্ক্রিপ্ট: দ্য গুড পার্টস",
+                author: "ডগলাস ক্রকফোর্ড",
+                category: "programming",
+                cover: "https://m.media-amazon.com/images/I/81kqrwS1nNL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/4",
                 downloadUrl: "https://example.com/download/4",
-                pages: 280,
-                rating: 4.4,
-                date: "2019-07-22",
-                featured: true,
+                pages: 176,
+                rating: 4.3,
+                date: "2008-05-01",
+                featured: false,
                 favorite: false,
-                description: "ব্যবসায় সফল হওয়ার প্রায়োগিক কৌশল এবং পরামর্শ সম্বলিত বই।"
+                description: "অধিকাংশ প্রোগ্রামিং ভাষায় ভাল এবং খারাপ অংশ থাকে, কিন্তু জাভাস্ক্রিপ্টে খারাপ অংশের পরিমাণ বেশি, কারণ এটি পরিশোধিত হওয়ার আগেই তাড়াহুড়ো করে তৈরি এবং প্রকাশ করা হয়েছিল।"
             },
             {
                 id: 5,
-                title: "ওয়েব ডিজাইনের মৌলিক বিষয়",
-                author: "রাজিব আহমেদ",
-                category: "design",
-                cover: "https://example.com/covers/web-design.jpg",
+                title: "হেড ফার্স্ট জাভাস্ক্রিপ্ট প্রোগ্রামিং",
+                author: "এরিক ফ্রিম্যান, এলিজাবেথ রবসন",
+                category: "programming",
+                cover: "https://m.media-amazon.com/images/I/91asIC1fRwL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/5",
                 downloadUrl: "https://example.com/download/5",
-                pages: 350,
-                rating: 4.1,
-                date: "2020-11-15",
+                pages: 704,
+                rating: 4.4,
+                date: "2014-03-10",
                 featured: false,
-                favorite: true,
-                description: "ওয়েব ডিজাইনের মৌলিক বিষয়গুলি সহজ ভাষায় বোঝার জন্য আদর্শ বই।"
+                favorite: false,
+                description: "এই মস্তিষ্ক-বান্ধব গাইড আপনাকে জাভাস্ক্রিপ্ট ভাষার মৌলিক বিষয় থেকে উন্নত বিষয় পর্যন্ত সবকিছু শেখায়, যার মধ্যে অবজেক্ট, ফাংশন এবং ব্রাউজারের ডকুমেন্ট অবজেক্ট মডেল অন্তর্ভুক্ত।"
             },
             {
                 id: 6,
-                title: "আধুনিক বিজ্ঞানের অগ্রগতি",
-                author: "ড. মোহাম্মদ আলী",
-                category: "science",
-                cover: "https://example.com/covers/modern-science.jpg",
+                title: "জাভাস্ক্রিপ্ট ডিজাইন প্যাটার্ন শেখা",
+                author: "অ্যাডি ওসমানি",
+                category: "programming",
+                cover: "https://m.media-amazon.com/images/I/81v7o6hxQFL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/6",
                 downloadUrl: "https://example.com/download/6",
-                pages: 420,
-                rating: 4.6,
-                date: "2022-01-30",
-                featured: true,
+                pages: 254,
+                rating: 4.2,
+                date: "2012-08-15",
+                featured: false,
                 favorite: false,
-                description: "আধুনিক বিজ্ঞানের বিভিন্ন শাখার অগ্রগতি এবং আবিষ্কার নিয়ে রচিত বই।"
+                description: "জাভাস্ক্রিপ্ট ডিজাইন প্যাটার্ন শেখার মাধ্যমে, আপনি ক্লাসিক্যাল এবং আধুনিক ডিজাইন প্যাটার্নগুলি ভাষায় প্রয়োগ করে কীভাবে সুন্দর, কাঠামোগত এবং রক্ষণাবেক্ষণযোগ্য জাভাস্ক্রিপ্ট লিখতে হয় তা শিখবেন।"
             },
             {
                 id: 7,
-                title: "ইসলামিক অর্থনীতি",
-                author: "ড. মুহাম্মদ ইউসুফ",
-                category: "Islamic books",
-                cover: "https://example.com/covers/islamic-economics.jpg",
+                title: "আমাকে ভাবতে বাধ্য করবেন না",
+                author: "স্টিভ ক্রুগ",
+                category: "design",
+                cover: "https://m.media-amazon.com/images/I/71Q6WEUQfFL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/7",
                 downloadUrl: "https://example.com/download/7",
-                pages: 380,
-                rating: 4.8,
-                date: "2021-05-18",
+                pages: 216,
+                rating: 4.6,
+                date: "2014-01-01",
                 featured: true,
-                favorite: true,
-                description: "ইসলামিক অর্থনীতির মূলনীতি এবং বাস্তব প্রয়োগ নিয়ে রচিত বই।"
+                favorite: false,
+                description: "২০০০ সালে প্রথম প্রকাশিত হওয়ার পর থেকে, লক্ষাধিক ওয়েব ডিজাইনার এবং ডেভেলপার ব্যবহারযোগ্যতা গুরু স্টিভ ক্রুগের গাইডের উপর নির্ভর করেছেন স্বজ্ঞাত নেভিগেশন এবং তথ্য ডিজাইনের নীতিগুলি বুঝতে সাহায্য করার জন্য।"
             },
             {
                 id: 8,
-                title: "পাইথন প্রোগ্রামিং",
-                author: "আনিসুর রহমান",
-                category: "programming",
-                cover: "https://example.com/covers/python.jpg",
+                title: "অ্যাটমিক হ্যাবিটস",
+                author: "জেমস ক্লিয়ার",
+                category: "business",
+                cover: "https://m.media-amazon.com/images/I/91bYsX41DVL._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/8",
                 downloadUrl: "https://example.com/download/8",
-                pages: 450,
+                pages: 320,
                 rating: 4.7,
-                date: "2022-02-14",
-                featured: false,
+                date: "2018-10-16",
+                featured: true,
                 favorite: false,
-                description: "পাইথন প্রোগ্রামিং ভাষা শেখার জন্য বাংলায় লেখা সেরা বইগুলোর মধ্যে একটি।"
+                description: "আপনার লক্ষ্য যাই হোক না কেন, অ্যাটমিক হ্যাবিটস প্রতিদিন উন্নতির জন্য একটি প্রমাণিত কাঠামো প্রদান করে। অভ্যাস গঠনের বিশ্বের শীর্ষস্থানীয় বিশেষজ্ঞদের একজন জেমস ক্লিয়ার ব্যবহারিক কৌশলগুলি প্রকাশ করেছেন যা আপনাকে সঠিকভাবে ভাল অভ্যাস গঠন, খারাপ অভ্যাস ভাঙতে এবং অসাধারণ ফলাফলের দিকে নিয়ে যাওয়া ক্ষুদ্র আচরণগুলিতে দক্ষ হতে শেখাবে।"
             },
             {
                 id: 9,
-                title: "গ্রাফিক ডিজাইন মাস্টারি",
-                author: "ফারহানা ইয়াসমিন",
-                category: "design",
-                cover: "https://example.com/covers/graphic-design.jpg",
+                title: "সময়ের সংক্ষিপ্ত ইতিহাস",
+                author: "স্টিফেন হকিং",
+                category: "science",
+                cover: "https://m.media-amazon.com/images/I/81aY1lxk+9L._AC_UF1000,1000_QL80_.jpg",
                 demoUrl: "https://example.com/demo/9",
                 downloadUrl: "https://example.com/download/9",
-                pages: 290,
-                rating: 4.3,
-                date: "2020-08-05",
+                pages: 256,
+                rating: 4.6,
+                date: "1998-09-01",
                 featured: false,
                 favorite: false,
-                description: "গ্রাফিক ডিজাইনের বিভিন্ন দিক এবং টুলস ব্যবহার শেখার বই।"
+                description: "আমাদের সময়ের মহান মস্তিষ্কগুলির মধ্যে একজন স্টিফেন হকিংয়ের বিজ্ঞান লেখার একটি মাইলফলক ভলিউম, এই বইটি এমন গভীর প্রশ্নগুলি অন্বেষণ করে: মহাবিশ্ব কীভাবে শুরু হয়েছিল - এবং কী এর সূচনা সম্ভব করেছিল? সময় কি সবসময় সামনের দিকে প্রবাহিত হয়? মহাবিশ্ব কি অবিরাম - নাকি সেখানে সীমানা আছে? মহাকাশে কি অন্যান্য মাত্রা আছে? সব শেষ হলে কি হবে?"
             },
             {
                 id: 10,
-                title: "স্টার্টআপ গাইড",
-                author: "ইমরান হোসেন",
-                category: "business",
-                cover: "https://example.com/covers/startup.jpg",
-                demoUrl: "https://example.com/demo/10",
-                downloadUrl: "https://example.com/download/10",
-                pages: 310,
-                rating: 4.5,
-                date: "2021-09-12",
-                featured: true,
-                favorite: false,
-                description: "নতুন ব্যবসা শুরু করার জন্য প্রয়োজনীয় সকল তথ্য এবং গাইডলাইন।"
-            },
-            {
-                id: 11,
-                title: "কোয়ান্টাম ফিজিক্সের রহস্য",
-                author: "ড. আহমেদ হাসান",
-                category: "science",
-                cover: "https://example.com/covers/quantum.jpg",
-                demoUrl: "https://example.com/demo/11",
-                downloadUrl: "https://example.com/download/11",
-                pages: 360,
-                rating: 4.9,
-                date: "2022-03-25",
-                featured: true,
-                favorite: true,
-                description: "কোয়ান্টাম ফিজিক্সের জটিল বিষয়গুলো সহজ ভাষায় ব্যাখ্যা করা হয়েছে এই বইতে।"
-            },
-            {
-                id: 12,
-                title: "হাদিসের আলোকে জীবন",
-                author: "মুফতি আব্দুল্লাহ",
-                category: "Islamic books",
-                cover: "https://example.com/covers/hadith.jpg",
-                demoUrl: "https://example.com/demo/12",
-                downloadUrl: "https://example.com/download/12",
-                pages: 400,
-                rating: 4.8,
-                date: "2021-11-08",
-                featured: false,
-                favorite: false,
-                description: "হাদিসের আলোকে দৈনন্দিন জীবনের বিভিন্ন দিক নির্দেশনা সম্বলিত বই।"
-            },
-            {
-                id: 13,
-                title: "জাভা প্রোগ্রামিং",
-                author: "সাদমান সাকিব",
+                title: "জাভাস্ক্রিপ্ট: দ্য ডেফিনিটিভ গাইড",
+                author: "ডেভিড ফ্লানাগান",
                 category: "programming",
-                cover: "https://example.com/covers/java.jpg",
-                demoUrl: "https://example.com/demo/13",
-                downloadUrl: "https://example.com/download/13",
-                pages: 480,
-                rating: 4.6,
-                date: "2020-06-17",
-                featured: false,
-                favorite: true,
-                description: "জাভা প্রোগ্রামিং ভাষা শেখার জন্য বাংলায় লেখা বিস্তারিত গাইড।"
-            },
-            {
-                id: 14,
-                title: "ফটোশপ মাস্টারি",
-                author: "নাজিয়া ইসলাম",
-                category: "design",
-                cover: "https://example.com/covers/photoshop.jpg",
-                demoUrl: "https://example.com/demo/14",
-                downloadUrl: "https://example.com/download/14",
-                pages: 340,
-                rating: 4.4,
-                date: "2021-04-03",
+                cover: "https://m.media-amazon.com/images/I/91hU6VY0uEL._AC_UF1000,1000_QL80_.jpg",
+                demoUrl: "https://example.com/demo/1",
+                downloadUrl: "https://example.com/download/1",
+                pages: 704,
+                rating: 4.5,
+                date: "2020-05-15",
                 featured: true,
                 favorite: false,
-                description: "ফটোশপের সকল টুলস এবং টেকনিক শেখার জন্য আদর্শ বই।"
+                description: "এই বইটি একজন প্রোগ্রামারের জন্য একটি গাইড এবং ওয়েব ব্রাউজার দ্বারা সংজ্ঞায়িত কোর জাভাস্ক্রিপ্ট ভাষা এবং ক্লায়েন্ট-সাইড জাভাস্ক্রিপ্ট API-এর একটি ব্যাপক রেফারেন্স।"
             },
-            {
-                id: 15,
-                title: "ডিজিটাল মার্কেটিং",
-                author: "রিফাত আহমেদ",
-                category: "business",
-                cover: "https://example.com/covers/digital-marketing.jpg",
-                demoUrl: "https://example.com/demo/15",
-                downloadUrl: "https://example.com/download/15",
-                pages: 370,
-                rating: 4.7,
-                date: "2022-05-20",
-                featured: true,
-                favorite: true,
-                description: "ডিজিটাল মার্কেটিং এর সকল দিক নিয়ে বিস্তারিত আলোচনা।"
-            }
         ];
 
         // DOM elements
@@ -986,7 +898,7 @@
             document.body.removeChild(a);
         }
 
-        // Render books in grid view with ads
+        // Render books in grid view
         function renderGridView(booksToRender) {
             if (currentPage === 1) {
                 gridContainer.innerHTML = '';
@@ -1004,33 +916,7 @@
                 gridContainer.style.display = 'grid';
             }
             
-            booksToRender.forEach((book, index) => {
-                // Insert ad after every 5 books
-                if (index > 0 && index % 5 === 0) {
-                    const adCard = document.createElement('div');
-                    adCard.className = 'book-card';
-                    adCard.style.gridColumn = '1 / -1'; // Make ad span all columns
-                    adCard.innerHTML = `
-                        <div style="
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            height: 100%;
-                            padding: 15px;
-                            background: rgba(0,0,0,0.03);
-                            border: 1px dashed rgba(0,0,0,0.1);
-                            border-radius: 8px;
-                        ">
-                            <!-- Horizontal Ad Code -->
-                            <div>
-                                <script type="text/javascript" src="https://udbaa.com/bnr.php?section=General&pub=225212&format=300x250&ga=g"></script>
-<noscript><a href="https://yllix.com/publishers/225212" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/300x250.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" alt="ylliX - Online Advertising Network" /></a></noscript>
-                            </div>
-                        </div>
-                    `;
-                    gridContainer.appendChild(adCard);
-                }
-                
+            booksToRender.forEach(book => {
                 const bookCard = document.createElement('div');
                 bookCard.className = 'book-card';
                 bookCard.innerHTML = `
@@ -1578,80 +1464,6 @@
                 </ul>
             </div>
             
-            <!-- Contact Column -->
-            <div>
-                <h3 style="
-                    color: white;
-                    margin-bottom: 25px;
-                    font-size: 1.3rem;
-                    position: relative;
-                    padding-bottom: 10px;
-                ">
-                    <span style="
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        width: 50px;
-                        height: 3px;
-                        background: var(--primary-color);
-                    "></span>
-                    Contact Info
-                </h3>
-                <ul style="list-style: none;">
-                    <li style="
-                        margin-bottom: 20px;
-                        display: flex;
-                        align-items: flex-start;
-                    ">
-                        <i class="fas fa-map-marker-alt" style="
-                            margin-right: 15px;
-                            color: var(--primary-color);
-                            margin-top: 4px;
-                        "></i>
-                        <span style="color: rgba(255,255,255,0.7); line-height: 1.6;">
-                            123 Book Street, Knowledge Area<br>
-                            Dhaka 1212, Bangladesh
-                        </span>
-                    </li>
-                    <li style="
-                        margin-bottom: 20px;
-                        display: flex;
-                        align-items: center;
-                    ">
-                        <i class="fas fa-envelope" style="
-                            margin-right: 15px;
-                            color: var(--primary-color);
-                        "></i>
-                        <a href="mailto:info@pdfbookscollection.com" style="
-                            color: rgba(255,255,255,0.7);
-                            text-decoration: none;
-                            transition: all 0.3s;
-                        " onmouseover="this.style.color='var(--primary-color)'" 
-                        onmouseout="this.style.color='rgba(255,255,255,0.7)'">
-                            info@pdfbookscollection.com
-                        </a>
-                    </li>
-                    <li style="
-                        margin-bottom: 20px;
-                        display: flex;
-                        align-items: center;
-                    ">
-                        <i class="fas fa-phone" style="
-                            margin-right: 15px;
-                            color: var(--primary-color);
-                        "></i>
-                        <a href="tel:+8801234567890" style="
-                            color: rgba(255,255,255,0.7);
-                            text-decoration: none;
-                            transition: all 0.3s;
-                        " onmouseover="this.style.color='var(--primary-color)'" 
-                        onmouseout="this.style.color='rgba(255,255,255,0.7)'">
-                            +880 1234 567890
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            
            <!-- Ad Space Column -->
             <div style="
                 display: flex;
@@ -1669,9 +1481,11 @@
                     color: rgba(255,255,255,0.3);
                     border-radius: 4px;
                 ">
-                    <!-- Replace this div with your actual ad code -->
-                    <div><script type="text/javascript" src="https://udbaa.com/bnr.php?section=General&pub=225212&format=300x250&ga=g"></script>
-<noscript><a href="https://yllix.com/publishers/225212" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/300x250.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" alt="ylliX - Online Advertising Network" /></a></noscript></div>
+                    <div style="margin: 30px;">
+                      <a href="https://your-link-here.com" target="_blank">
+                        <img src="https://via.placeholder.com/250x180.png?text=Your+Ad+Here" alt="Ad Image" style="width:250px; height:180px; border:1px solid #ccc; border-radius: 8px;">
+                      </a>
+                    </div>
                 </div>
         </div>
         
