@@ -1164,18 +1164,28 @@
             };
             
             // Handle modal demo button click to show embed
-            modalDemoBtn.onclick = (e) => {
-                e.preventDefault();
-                if (book.demoUrl.includes('drive.google.com')) {
-                    // Convert Google Drive view URL to embeddable format
-                    const fileId = book.demoUrl.match(/\/file\/d\/([^\/]+)/)[1];
-                    embedViewer.src = `https://drive.google.com/file/d/${fileId}/preview`;
-                } else {
-                    // For other PDFs, use Google Docs viewer
-                    embedViewer.src = `https://docs.google.com/gview?url=${encodeURIComponent(book.demoUrl)}&embedded=true`;
-                }
-                embedModal.style.display = 'flex';
-            };
+modalDemoBtn.onclick = (e) => {
+    e.preventDefault();
+    if (book.demoUrl.includes('drive.google.com')) {
+        // If it's a Google Drive link, embed directly
+        const fileIdMatch = book.demoUrl.match(/\/file\/d\/([^\/]+)/);
+        if (fileIdMatch) {
+            const fileId = fileIdMatch[1];
+            embedViewer.src = `https://drive.google.com/file/d/${fileId}/preview`;
+        } else {
+            // fallback in case match fails
+            embedViewer.src = book.demoUrl;
+        }
+    } else if (book.demoUrl.endsWith('.pdf')) {
+        // If it's a PDF link, use Google Docs viewer
+        embedViewer.src = `https://docs.google.com/gview?url=${encodeURIComponent(book.demoUrl)}&embedded=true`;
+    } else {
+        // Otherwise, show the URL directly (e.g., a website or image)
+        embedViewer.src = book.demoUrl;
+    }
+    embedModal.style.display = 'flex';
+};
+
             
             // Handle modal download button click
             modalDownloadBtn.onclick = (e) => {
