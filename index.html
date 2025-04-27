@@ -318,6 +318,18 @@
             font-weight: bold;
         }
         
+        .list-ad-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.7em;
+            font-weight: bold;
+        }
+        
         .list-cover img {
             max-width: 100%;
             max-height: 100%;
@@ -555,10 +567,6 @@
             
             .list-actions .btn {
                 flex: 1;
-            }
-            
-            .modal-body {
-                flex-direction: column;
             }
 
             /* Make embed modal responsive on small screens */
@@ -903,31 +911,64 @@
             document.body.removeChild(a);
         }
 
-        // Create ad card
-        function createAdCard() {
+        // Create ad card for grid view
+        function createGridAdCard() {
             const adCard = document.createElement('div');
             adCard.className = 'book-card';
             adCard.innerHTML = `
                 <div class="book-cover" style="background:#f8f9fa;">
-                    <a href="https://your-link-here.com" target="_blank">
-                        <img src="https://via.placeholder.com/250x180.png?text=Featured+Book" alt="Featured Book">
+                    <a href="https://www.justboipdf.com" target="_blank">
+                        <img src="https://i.ibb.co/cK5hsTTb/water-resized-250x180.png?text=Premium+Books" alt="bitcoin">
                     </a>
                     <span class="ad-badge">Promotion</span>
                 </div>
                 <div class="book-info">
-                    <div class="book-title">Premium Book Collection</div>
-                    <div class="book-author">Special Offer</div>
-                    <div class="book-meta">
-                        <span>Limited Time</span>
-                        <span class="book-rating"><i class="fas fa-star"></i> 5.0</span>
-                    </div>
-                    <div class="book-actions">
-                        <a href="https://your-link-here.com" class="btn btn-demo"><i class="fas fa-eye"></i> View</a>
-                        <a href="https://your-link-here.com" class="btn btn-download"><i class="fas fa-tag"></i> Deal</a>
-                    </div>
-                </div>
+    <div class="book-title">Premium Book Collection</div>
+    <div class="book-author">Special Offer</div>
+    <div class="book-meta">
+        <span>Limited Time</span>
+        <span class="book-rating"><i class="fas fa-star"></i> 5.0</span>
+    </div>
+    <div class="book-actions">
+        <a href="https://www.justboipdf.com" target="_blank" class="btn btn-demo">
+            <i class="fas fa-eye"></i> View
+        </a>
+        <a href="https://www.justboipdf.com" target="_blank" class="btn btn-demo">
+            <i class="fas fa-eye"></i> Deal
+        </a>
+    </div>
+</div>
+
+
             `;
             return adCard;
+        }
+
+        // Create ad item for list view
+        function createListAdItem() {
+            const adItem = document.createElement('div');
+            adItem.className = 'book-item';
+            adItem.innerHTML = `
+                <div class="list-cover" style="background:#f8f9fa;">
+                    <a href="https://your-ad-link.com" target="_blank">
+                        <img src="https://via.placeholder.com/60x80.png?text=Ad" alt="Premium Books">
+                    </a>
+                    <span class="ad-badge">Promotion</span>
+                </div>
+                <div class="list-info">
+                    <div class="list-title">Premium Book Collection</div>
+                    <div class="list-author">Special Offer - Limited Time</div>
+                    <div class="list-meta">
+                        <span>Exclusive Content</span>
+                        <span class="list-rating"><i class="fas fa-star"></i> 5.0</span>
+                    </div>
+                </div>
+                <div class="list-actions">
+                    <a href="https://your-ad-link.com" class="btn btn-demo"><i class="fas fa-eye"></i> View</a>
+                    <a href="https://your-ad-link.com" class="btn btn-download"><i class="fas fa-tag"></i> Deal</a>
+                </div>
+            `;
+            return adItem;
         }
 
         // Render books in grid view
@@ -976,7 +1017,7 @@
                 
                 // Insert ad after every 5th book
                 if ((index + 1) % 5 === 0) {
-                    gridContainer.appendChild(createAdCard());
+                    gridContainer.appendChild(createGridAdCard());
                 }
             });
             
@@ -1010,7 +1051,7 @@
                 listContainer.style.display = 'block';
             }
             
-            booksToRender.forEach(book => {
+            booksToRender.forEach((book, index) => {
                 const bookItem = document.createElement('div');
                 bookItem.className = 'book-item';
                 bookItem.innerHTML = `
@@ -1036,6 +1077,11 @@
                     </div>
                 `;
                 listContainer.appendChild(bookItem);
+                
+                // Insert ad after every 5th book
+                if ((index + 1) % 5 === 0) {
+                    listContainer.appendChild(createListAdItem());
+                }
             });
             
             // Hide load more button if no more books
@@ -1544,6 +1590,7 @@ modalDemoBtn.onclick = (e) => {
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
         
         <!-- Copyright Section -->
@@ -1558,7 +1605,7 @@ modalDemoBtn.onclick = (e) => {
                     color: rgba(255,255,255,0.7);
                     font-size: 0.9rem;
                 ">
-                    &copy; 2023 PDF Books Collection. All Rights Reserved. | 
+                    &copy; 2025 জনপ্রিয় PDF বইয়ের সমাহার. All Rights Reserved. | 
                     <a href="#" style="
                         color: rgba(255,255,255,0.7);
                         text-decoration: none;
@@ -1581,3 +1628,4 @@ modalDemoBtn.onclick = (e) => {
     </footer>
 </body>
 </html>
+
