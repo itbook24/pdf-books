@@ -3,9 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Books Collection</title>
+    <title>JustBoiPDF.Com</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        .ad-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+        .logo-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: inherit;
+        }
+        .logo-link img {
+            width: 40px;
+            height: auto;
+        }
         :root {
             --primary-color: #3498db;
             --secondary-color: #2980b9;
@@ -16,56 +31,47 @@
             --danger-color: #e74c3c;
             --gray-color: #95a5a6;
         }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
         body {
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
         }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        
         header {
             margin-bottom: 30px;
             padding-bottom: 15px;
             border-bottom: 1px solid #ddd;
         }
-        
         .header-top {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 20px;
         }
-        
         h1 {
             color: var(--dark-color);
         }
-        
         .controls {
             display: flex;
             flex-wrap: wrap;
             gap: 15px;
             margin-bottom: 20px;
         }
-        
         .search-box {
             flex: 1;
             min-width: 250px;
             position: relative;
         }
-        
         .search-box input {
             width: 100%;
             padding: 10px 15px 10px 40px;
@@ -73,7 +79,6 @@
             border-radius: 4px;
             font-size: 1em;
         }
-        
         .search-box i {
             position: absolute;
             left: 15px;
@@ -81,13 +86,11 @@
             transform: translateY(-50%);
             color: var(--gray-color);
         }
-        
         .filter-group {
             display: flex;
             gap: 10px;
             align-items: center;
         }
-        
         select {
             padding: 10px;
             border: 1px solid #ddd;
@@ -95,12 +98,10 @@
             background: white;
             cursor: pointer;
         }
-        
         .view-toggle {
             display: flex;
             gap: 10px;
         }
-        
         .view-toggle button {
             background: white;
             border: 1px solid #ddd;
@@ -109,28 +110,22 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        
         .view-toggle button.active {
             background: var(--primary-color);
             color: white;
             border-color: var(--primary-color);
         }
-        
         .view-toggle button:hover {
             background: #eee;
         }
-        
         .view-toggle button.active:hover {
             background: var(--secondary-color);
         }
-        
-        /* Card View */
         .books-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
         }
-        
         .book-card {
             background: white;
             border-radius: 8px;
@@ -140,12 +135,10 @@
             display: flex;
             flex-direction: column;
         }
-        
         .book-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
-        
         .book-cover {
             height: 180px;
             background-color: #eee;
@@ -154,7 +147,6 @@
             justify-content: center;
             position: relative;
         }
-        
         .book-badge {
             position: absolute;
             top: 10px;
@@ -166,7 +158,6 @@
             font-size: 0.8em;
             font-weight: bold;
         }
-        
         .ad-badge {
             position: absolute;
             top: 10px;
@@ -178,20 +169,17 @@
             font-size: 0.8em;
             font-weight: bold;
         }
-        
         .book-cover img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
-        
         .book-info {
             padding: 15px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
-        
         .book-title {
             font-weight: bold;
             margin-bottom: 5px;
@@ -199,13 +187,11 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
-        
         .book-author {
             color: #666;
             font-size: 0.9em;
             margin-bottom: 10px;
         }
-        
         .book-meta {
             display: flex;
             justify-content: space-between;
@@ -213,17 +199,14 @@
             color: var(--gray-color);
             margin-top: auto;
         }
-        
         .book-rating {
             color: var(--warning-color);
         }
-        
         .book-actions {
             display: flex;
             gap: 10px;
             margin-top: 15px;
         }
-        
         .btn {
             padding: 8px 15px;
             border: none;
@@ -240,45 +223,35 @@
             justify-content: center;
             gap: 5px;
         }
-        
         .btn-demo {
             background-color: var(--primary-color);
             color: white;
         }
-        
         .btn-demo:hover {
             background-color: var(--secondary-color);
         }
-        
         .btn-download {
             background-color: var(--success-color);
             color: white;
         }
-        
         .btn-download:hover {
             background-color: #27ae60;
         }
-        
         .btn-favorite {
             background-color: var(--danger-color);
             color: white;
             flex: 0;
             padding: 8px 10px;
         }
-        
         .btn-favorite:hover {
             background-color: #c0392b;
         }
-        
-        /* List View */
         .books-list {
             display: none;
         }
-        
         .books-list.active {
             display: block;
         }
-        
         .book-item {
             background: white;
             border-radius: 8px;
@@ -289,11 +262,9 @@
             align-items: center;
             transition: transform 0.3s;
         }
-        
         .book-item:hover {
             transform: translateX(5px);
         }
-        
         .list-cover {
             width: 60px;
             height: 80px;
@@ -305,7 +276,6 @@
             flex-shrink: 0;
             position: relative;
         }
-        
         .list-badge {
             position: absolute;
             top: -5px;
@@ -317,7 +287,6 @@
             font-size: 0.7em;
             font-weight: bold;
         }
-        
         .list-ad-badge {
             position: absolute;
             top: -5px;
@@ -329,52 +298,42 @@
             font-size: 0.7em;
             font-weight: bold;
         }
-        
         .list-cover img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
         }
-        
         .list-info {
             flex-grow: 1;
         }
-        
         .list-title {
             font-weight: bold;
             margin-bottom: 5px;
         }
-        
         .list-author {
             color: #666;
             font-size: 0.9em;
             margin-bottom: 5px;
         }
-        
         .list-meta {
             display: flex;
             gap: 15px;
             font-size: 0.8em;
             color: var(--gray-color);
         }
-        
         .list-rating {
             color: var(--warning-color);
         }
-        
         .list-actions {
             display: flex;
             gap: 10px;
         }
-        
-        /* Pagination */
         .pagination {
-            display: none; /* Hide traditional pagination */
+            display: none;
             justify-content: center;
             margin-top: 30px;
             gap: 5px;
         }
-        
         .page-btn {
             padding: 8px 12px;
             border: 1px solid #ddd;
@@ -383,35 +342,27 @@
             cursor: pointer;
             transition: all 0.3s;
         }
-        
         .page-btn.active {
             background: var(--primary-color);
             color: white;
             border-color: var(--primary-color);
         }
-        
         .page-btn:hover:not(.active) {
             background: #eee;
         }
-        
         .page-btn.disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
-        
-        /* Load More Button */
         .load-more-container {
             text-align: center;
             margin-top: 20px;
             margin-bottom: 30px;
         }
-        
         #load-more-btn {
             padding: 10px 30px;
             font-size: 1em;
         }
-        
-        /* Empty State */
         .empty-state {
             text-align: center;
             padding: 50px 20px;
@@ -419,25 +370,20 @@
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-        
         .empty-state i {
             font-size: 3em;
             color: var(--gray-color);
             margin-bottom: 15px;
         }
-        
         .empty-state h3 {
             color: var(--dark-color);
             margin-bottom: 10px;
         }
-        
         .empty-state p {
             color: #666;
             max-width: 500px;
             margin: 0 auto;
         }
-        
-        /* Modal */
         .modal {
             display: none;
             position: fixed;
@@ -450,7 +396,6 @@
             justify-content: center;
             align-items: center;
         }
-        
         .modal-content {
             background-color: white;
             border-radius: 8px;
@@ -461,7 +406,6 @@
             padding: 20px;
             position: relative;
         }
-        
         .close-modal {
             position: absolute;
             top: 15px;
@@ -470,54 +414,43 @@
             cursor: pointer;
             color: var(--gray-color);
         }
-        
         .close-modal:hover {
             color: var(--dark-color);
         }
-        
         .modal-body {
             display: flex;
             flex-direction: column;
             gap: 20px;
         }
-        
         .modal-cover {
             text-align: center;
         }
-        
         .modal-cover img {
             max-height: 300px;
             max-width: 100%;
         }
-        
         .modal-info h2 {
             margin-bottom: 10px;
         }
-        
         .modal-meta {
             display: flex;
             gap: 20px;
             margin-bottom: 15px;
             flex-wrap: wrap;
         }
-        
         .modal-meta div {
             display: flex;
             align-items: center;
             gap: 5px;
         }
-        
         .modal-description {
             line-height: 1.6;
         }
-        
         .modal-actions {
             display: flex;
             gap: 10px;
             margin-top: 20px;
         }
-        
-        /* Embed Viewer Modal */
         #embed-modal .modal-content {
             width: 640px;
             height: 750px;
@@ -525,13 +458,158 @@
             max-height: 750px;
             padding: 10px;
         }
-
         #embed-viewer {
             width: 100%;
             height: 100%;
             border: none;
             background: #f5f5f5;
             border-radius: 4px;
+        }
+        
+        /* Admin Styles */
+        .admin-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        .admin-modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .admin-modal h2 {
+            margin-bottom: 20px;
+            color: var(--dark-color);
+            text-align: center;
+        }
+        .admin-form-group {
+            margin-bottom: 20px;
+        }
+        .admin-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .admin-form-group input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .admin-submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background 0.3s;
+        }
+        .admin-submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .admin-panel {
+            display: none;
+            background-color: #f8f9fa;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .admin-panel h2 {
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+        }
+        .admin-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .admin-btn {
+            padding: 10px 15px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .admin-btn:hover {
+            background-color: var(--secondary-color);
+        }
+        .admin-btn.danger {
+            background-color: var(--danger-color);
+        }
+        .admin-btn.danger:hover {
+            background-color: #c0392b;
+        }
+        .admin-btn.success {
+            background-color: var(--success-color);
+        }
+        .admin-btn.success:hover {
+            background-color: #27ae60;
+        }
+        .book-form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .book-form-group {
+            margin-bottom: 15px;
+        }
+        .book-form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .book-form-group input,
+        .book-form-group textarea,
+        .book-form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        .book-form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        .admin-nav {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            z-index: 1000;
+        }
+        .admin-nav-btn {
+            background-color: var(--dark-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
         /* Responsive */
@@ -541,35 +619,27 @@
                 align-items: flex-start;
                 gap: 15px;
             }
-            
             .books-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
-            
             .book-item {
                 flex-direction: column;
                 text-align: center;
             }
-            
             .list-cover {
                 margin-right: 0;
                 margin-bottom: 15px;
             }
-            
             .list-meta {
                 justify-content: center;
             }
-            
             .list-actions {
                 margin-top: 15px;
                 width: 100%;
             }
-            
             .list-actions .btn {
                 flex: 1;
             }
-
-            /* Make embed modal responsive on small screens */
             #embed-modal .modal-content {
                 width: 95%;
                 height: 80vh;
@@ -577,16 +647,13 @@
                 max-height: 80vh;
             }
         }
-        
         @media (min-width: 992px) {
             .modal-body {
                 flex-direction: row;
             }
-            
             .modal-cover {
                 flex: 1;
             }
-            
             .modal-info {
                 flex: 2;
             }
@@ -594,22 +661,32 @@
     </style>
 </head>
 <body>
+    <!-- Admin Navigation Button -->
+    <div class="admin-nav">
+        <button class="admin-nav-btn" id="admin-login-btn">
+            <i class="fas fa-user-shield"></i>
+        </button>
+    </div>
+
     <div class="container">
         <header>
             <div class="header-top">
-                <h1>PDF Books Collection</h1>
+                <div class="logo">
+                    <a href="index.html" class="logo-link">
+                        <img src="https://i.ibb.co/mFSfG5FD/9s4v6i.gif" alt="Free Palestine">
+                        <h1>JustBoiPDF</h1>
+                    </a>
+                </div>
                 <div class="view-toggle">
                     <button id="grid-view" class="active"><i class="fas fa-th"></i> Grid</button>
                     <button id="list-view"><i class="fas fa-list"></i> List</button>
                 </div>
             </div>
-            
             <div class="controls">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
                     <input type="text" id="search-input" placeholder="বই খুঁজুন...">
                 </div>
-                
                 <div class="filter-group">
                     <label for="category-filter"><i class="fas fa-filter"></i></label>
                     <select id="category-filter">
@@ -620,7 +697,6 @@
                         <option value="science">বিজ্ঞান</option>
                     </select>
                 </div>
-                
                 <div class="filter-group">
                     <label for="sort-by"><i class="fas fa-sort"></i></label>
                     <select id="sort-by">
@@ -634,6 +710,12 @@
             </div>
         </header>
         
+        <!-- Ad Container -->
+        <div class="ad-container">
+            <!-- Ad content here -->
+        </div>
+
+        <!-- Main Content -->
         <main>
             <!-- Grid View -->
             <div class="books-grid" id="grid-container">
@@ -645,14 +727,14 @@
                 <!-- Books will be inserted here by JavaScript -->
             </div>
             
-            <!-- Empty State (hidden by default) -->
+            <!-- Empty State -->
             <div class="empty-state" id="empty-state" style="display: none;">
                 <i class="fas fa-book-open"></i>
                 <h3>কোন বই পাওয়া যায়নি</h3>
                 <p>আপনি যা খুঁজছেন তা খুঁজে পেতে আপনার অনুসন্ধান বা ফিল্টার মানদণ্ড সামঞ্জস্য করুন।</p>
             </div>
             
-            <!-- Pagination (hidden by default) -->
+            <!-- Pagination -->
             <div class="pagination" id="pagination">
                 <!-- Pagination buttons will be inserted here by JavaScript -->
             </div>
@@ -664,6 +746,80 @@
                 </button>
             </div>
         </main>
+        
+        <!-- Admin Panel -->
+        <div class="admin-panel" id="admin-panel">
+            <h2>Admin Dashboard</h2>
+            <div class="admin-controls">
+                <button class="admin-btn" id="add-book-btn">Add New Book</button>
+                <button class="admin-btn danger" id="logout-btn">Logout</button>
+            </div>
+            <div class="book-form" id="book-form" style="display: none;">
+                <h3>Add/Edit Book</h3>
+                <form id="book-management-form">
+                    <input type="hidden" id="book-id">
+                    <div class="book-form-group">
+                        <label for="book-title">Title</label>
+                        <input type="text" id="book-title" required>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="book-author">Author</label>
+                        <input type="text" id="book-author" required>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="book-category">Category</label>
+                        <select id="book-category" required>
+                            <option value="Islamic books">ইসলামিক বই</option>
+                            <option value="programming">প্রোগ্রামিং</option>
+                            <option value="design">ডিজাইন</option>
+                            <option value="business">ব্যবসা</option>
+                            <option value="science">বিজ্ঞান</option>
+                        </select>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="book-cover">Cover Image URL</label>
+                        <input type="url" id="book-cover" required>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="book-demo">Demo URL</label>
+                        <input type="url" id="book-demo" required>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="book-download">Download URL</label>
+                        <input type="url" id="book-download" required>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="book-pages">Pages</label>
+                        <input type="number" id="book-pages" required>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="book-rating">Rating (1-5)</label>
+                        <input type="number" id="book-rating" min="1" max="5" step="0.1" required>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="book-date">Publication Date</label>
+                        <input type="date" id="book-date" required>
+                    </div>
+                    <div class="book-form-group">
+                        <label for="book-description">Description</label>
+                        <textarea id="book-description" required></textarea>
+                    </div>
+                    <div class="book-form-group">
+                        <label>
+                            <input type="checkbox" id="book-featured"> Featured Book
+                        </label>
+                    </div>
+                    <div class="book-form-group">
+                        <button type="submit" class="admin-btn success">Save Book</button>
+                        <button type="button" class="admin-btn danger" id="cancel-book-btn">Cancel</button>
+                    </div>
+                </form>
+            </div>
+            <h3>Manage Books</h3>
+            <div id="books-list-admin">
+                <!-- Books will be listed here for admin management -->
+            </div>
+        </div>
     </div>
 
     <!-- Book Details Modal -->
@@ -683,9 +839,7 @@
                         <div><i class="fas fa-calendar-alt"></i> <span id="modal-date"></span></div>
                         <div><i class="fas fa-tag"></i> <span id="modal-category"></span></div>
                     </div>
-                    <div class="modal-description" id="modal-description">
-                        <!-- Description will be inserted here -->
-                    </div>
+                    <div class="modal-description" id="modal-description"></div>
                     <div class="modal-actions">
                         <a href="#" class="btn btn-demo" id="modal-demo-btn"><i class="fas fa-eye"></i>View Demo</a>
                         <a href="#" class="btn btn-download" id="modal-download-btn"><i class="fas fa-download"></i>Download PDF</a>
@@ -708,14 +862,32 @@
         </div>
     </div>
 
+    <!-- Admin Login Modal -->
+    <div class="admin-modal" id="admin-login-modal">
+        <div class="admin-modal-content">
+            <h2>Admin Login</h2>
+            <form id="admin-login-form">
+                <div class="admin-form-group">
+                    <label for="admin-username">Username</label>
+                    <input type="text" id="admin-username" required>
+                </div>
+                <div class="admin-form-group">
+                    <label for="admin-password">Password</label>
+                    <input type="password" id="admin-password" required>
+                </div>
+                <button type="submit" class="admin-submit-btn">Login</button>
+            </form>
+        </div>
+    </div>
+
     <script>
         // Bengali book data
-        const books = [
+        let books = [
             {
                 id: 1,
                 title: "বিয়ের এপিঠ ওপিঠ pdf ডাউনলোড",
                 author: "জাকারিয়া মাসুদ",
-                category: "ইসলামিক বই",
+                category: "Islamic books",
                 cover: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh00uqcUiXxcvfffSxDNlFCMAj7Q-wh1JbS6haQArCwajXNshRuH0EhT2vsskbLwsKF1B7x-FDj5Rmtd7z2sQtIBK9f_wYsT5uh9EJzn1IJ9BQVp5k5uS-wZiWYLejhJK2EbR0dlT1wRm2kI4oIaMndkkZ81l5OQ7Fu39zk3YqqCIcFMlo9gg5-_VWdJ4bK/s389/Biyer-Epith-Opthit-pdf-download.webp",
                 demoUrl: "https://www.justboipdf.com/2024/05/biyer-epith-opith-pdf.html",
                 downloadUrl: "https://www.justboipdf.com/2024/05/biyer-epith-opith-pdf.html",
@@ -728,139 +900,64 @@
             },
             {
                 id: 2,
-                title: "স্পষ্ট জাভাস্ক্রিপ্ট",
-                author: "মারিজন হ্যাভারবেকে",
-                category: "programming",
-                cover: "https://eloquentjavascript.net/img/cover.jpg",
-                demoUrl: "https://eloquentjavascript.net/Eloquent_JavaScript.pdf",
-                downloadUrl: "https://example.com/download/2",
-                pages: 472,
+                title: "প্যারাডক্সিক্যাল সাজিদ ১",
+                author: "আরিফ আজাদ",
+                category: "Islamic books",
+                cover: "https://i.ibb.co/fdxb548T/paradoxical-sajid-1.jpg",
+                demoUrl: "https://drive.google.com/file/d/1QHAPA5JwQqA5EWfRs19D-76H-85FzggX/view",
+                downloadUrl: "https://www.dropbox.com/scl/fi/wq45urbwl9kz2qon6xefk/JustBoipdf.com.pdf?rlkey=77f7owyqk6306b5z2f4zm0tu0&st=q1tl4zuv&dl=1",
+                pages: 464,
                 rating: 4.7,
-                date: "2018-12-04",
-                featured: false,
-                favorite: true,
-                description: "এটি জাভাস্ক্রিপ্ট, প্রোগ্রামিং এবং ডিজিটাল জগতের বিস্ময় সম্পর্কে একটি বই। আপনি এখানে অনলাইনে এটি পড়তে পারেন, বা আপনার নিজস্ব কাগজের কপি পেতে পারেন।"
+                date: "2008-08-01",
+                featured: true,
+                favorite: false,
+                description: "বর্তমান যুগ হলো প্রেজেন্টাশানের যুগ। একটা জিনিসকে আপনি কিভাবে, কতোটা সহজে, কতোটা সাবলীলভাবে, কতোটা মাধুর্যতায় প্রেজেন্টেশান করছেন তার উপর কিন্তু অনেক কিছুই নির্ভর করে। ন্যাচারালি, মানুষের একটা স্বভাব হচ্ছে – এরা তত্ত্বকথা খুব কম হজম করতে পারে। এরা চায় সহজবোধ্যতা। প্যারাডক্সিক্যাল সাজিদ এর লেখক আরিফ আজাদ ঠিক এই পদ্ধতিই বেছে নিয়েছেন। তিনি গতানুগতিক লেকচার বা তত্বকথার ধাঁচে না গিয়ে, বক্তব্যের বিষয়গুলোকে গল্পের ধাঁচে ফেলে সাজিয়েছেন। প্রতিটি গল্পের শুরুতেই আছে মজার, আগ্রহ উদ্দীপক একটি সূচনা। কোথাও বা গল্পের কেন্দ্রীয় চরিত্র সাজিদের সাথে তাঁর বন্ধু আরিফের খুনসুটি, কোথাও বা মজার কোন স্মৃতির রোমন্থন, কোথাও বা আছে সিরিয়াস কোন ব্যাপারে সিরিয়াস কোন হুশিয়ারি। গল্পে মজা আছে, আনন্দ আছে। মোটামুটি, সার্থক গল্পে যা যা উপাদান থাকা দরকার, যা যা থাকলে পাঠকের গল্প পাঠে বিরক্তি আসেনা, রুচি হারায় না- তার সবকিছুর এক সম্মিলিত সন্নিবেশ যেন লেখক আরিফ আজাদের এই সিরিজের একেকটি এপিসোড। গল্পে গল্পে যুক্তি খন্ডন, পাল্টা যুক্তি ছুঁড়ে দেওয়া, পরম মমতায় অবিশ্বাসের অন্ধকার দূরীকরণে এ যেন এক বিশ্বস্ত শিল্পী।"
             },
             {
                 id: 3,
-                title: "আপনি এখনও জেএস জানেন না",
-                author: "কাইল সিম্পসন",
-                category: "programming",
-                cover: "https://m.media-amazon.com/images/I/71iQ4hVtRzL._AC_UF1000,1000_QL80_.jpg",
-                demoUrl: "https://example.com/demo/3",
-                downloadUrl: "https://example.com/download/3",
-                pages: 280,
-                rating: 4.8,
-                date: "2021-03-22",
+                title: "প্যারাডক্সিক্যাল সাজিদ ২",
+                author: "আরিফ আজাদ",
+                category: "Islamic books",
+                cover: "https://i.ibb.co/jZyjKXx4/justboipdf.png",
+                demoUrl: "https://drive.google.com/file/d/1QH5ZC6rdsucnxFG5-o5yTpUyAtPB_2Wz/view",
+                downloadUrl: "https://www.dropbox.com/scl/fi/z27v6i8iytnpx5s7vhnmk/JustBoipdf.com.pdf?rlkey=0h72zz1f0oho2plroto1e4tyr&st=98ncmraj&dl=1",
+                pages: 235,
+                rating: 4.6,
+                date: "2019-02-15",
                 featured: true,
                 favorite: false,
-                description: "এটি জাভাস্ক্রিপ্ট ভাষার মূল প্রক্রিয়াগুলিতে গভীরভাবে ডুব দেওয়ার জন্য একটি বইয়ের সিরিজ। সিরিজের প্রথম সংস্করণ এখন সম্পূর্ণ হয়েছে এবং দ্বিতীয় সংস্করণ চলছে।"
+                description: "ইসলাম কারও শত্রু হতে আসেনি। ইসলাম এসেছে মানুষকে ভুলে যাওয়া ওয়াদা স্মরণ করিয়ে দিতে, যে ওয়াদা আমরা প্রত্যেকেই দিয়ে এসেছি আল্লাহর কাছে রূহের জগতে। এবং আমাদের আসল শত্রু ইবলিশ শয়তানকে চিনিয়ে দিতেই আল্লাহ্‌ পাঠিয়েছেন যুগে যুগে নবি রসূল। কিন্তু কিছু লোক সেই শত্রুকে ছেড়ে ইসলামকেই শত্রু হিশেবে নিয়েছে! এর পেছনে একাধিক কারণ থাকলেও অন্যতম একটি কারণ হচ্ছে, নষ্ট হওয়া ফিতরাতি বুঝ। সহজাত বিবেক যে বিষয়ে সাক্ষ্য দেবার কথা অনায়াসে, সে বিষয়েই সে সংশয়গ্রস্ত বিভিন্ন যুক্তিতে। কখনো বিজ্ঞান, কখনো জাতীয়তাবাদ, কখনও-বা পশ্চিমাদের বুলির প্রতিফলন ঘটে তাদের মাঝে। আপাদমস্তক এদেরকে যুক্তিবাদী মনে হলেও বস্তুত এদের অধিকাংশই স্রেফ বিদ্বেষ পোষণকারী। সত্য-মিথ্যার মানদণ্ডকে ঘুরিয়ে দেয়া, অতঃপর জেনে বুঝে ইসলামের সাথে শত্রুতায় লিপ্ত হওয়া—এটাই এদের উদ্দেশ্য। নাস্তিক্যবাদের আড়ালে এভাবে ইসলাম বিদ্বেষ লালন শুরু হয়েছে বেশ কয়েক বছর আগেই। তথাপি এদের কথার মারপ্যাঁচে পড়ে অনেক বুদ্ধিদীপ্ত যুবক-যুবতী ধরছে নাস্তিকতার পথ। এদের অনেকেই সত্য-সন্ধানী। সত্যের প্রতি বিনয়ী সেই যুব সমাজের জন্য আরিফ আজাদ নিয়ে আসে এই বাংলার জমিনে 'প্যারাডক্সিক্যাল সাজিদ'। গল্পের আঙ্গিকে, যুক্তি এবং বিজ্ঞানের আলোকে সংশয়বাদীদের মাঝে প্রচলিত সকল প্রশ্নের জবাব তিনি লিখেছেন বইটিতে। ইতিপূর্বে পাঠক সমাজে ব্যাপক আলোড়ন সৃষ্টি করে এই বই। ছাত্র-শিক্ষক থেকে শুরু করে মানুষ দলে দলে কেনা শুরু করে বইটি এবং সংশয়ের পথ ছেড়ে ইসলামের পথে ফিরে আসে। সেই ধারাবাহিকতায় এবার প্যারাডক্সিক্যাল সাজিদ-২"
             },
             {
                 id: 4,
-                title: "জাভাস্ক্রিপ্ট: দ্য গুড পার্টস",
-                author: "ডগলাস ক্রকফোর্ড",
-                category: "programming",
-                cover: "https://m.media-amazon.com/images/I/81kqrwS1nNL._AC_UF1000,1000_QL80_.jpg",
-                demoUrl: "https://example.com/demo/4",
-                downloadUrl: "https://example.com/download/4",
-                pages: 176,
-                rating: 4.3,
-                date: "2008-05-01",
-                featured: false,
+                title: "প্যারাডক্সিক্যাল সাজিদ ১",
+                author: "আরিফ আজাদ",
+                category: "Islamic books",
+                cover: "https://i.ibb.co/fdxb548T/paradoxical-sajid-1.jpg",
+                demoUrl: "https://drive.google.com/file/d/1QHAPA5JwQqA5EWfRs19D-76H-85FzggX/view",
+                downloadUrl: "https://www.dropbox.com/scl/fi/wq45urbwl9kz2qon6xefk/JustBoipdf.com.pdf?rlkey=77f7owyqk6306b5z2f4zm0tu0&st=q1tl4zuv&dl=1",
+                pages: 464,
+                rating: 4.7,
+                date: "2008-08-01",
+                featured: true,
                 favorite: false,
-                description: "অধিকাংশ প্রোগ্রামিং ভাষায় ভাল এবং খারাপ অংশ থাকে, কিন্তু জাভাস্ক্রিপ্টে খারাপ অংশের পরিমাণ বেশি, কারণ এটি পরিশোধিত হওয়ার আগেই তাড়াহুড়ো করে তৈরি এবং প্রকাশ করা হয়েছিল।"
+                description: "বর্তমান যুগ হলো প্রেজেন্টাশানের যুগ। একটা জিনিসকে আপনি কিভাবে, কতোটা সহজে, কতোটা সাবলীলভাবে, কতোটা মাধুর্যতায় প্রেজেন্টেশান করছেন তার উপর কিন্তু অনেক কিছুই নির্ভর করে। ন্যাচারালি, মানুষের একটা স্বভাব হচ্ছে – এরা তত্ত্বকথা খুব কম হজম করতে পারে। এরা চায় সহজবোধ্যতা। প্যারাডক্সিক্যাল সাজিদ এর লেখক আরিফ আজাদ ঠিক এই পদ্ধতিই বেছে নিয়েছেন। তিনি গতানুগতিক লেকচার বা তত্বকথার ধাঁচে না গিয়ে, বক্তব্যের বিষয়গুলোকে গল্পের ধাঁচে ফেলে সাজিয়েছেন। প্রতিটি গল্পের শুরুতেই আছে মজার, আগ্রহ উদ্দীপক একটি সূচনা। কোথাও বা গল্পের কেন্দ্রীয় চরিত্র সাজিদের সাথে তাঁর বন্ধু আরিফের খুনসুটি, কোথাও বা মজার কোন স্মৃতির রোমন্থন, কোথাও বা আছে সিরিয়াস কোন ব্যাপারে সিরিয়াস কোন হুশিয়ারি। গল্পে মজা আছে, আনন্দ আছে। মোটামুটি, সার্থক গল্পে যা যা উপাদান থাকা দরকার, যা যা থাকলে পাঠকের গল্প পাঠে বিরক্তি আসেনা, রুচি হারায় না- তার সবকিছুর এক সম্মিলিত সন্নিবেশ যেন লেখক আরিফ আজাদের এই সিরিজের একেকটি এপিসোড। গল্পে গল্পে যুক্তি খন্ডন, পাল্টা যুক্তি ছুঁড়ে দেওয়া, পরম মমতায় অবিশ্বাসের অন্ধকার দূরীকরণে এ যেন এক বিশ্বস্ত শিল্পী।"
             },
             {
                 id: 5,
-                title: "হেড ফার্স্ট জাভাস্ক্রিপ্ট প্রোগ্রামিং",
-                author: "এরিক ফ্রিম্যান, এলিজাবেথ রবসন",
-                category: "programming",
-                cover: "https://m.media-amazon.com/images/I/91asIC1fRwL._AC_UF1000,1000_QL80_.jpg",
-                demoUrl: "https://example.com/demo/5",
-                downloadUrl: "https://example.com/download/5",
-                pages: 704,
-                rating: 4.4,
-                date: "2014-03-10",
-                featured: false,
-                favorite: false,
-                description: "এই মস্তিষ্ক-বান্ধব গাইড আপনাকে জাভাস্ক্রিপ্ট ভাষার মৌলিক বিষয় থেকে উন্নত বিষয় পর্যন্ত সবকিছু শেখায়, যার মধ্যে অবজেক্ট, ফাংশন এবং ব্রাউজারের ডকুমেন্ট অবজেক্ট মডেল অন্তর্ভুক্ত।"
-            },
-            {
-                id: 6,
-                title: "জাভাস্ক্রিপ্ট ডিজাইন প্যাটার্ন শেখা",
-                author: "অ্যাডি ওসমানি",
-                category: "programming",
-                cover: "https://m.media-amazon.com/images/I/81v7o6hxQFL._AC_UF1000,1000_QL80_.jpg",
-                demoUrl: "https://example.com/demo/6",
-                downloadUrl: "https://example.com/download/6",
-                pages: 254,
-                rating: 4.2,
-                date: "2012-08-15",
-                featured: false,
-                favorite: false,
-                description: "জাভাস্ক্রিপ্ট ডিজাইন প্যাটার্ন শেখার মাধ্যমে, আপনি ক্লাসিক্যাল এবং আধুনিক ডিজাইন প্যাটার্নগুলি ভাষায় প্রয়োগ করে কীভাবে সুন্দর, কাঠামোগত এবং রক্ষণাবেক্ষণযোগ্য জাভাস্ক্রিপ্ট লিখতে হয় তা শিখবেন।"
-            },
-            {
-                id: 7,
-                title: "আমাকে ভাবতে বাধ্য করবেন না",
-                author: "স্টিভ ক্রুগ",
-                category: "design",
-                cover: "https://m.media-amazon.com/images/I/71Q6WEUQfFL._AC_UF1000,1000_QL80_.jpg",
-                demoUrl: "https://example.com/demo/7",
-                downloadUrl: "https://example.com/download/7",
-                pages: 216,
+                title: "প্যারাডক্সিক্যাল সাজিদ ২",
+                author: "আরিফ আজাদ",
+                category: "Islamic books",
+                cover: "https://i.ibb.co/jZyjKXx4/justboipdf.png",
+                demoUrl: "https://drive.google.com/file/d/1QH5ZC6rdsucnxFG5-o5yTpUyAtPB_2Wz/view",
+                downloadUrl: "https://www.dropbox.com/scl/fi/z27v6i8iytnpx5s7vhnmk/JustBoipdf.com.pdf?rlkey=0h72zz1f0oho2plroto1e4tyr&st=98ncmraj&dl=1",
+                pages: 235,
                 rating: 4.6,
-                date: "2014-01-01",
+                date: "2019-02-15",
                 featured: true,
                 favorite: false,
-                description: "২০০০ সালে প্রথম প্রকাশিত হওয়ার পর থেকে, লক্ষাধিক ওয়েব ডিজাইনার এবং ডেভেলপার ব্যবহারযোগ্যতা গুরু স্টিভ ক্রুগের গাইডের উপর নির্ভর করেছেন স্বজ্ঞাত নেভিগেশন এবং তথ্য ডিজাইনের নীতিগুলি বুঝতে সাহায্য করার জন্য।"
-            },
-            {
-                id: 8,
-                title: "অ্যাটমিক হ্যাবিটস",
-                author: "জেমস ক্লিয়ার",
-                category: "business",
-                cover: "https://m.media-amazon.com/images/I/91bYsX41DVL._AC_UF1000,1000_QL80_.jpg",
-                demoUrl: "https://example.com/demo/8",
-                downloadUrl: "https://example.com/download/8",
-                pages: 320,
-                rating: 4.7,
-                date: "2018-10-16",
-                featured: true,
-                favorite: false,
-                description: "আপনার লক্ষ্য যাই হোক না কেন, অ্যাটমিক হ্যাবিটস প্রতিদিন উন্নতির জন্য একটি প্রমাণিত কাঠামো প্রদান করে। অভ্যাস গঠনের বিশ্বের শীর্ষস্থানীয় বিশেষজ্ঞদের একজন জেমস ক্লিয়ার ব্যবহারিক কৌশলগুলি প্রকাশ করেছেন যা আপনাকে সঠিকভাবে ভাল অভ্যাস গঠন, খারাপ অভ্যাস ভাঙতে এবং অসাধারণ ফলাফলের দিকে নিয়ে যাওয়া ক্ষুদ্র আচরণগুলিতে দক্ষ হতে শেখাবে।"
-            },
-            {
-                id: 9,
-                title: "সময়ের সংক্ষিপ্ত ইতিহাস",
-                author: "স্টিফেন হকিং",
-                category: "science",
-                cover: "https://m.media-amazon.com/images/I/81aY1lxk+9L._AC_UF1000,1000_QL80_.jpg",
-                demoUrl: "https://example.com/demo/9",
-                downloadUrl: "https://example.com/download/9",
-                pages: 256,
-                rating: 4.6,
-                date: "1998-09-01",
-                featured: false,
-                favorite: false,
-                description: "আমাদের সময়ের মহান মস্তিষ্কগুলির মধ্যে একজন স্টিফেন হকিংয়ের বিজ্ঞান লেখার একটি মাইলফলক ভলিউম, এই বইটি এমন গভীর প্রশ্নগুলি অন্বেষণ করে: মহাবিশ্ব কীভাবে শুরু হয়েছিল - এবং কী এর সূচনা সম্ভব করেছিল? সময় কি সবসময় সামনের দিকে প্রবাহিত হয়? মহাবিশ্ব কি অবিরাম - নাকি সেখানে সীমানা আছে? মহাকাশে কি অন্যান্য মাত্রা আছে? সব শেষ হলে কি হবে?"
-            },
-            {
-                id: 10,
-                title: "জাভাস্ক্রিপ্ট: দ্য ডেফিনিটিভ গাইড",
-                author: "ডেভিড ফ্লানাগান",
-                category: "programming",
-                cover: "https://m.media-amazon.com/images/I/91hU6VY0uEL._AC_UF1000,1000_QL80_.jpg",
-                demoUrl: "https://example.com/demo/1",
-                downloadUrl: "https://example.com/download/1",
-                pages: 704,
-                rating: 4.5,
-                date: "2020-05-15",
-                featured: true,
-                favorite: false,
-                description: "এই বইটি একজন প্রোগ্রামারের জন্য একটি গাইড এবং ওয়েব ব্রাউজার দ্বারা সংজ্ঞায়িত কোর জাভাস্ক্রিপ্ট ভাষা এবং ক্লায়েন্ট-সাইড জাভাস্ক্রিপ্ট API-এর একটি ব্যাপক রেফারেন্স।"
-            },
+                description: "ইসলাম কারও শত্রু হতে আসেনি। ইসলাম এসেছে মানুষকে ভুলে যাওয়া ওয়াদা স্মরণ করিয়ে দিতে, যে ওয়াদা আমরা প্রত্যেকেই দিয়ে এসেছি আল্লাহর কাছে রূহের জগতে। এবং আমাদের আসল শত্রু ইবলিশ শয়তানকে চিনিয়ে দিতেই আল্লাহ্‌ পাঠিয়েছেন যুগে যুগে নবি রসূল। কিন্তু কিছু লোক সেই শত্রুকে ছেড়ে ইসলামকেই শত্রু হিশেবে নিয়েছে! এর পেছনে একাধিক কারণ থাকলেও অন্যতম একটি কারণ হচ্ছে, নষ্ট হওয়া ফিতরাতি বুঝ। সহজাত বিবেক যে বিষয়ে সাক্ষ্য দেবার কথা অনায়াসে, সে বিষয়েই সে সংশয়গ্রস্ত বিভিন্ন যুক্তিতে। কখনো বিজ্ঞান, কখনো জাতীয়তাবাদ, কখনও-বা পশ্চিমাদের বুলির প্রতিফলন ঘটে তাদের মাঝে। আপাদমস্তক এদেরকে যুক্তিবাদী মনে হলেও বস্তুত এদের অধিকাংশই স্রেফ বিদ্বেষ পোষণকারী। সত্য-মিথ্যার মানদণ্ডকে ঘুরিয়ে দেয়া, অতঃপর জেনে বুঝে ইসলামের সাথে শত্রুতায় লিপ্ত হওয়া—এটাই এদের উদ্দেশ্য। নাস্তিক্যবাদের আড়ালে এভাবে ইসলাম বিদ্বেষ লালন শুরু হয়েছে বেশ কয়েক বছর আগেই। তথাপি এদের কথার মারপ্যাঁচে পড়ে অনেক বুদ্ধিদীপ্ত যুবক-যুবতী ধরছে নাস্তিকতার পথ। এদের অনেকেই সত্য-সন্ধানী। সত্যের প্রতি বিনয়ী সেই যুব সমাজের জন্য আরিফ আজাদ নিয়ে আসে এই বাংলার জমিনে 'প্যারাডক্সিক্যাল সাজিদ'। গল্পের আঙ্গিকে, যুক্তি এবং বিজ্ঞানের আলোকে সংশয়বাদীদের মাঝে প্রচলিত সকল প্রশ্নের জবাব তিনি লিখেছেন বইটিতে। ইতিপূর্বে পাঠক সমাজে ব্যাপক আলোড়ন সৃষ্টি করে এই বই। ছাত্র-শিক্ষক থেকে শুরু করে মানুষ দলে দলে কেনা শুরু করে বইটি এবং সংশয়ের পথ ছেড়ে ইসলামের পথে ফিরে আসে। সেই ধারাবাহিকতায় এবার প্যারাডক্সিক্যাল সাজিদ-২"
+            }
         ];
 
         // DOM elements
@@ -874,8 +971,6 @@
         const emptyState = document.getElementById('empty-state');
         const pagination = document.getElementById('pagination');
         const loadMoreBtn = document.getElementById('load-more-btn');
-        
-        // Modal elements
         const bookModal = document.getElementById('book-modal');
         const modalCoverImg = document.getElementById('modal-cover-img');
         const modalTitle = document.getElementById('modal-title');
@@ -889,17 +984,31 @@
         const modalDownloadBtn = document.getElementById('modal-download-btn');
         const modalFavoriteBtn = document.getElementById('modal-favorite-btn');
         const closeModal = document.querySelector('.close-modal');
-
-        // Embed modal elements
         const embedModal = document.getElementById('embed-modal');
         const embedViewer = document.getElementById('embed-viewer');
         const closeEmbedBtn = document.getElementById('close-embed');
+        const adminLoginBtn = document.getElementById('admin-login-btn');
+        const adminLoginModal = document.getElementById('admin-login-modal');
+        const adminLoginForm = document.getElementById('admin-login-form');
+        const adminPanel = document.getElementById('admin-panel');
+        const logoutBtn = document.getElementById('logout-btn');
+        const addBookBtn = document.getElementById('add-book-btn');
+        const bookForm = document.getElementById('book-form');
+        const bookManagementForm = document.getElementById('book-management-form');
+        const cancelBookBtn = document.getElementById('cancel-book-btn');
+        const booksListAdmin = document.getElementById('books-list-admin');
 
         // Pagination variables
-        const booksPerPage = 15; // Load 15 books at a time
+        const booksPerPage = 15;
         let currentPage = 1;
         let filteredBooks = [...books];
         let currentModalBookId = null;
+
+        // Admin credentials (change these in production!)
+        const ADMIN_CREDENTIALS = {
+            username: "admin",
+            password: "JustBoiPDF123"
+        };
 
         // Function to trigger file download
         function downloadFile(url, filename) {
@@ -923,23 +1032,21 @@
                     <span class="ad-badge">Promotion</span>
                 </div>
                 <div class="book-info">
-    <div class="book-title">Premium Book Collection</div>
-    <div class="book-author">Special Offer</div>
-    <div class="book-meta">
-        <span>Limited Time</span>
-        <span class="book-rating"><i class="fas fa-star"></i> 5.0</span>
-    </div>
-    <div class="book-actions">
-        <a href="https://www.justboipdf.com" target="_blank" class="btn btn-demo">
-            <i class="fas fa-eye"></i> View
-        </a>
-        <a href="https://www.justboipdf.com" target="_blank" class="btn btn-demo">
-            <i class="fas fa-eye"></i> Deal
-        </a>
-    </div>
-</div>
-
-
+                    <div class="book-title">Premium Book Collection</div>
+                    <div class="book-author">Special Offer</div>
+                    <div class="book-meta">
+                        <span>Limited Time</span>
+                        <span class="book-rating"><i class="fas fa-star"></i> 5.0</span>
+                    </div>
+                    <div class="book-actions">
+                        <a href="https://www.justboipdf.com" target="_blank" class="btn btn-demo">
+                            <i class="fas fa-eye"></i> View
+                        </a>
+                        <a href="https://www.justboipdf.com" target="_blank" class="btn btn-demo">
+                            <i class="fas fa-eye"></i> Deal
+                        </a>
+                    </div>
+                </div>
             `;
             return adCard;
         }
@@ -964,8 +1071,12 @@
                     </div>
                 </div>
                 <div class="list-actions">
-                    <a href="https://your-ad-link.com" class="btn btn-demo"><i class="fas fa-eye"></i> View</a>
-                    <a href="https://your-ad-link.com" class="btn btn-download"><i class="fas fa-tag"></i> Deal</a>
+                    <a href="https://www.justboipdf.com" target="_blank" class="btn btn-demo">
+                        <i class="fas fa-eye"></i> For You
+                    </a>
+                    <a href="https://www.justboipdf.com" target="_blank" class="btn btn-demo">
+                        <i class="fas fa-eye"></i> You Like
+                    </a>
                 </div>
             `;
             return adItem;
@@ -1015,13 +1126,11 @@
                 `;
                 gridContainer.appendChild(bookCard);
                 
-                // Insert ad after every 5th book
                 if ((index + 1) % 5 === 0) {
                     gridContainer.appendChild(createGridAdCard());
                 }
             });
             
-            // Hide load more button if no more books
             const startIndex = (currentPage - 1) * booksPerPage;
             const endIndex = startIndex + booksPerPage;
             if (endIndex >= filteredBooks.length) {
@@ -1078,13 +1187,11 @@
                 `;
                 listContainer.appendChild(bookItem);
                 
-                // Insert ad after every 5th book
                 if ((index + 1) % 5 === 0) {
                     listContainer.appendChild(createListAdItem());
                 }
             });
             
-            // Hide load more button if no more books
             const startIndex = (currentPage - 1) * booksPerPage;
             const endIndex = startIndex + booksPerPage;
             if (endIndex >= filteredBooks.length) {
@@ -1098,7 +1205,6 @@
 
         // Add event listeners to interactive elements
         function addEventListeners() {
-            // Favorite buttons
             document.querySelectorAll('.btn-favorite').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const bookId = parseInt(this.getAttribute('data-id'));
@@ -1106,7 +1212,6 @@
                 });
             });
             
-            // View details buttons
             document.querySelectorAll('.view-details').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const bookId = parseInt(this.getAttribute('data-id'));
@@ -1144,18 +1249,15 @@
             if (bookIndex !== -1) {
                 books[bookIndex].favorite = !books[bookIndex].favorite;
                 
-                // Update UI
                 const favoriteIcons = document.querySelectorAll(`.btn-favorite[data-id="${bookId}"] i`);
                 favoriteIcons.forEach(icon => {
                     icon.className = books[bookIndex].favorite ? 'fas fa-heart' : 'far fa-heart';
                 });
                 
-                // Update modal if open
                 if (currentModalBookId === bookId) {
                     modalFavoriteBtn.innerHTML = `<i class="${books[bookIndex].favorite ? 'fas' : 'far'} fa-heart"></i>`;
                 }
                 
-                // Save to localStorage
                 saveFavorites();
             }
         }
@@ -1181,7 +1283,6 @@
             
             currentModalBookId = bookId;
             
-            // Populate modal
             modalCoverImg.src = book.cover;
             modalCoverImg.alt = book.title;
             modalTitle.textContent = book.title;
@@ -1190,7 +1291,6 @@
             modalRating.textContent = book.rating;
             modalDate.textContent = new Date(book.date).toLocaleDateString();
             
-            // Translate category
             const categoryMap = {
                 "Islamic books": "ইসলামিক বই",
                 "design": "ডিজাইন",
@@ -1204,42 +1304,33 @@
             modalDownloadBtn.href = book.downloadUrl;
             modalFavoriteBtn.innerHTML = `<i class="${book.favorite ? 'fas' : 'far'} fa-heart"></i>`;
             
-            // Add event listener to modal favorite button
             modalFavoriteBtn.onclick = () => {
                 toggleFavorite(bookId);
             };
             
-            // Handle modal demo button click to show embed
-modalDemoBtn.onclick = (e) => {
-    e.preventDefault();
-    if (book.demoUrl.includes('drive.google.com')) {
-        // If it's a Google Drive link, embed directly
-        const fileIdMatch = book.demoUrl.match(/\/file\/d\/([^\/]+)/);
-        if (fileIdMatch) {
-            const fileId = fileIdMatch[1];
-            embedViewer.src = `https://drive.google.com/file/d/${fileId}/preview`;
-        } else {
-            // fallback in case match fails
-            embedViewer.src = book.demoUrl;
-        }
-    } else if (book.demoUrl.endsWith('.pdf')) {
-        // If it's a PDF link, use Google Docs viewer
-        embedViewer.src = `https://docs.google.com/gview?url=${encodeURIComponent(book.demoUrl)}&embedded=true`;
-    } else {
-        // Otherwise, show the URL directly (e.g., a website or image)
-        embedViewer.src = book.demoUrl;
-    }
-    embedModal.style.display = 'flex';
-};
-
+            modalDemoBtn.onclick = (e) => {
+                e.preventDefault();
+                if (book.demoUrl.includes('drive.google.com')) {
+                    const fileIdMatch = book.demoUrl.match(/\/file\/d\/([^\/]+)/);
+                    if (fileIdMatch) {
+                        const fileId = fileIdMatch[1];
+                        embedViewer.src = `https://drive.google.com/file/d/${fileId}/preview`;
+                    } else {
+                        embedViewer.src = book.demoUrl;
+                    }
+                } else if (book.demoUrl.endsWith('.pdf')) {
+                    embedViewer.src = `https://docs.google.com/gview?url=${encodeURIComponent(book.demoUrl)}&embedded=true`;
+                } else {
+                    embedViewer.src = book.demoUrl;
+                }
+                embedModal.style.display = 'flex';
+            };
             
-            // Handle modal download button click
             modalDownloadBtn.onclick = (e) => {
                 e.preventDefault();
                 downloadFile(book.downloadUrl, `${book.title}.pdf`);
             };
             
-            // Show modal
             bookModal.style.display = 'flex';
         }
 
@@ -1261,7 +1352,6 @@ modalDemoBtn.onclick = (e) => {
             const category = categoryFilter.value;
             const sortOption = sortBy.value;
             
-            // Filter by search term and category
             filteredBooks = books.filter(book => {
                 const matchesSearch = book.title.toLowerCase().includes(searchTerm) || 
                                     book.author.toLowerCase().includes(searchTerm);
@@ -1269,7 +1359,6 @@ modalDemoBtn.onclick = (e) => {
                 return matchesSearch && matchesCategory;
             });
             
-            // Sort books
             filteredBooks.sort((a, b) => {
                 switch (sortOption) {
                     case 'title-asc':
@@ -1287,15 +1376,12 @@ modalDemoBtn.onclick = (e) => {
                 }
             });
             
-            // Reset to first page when filtering/sorting
             currentPage = 1;
             
-            // Get books for current page
             const startIndex = (currentPage - 1) * booksPerPage;
             const endIndex = startIndex + booksPerPage;
             const booksToRender = filteredBooks.slice(startIndex, endIndex);
             
-            // Render appropriate view
             if (gridViewBtn.classList.contains('active')) {
                 renderGridView(booksToRender);
             } else {
@@ -1316,7 +1402,6 @@ modalDemoBtn.onclick = (e) => {
                 renderListView(additionalBooks);
             }
             
-            // Scroll to bottom of new items
             if (additionalBooks.length > 0) {
                 const lastBookElement = gridViewBtn.classList.contains('active') 
                     ? gridContainer.lastElementChild 
@@ -1325,24 +1410,122 @@ modalDemoBtn.onclick = (e) => {
             }
         }
 
+        // Check if admin is logged in
+        function isAdminLoggedIn() {
+            return localStorage.getItem('adminLoggedIn') === 'true';
+        }
+
+        // Render books list for admin
+        function renderAdminBooksList() {
+            booksListAdmin.innerHTML = '';
+            
+            if (books.length === 0) {
+                booksListAdmin.innerHTML = '<p>No books found.</p>';
+                return;
+            }
+            
+            books.forEach(book => {
+                const bookItem = document.createElement('div');
+                bookItem.className = 'book-item';
+                bookItem.innerHTML = `
+                    <div class="list-cover">
+                        <img src="${book.cover}" alt="${book.title}" style="width:60px;height:80px;object-fit:cover;">
+                    </div>
+                    <div class="list-info" style="flex-grow:1;">
+                        <div class="list-title">${book.title}</div>
+                        <div class="list-author">${book.author}</div>
+                        <div class="list-meta">
+                            <span>${book.pages} pages</span>
+                            <span class="list-rating"><i class="fas fa-star"></i> ${book.rating}</span>
+                        </div>
+                    </div>
+                    <div class="list-actions">
+                        <button class="admin-btn edit-book-btn" data-id="${book.id}">Edit</button>
+                        <button class="admin-btn danger delete-book-btn" data-id="${book.id}">Delete</button>
+                    </div>
+                `;
+                booksListAdmin.appendChild(bookItem);
+            });
+            
+            document.querySelectorAll('.edit-book-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const bookId = parseInt(this.getAttribute('data-id'));
+                    editBook(bookId);
+                });
+            });
+            
+            document.querySelectorAll('.delete-book-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const bookId = parseInt(this.getAttribute('data-id'));
+                    if (confirm('Are you sure you want to delete this book?')) {
+                        deleteBook(bookId);
+                    }
+                });
+            });
+        }
+
+        // Edit book function
+        function editBook(bookId) {
+            const book = books.find(b => b.id === bookId);
+            if (!book) return;
+            
+            document.getElementById('book-id').value = book.id;
+            document.getElementById('book-title').value = book.title;
+            document.getElementById('book-author').value = book.author;
+            document.getElementById('book-category').value = book.category;
+            document.getElementById('book-cover').value = book.cover;
+            document.getElementById('book-demo').value = book.demoUrl;
+            document.getElementById('book-download').value = book.downloadUrl;
+            document.getElementById('book-pages').value = book.pages;
+            document.getElementById('book-rating').value = book.rating;
+            document.getElementById('book-date').value = book.date;
+            document.getElementById('book-description').value = book.description;
+            document.getElementById('book-featured').checked = book.featured;
+            
+            bookForm.style.display = 'block';
+        }
+
+        // Delete book function
+        function deleteBook(bookId) {
+            const index = books.findIndex(b => b.id === bookId);
+            if (index !== -1) {
+                books.splice(index, 1);
+                localStorage.setItem('booksData', JSON.stringify(books));
+                renderAdminBooksList();
+                filterAndSortBooks();
+            }
+        }
+
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
             loadFavorites();
+            
+            // Load books from localStorage if available
+            if (localStorage.getItem('booksData')) {
+                books = JSON.parse(localStorage.getItem('booksData'));
+            }
+            
             filterAndSortBooks();
+            
+            // Show admin panel if logged in
+            if (isAdminLoggedIn()) {
+                adminPanel.style.display = 'block';
+                renderAdminBooksList();
+            }
         });
 
         // Toggle between grid and list views
         gridViewBtn.addEventListener('click', () => {
             gridViewBtn.classList.add('active');
             listViewBtn.classList.remove('active');
-            currentPage = 1; // Reset to first page when switching views
+            currentPage = 1;
             filterAndSortBooks();
         });
 
         listViewBtn.addEventListener('click', () => {
             listViewBtn.classList.add('active');
             gridViewBtn.classList.remove('active');
-            currentPage = 1; // Reset to first page when switching views
+            currentPage = 1;
             filterAndSortBooks();
         });
 
@@ -1366,265 +1549,93 @@ modalDemoBtn.onclick = (e) => {
                 closeEmbedModal();
             }
         });
-    </script>
 
-    <!-- Footer Section -->
-    <footer style="
-        background-color: var(--dark-color); 
-        color: var(--light-color);
-        padding: 50px 0 0;
-        margin-top: 80px;
-        box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
-    ">
-        <div class="container" style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            padding-bottom: 40px;
-        ">
-            <!-- About Column -->
-            <div>
-                <h3 style="
-                    color: white;
-                    margin-bottom: 25px;
-                    font-size: 1.3rem;
-                    position: relative;
-                    padding-bottom: 10px;
-                ">
-                    <span style="
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        width: 50px;
-                        height: 3px;
-                        background: var(--primary-color);
-                    "></span>
-                    PDF Books Collection
-                </h3>
-                <p style="
-                    line-height: 1.7;
-                    margin-bottom: 20px;
-                    color: rgba(255,255,255,0.7);
-                ">
-                    The largest collection of free PDF books in Bengali and English. 
-                    Download your favorite books instantly.
-                </p>
-                <div style="display: flex; gap: 15px;">
-                    <a href="#" style="
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 36px;
-                        height: 36px;
-                        background: rgba(255,255,255,0.1);
-                        color: white;
-                        border-radius: 50%;
-                        transition: all 0.3s ease;
-                    " onmouseover="this.style.background='var(--primary-color)';this.style.transform='translateY(-3px)'" 
-                    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="#" style="
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 36px;
-                        height: 36px;
-                        background: rgba(255,255,255,0.1);
-                        color: white;
-                        border-radius: 50%;
-                        transition: all 0.3s ease;
-                    " onmouseover="this.style.background='var(--primary-color)';this.style.transform='translateY(-3px)'" 
-                    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="#" style="
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 36px;
-                        height: 36px;
-                        background: rgba(255,255,255,0.1);
-                        color: white;
-                        border-radius: 50%;
-                        transition: all 0.3s ease;
-                    " onmouseover="this.style.background='var(--primary-color)';this.style.transform='translateY(-3px)'" 
-                    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="#" style="
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        width: 36px;
-                        height: 36px;
-                        background: rgba(255,255,255,0.1);
-                        color: white;
-                        border-radius: 50%;
-                        transition: all 0.3s ease;
-                    " onmouseover="this.style.background='var(--primary-color)';this.style.transform='translateY(-3px)'" 
-                    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
+        // Admin login button click
+        adminLoginBtn.addEventListener('click', () => {
+            adminLoginModal.style.display = 'flex';
+        });
+
+        // Close admin modal when clicking outside
+        adminLoginModal.addEventListener('click', (e) => {
+            if (e.target === adminLoginModal) {
+                adminLoginModal.style.display = 'none';
+            }
+        });
+
+        // Admin login form submission
+        adminLoginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
             
-            <!-- Quick Links Column -->
-            <div>
-                <h3 style="
-                    color: white;
-                    margin-bottom: 25px;
-                    font-size: 1.3rem;
-                    position: relative;
-                    padding-bottom: 10px;
-                ">
-                    <span style="
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        width: 50px;
-                        height: 3px;
-                        background: var(--primary-color);
-                    "></span>
-                    Quick Links
-                </h3>
-                <ul style="list-style: none;">
-                    <li style="margin-bottom: 12px;">
-                        <a href="#" style="
-                            color: rgba(255,255,255,0.7);
-                            text-decoration: none;
-                            transition: all 0.3s;
-                            display: flex;
-                            align-items: center;
-                        " onmouseover="this.style.color='var(--primary-color)';this.style.paddingLeft='10px'" 
-                        onmouseout="this.style.color='rgba(255,255,255,0.7)';this.style.paddingLeft='0'">
-                            <i class="fas fa-chevron-right" style="margin-right: 8px; font-size: 0.8rem;"></i>
-                            Home
-                        </a>
-                    </li>
-                    <li style="margin-bottom: 12px;">
-                        <a href="#" style="
-                            color: rgba(255,255,255,0.7);
-                            text-decoration: none;
-                            transition: all 0.3s;
-                            display: flex;
-                            align-items: center;
-                        " onmouseover="this.style.color='var(--primary-color)';this.style.paddingLeft='10px'" 
-                        onmouseout="this.style.color='rgba(255,255,255,0.7)';this.style.paddingLeft='0'">
-                            <i class="fas fa-chevron-right" style="margin-right: 8px; font-size: 0.8rem;"></i>
-                            Islamic Books
-                        </a>
-                    </li>
-                    <li style="margin-bottom: 12px;">
-                        <a href="#" style="
-                            color: rgba(255,255,255,0.7);
-                            text-decoration: none;
-                            transition: all 0.3s;
-                            display: flex;
-                            align-items: center;
-                        " onmouseover="this.style.color='var(--primary-color)';this.style.paddingLeft='10px'" 
-                        onmouseout="this.style.color='rgba(255,255,255,0.7)';this.style.paddingLeft='0'">
-                            <i class="fas fa-chevron-right" style="margin-right: 8px; font-size: 0.8rem;"></i>
-                            Programming Books
-                        </a>
-                    </li>
-                    <li style="margin-bottom: 12px;">
-                        <a href="#" style="
-                            color: rgba(255,255,255,0.7);
-                            text-decoration: none;
-                            transition: all 0.3s;
-                            display: flex;
-                            align-items: center;
-                        " onmouseover="this.style.color='var(--primary-color)';this.style.paddingLeft='10px'" 
-                        onmouseout="this.style.color='rgba(255,255,255,0.7)';this.style.paddingLeft='0'">
-                            <i class="fas fa-chevron-right" style="margin-right: 8px; font-size: 0.8rem;"></i>
-                            Business Books
-                        </a>
-                    </li>
-                    <li style="margin-bottom: 12px;">
-                        <a href="#" style="
-                            color: rgba(255,255,255,0.7);
-                            text-decoration: none;
-                            transition: all 0.3s;
-                            display: flex;
-                            align-items: center;
-                        " onmouseover="this.style.color='var(--primary-color)';this.style.paddingLeft='10px'" 
-                        onmouseout="this.style.color='rgba(255,255,255,0.7)';this.style.paddingLeft='0'">
-                            <i class="fas fa-chevron-right" style="margin-right: 8px; font-size: 0.8rem;"></i>
-                            Contact Us
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            const username = document.getElementById('admin-username').value;
+            const password = document.getElementById('admin-password').value;
             
-           <!-- Ad Space Column -->
-            <div style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            ">
-                <div style="
-                    width: 300px;
-                    height: 250px;
-                    background: rgba(255,255,255,0.03);
-                    border: 1px dashed rgba(255,255,255,0.2);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: rgba(255,255,255,0.3);
-                    border-radius: 4px;
-                ">
-                    <div class="book-card" style="margin:0; width:100%; height:100%;">
-                        <div class="book-cover" style="background:#f8f9fa; height:150px;">
-                            <a href="https://your-link-here.com" target="_blank">
-                                <img src="https://via.placeholder.com/250x150.png?text=Footer+Ad" alt="Footer Ad" style="object-fit:cover;">
-                            </a>
-                        </div>
-                        <div class="book-info" style="padding:10px;">
-                            <div class="book-title" style="font-size:0.9em;">Special Offer</div>
-                            <div class="book-actions" style="margin-top:10px;">
-                                <a href="https://your-link-here.com" class="btn btn-demo" style="flex:1; padding:5px; font-size:0.8em;">
-                                    <i class="fas fa-info-circle"></i> Details
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Copyright Section -->
-        <div style="
-            background: rgba(0,0,0,0.2);
-            padding: 20px 0;
-            text-align: center;
-        ">
-            <div class="container">
-                <p style="
-                    margin: 0;
-                    color: rgba(255,255,255,0.7);
-                    font-size: 0.9rem;
-                ">
-                    &copy; 2023 PDF Books Collection. All Rights Reserved. | 
-                    <a href="#" style="
-                        color: rgba(255,255,255,0.7);
-                        text-decoration: none;
-                        transition: all 0.3s;
-                    " onmouseover="this.style.color='var(--primary-color)'" 
-                    onmouseout="this.style.color='rgba(255,255,255,0.7)'">
-                        Privacy Policy
-                    </a> | 
-                    <a href="#" style="
-                        color: rgba(255,255,255,0.7);
-                        text-decoration: none;
-                        transition: all 0.3s;
-                    " onmouseover="this.style.color='var(--primary-color)'" 
-                    onmouseout="this.style.color='rgba(255,255,255,0.7)'">
-                        Terms of Service
-                    </a>
-                </p>
-            </div>
-        </div>
-    </footer>
+            if (username === ADMIN_CREDENTIALS.username && password === ADMIN_CREDENTIALS.password) {
+                localStorage.setItem('adminLoggedIn', 'true');
+                adminLoginModal.style.display = 'none';
+                adminPanel.style.display = 'block';
+                renderAdminBooksList();
+                
+                adminLoginForm.reset();
+            } else {
+                alert('Invalid credentials');
+            }
+        });
+
+        // Logout button click
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('adminLoggedIn');
+            adminPanel.style.display = 'none';
+        });
+
+        // Add book button click
+        addBookBtn.addEventListener('click', () => {
+            bookManagementForm.reset();
+            document.getElementById('book-id').value = '';
+            bookForm.style.display = 'block';
+        });
+
+        // Cancel book form button click
+        cancelBookBtn.addEventListener('click', () => {
+            bookForm.style.display = 'none';
+        });
+
+        // Book management form submission
+        bookManagementForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const bookId = document.getElementById('book-id').value;
+            const bookData = {
+                title: document.getElementById('book-title').value,
+                author: document.getElementById('book-author').value,
+                category: document.getElementById('book-category').value,
+                cover: document.getElementById('book-cover').value,
+                demoUrl: document.getElementById('book-demo').value,
+                downloadUrl: document.getElementById('book-download').value,
+                pages: parseInt(document.getElementById('book-pages').value),
+                rating: parseFloat(document.getElementById('book-rating').value),
+                date: document.getElementById('book-date').value,
+                description: document.getElementById('book-description').value,
+                featured: document.getElementById('book-featured').checked,
+                favorite: false
+            };
+            
+            if (bookId) {
+                const index = books.findIndex(b => b.id === parseInt(bookId));
+                if (index !== -1) {
+                    books[index] = { ...books[index], ...bookData };
+                }
+            } else {
+                const newId = books.length > 0 ? Math.max(...books.map(b => b.id)) + 1 : 1;
+                books.push({ id: newId, ...bookData });
+            }
+            
+            localStorage.setItem('booksData', JSON.stringify(books));
+            
+            renderAdminBooksList();
+            filterAndSortBooks();
+            
+            bookForm.style.display = 'none';
+        });
+    </script>
 </body>
 </html>
