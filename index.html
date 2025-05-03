@@ -611,18 +611,27 @@
 </head>
 <body>
     <div class="container">
-        <header>
+        <!-- ✅ HTML -->
+<header class="site-header">
     <div class="header-top">
         <div class="logo">
-    <a href="index.html" class="logo-link">
-        <img src="https://i.ibb.co/mFSfG5FD/9s4v6i.gif" alt="Free Palestine save gaza save Palestine gif iamge">
-        <h1>JustBoiPDF</h1>
-    </a>
-</div>
-        
+            <a href="index.html" class="logo-link">
+                <img src="https://i.ibb.co/mFSfG5FD/9s4v6i.gif" alt="JustBoiPDF logo">
+                <h1>JustBoiPDF</h1>
+            </a>
+        </div>
+
         <div class="view-toggle">
             <button id="grid-view" class="active"><i class="fas fa-th"></i> Grid</button>
             <button id="list-view"><i class="fas fa-list"></i> List</button>
+        </div>
+    </div>
+
+    <!-- 🟨 Responsive Ad Card -->
+    <div class="header-ad">
+        <div class="ad-card">
+           <script type="text/javascript" src="https://udbaa.com/bnr.php?section=pdfbooks&pub=225212&format=468x60&ga=g"></script>
+<noscript><a href="https://yllix.com/publishers/225212" target="_blank"><img src="//ylx-aff.advertica-cdn.com/pub/468x60.png" style="border:none;margin:0;padding:0;vertical-align:baseline;" alt="ylliX - Online Advertising Network" /></a></noscript>
         </div>
     </div>
 
@@ -631,18 +640,18 @@
             <i class="fas fa-search"></i>
             <input type="text" id="search-input" placeholder="বই খুঁজুন...">
         </div>
-        
+
         <div class="filter-group">
             <label for="category-filter"><i class="fas fa-filter"></i></label>
             <select id="category-filter">
-                <option value="all"> ইসলামিক বই</option>
+                <option value="all">ইসলামিক বই</option>
                 <option value="programming">প্রোগ্রামিং</option>
                 <option value="design">ডিজাইন</option>
                 <option value="business">ব্যবসা</option>
                 <option value="science">বিজ্ঞান</option>
             </select>
         </div>
-        
+
         <div class="filter-group">
             <label for="sort-by"><i class="fas fa-sort"></i></label>
             <select id="sort-by">
@@ -654,7 +663,123 @@
             </select>
         </div>
     </div>
-        </header>
+</header>
+
+<!-- ✅ Responsive CSS -->
+<style>
+    .site-header {
+        padding: 15px;
+        font-family: sans-serif;
+    }
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .logo-link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: #000;
+        gap: 10px;
+    }
+
+    .logo img {
+        width: 40px;
+        height: auto;
+    }
+
+    .logo h1 {
+        font-size: 20px;
+        margin: 0;
+    }
+
+    .view-toggle button {
+        padding: 6px 12px;
+        margin-left: 5px;
+        border: none;
+        cursor: pointer;
+        background: #eee;
+        border-radius: 4px;
+    }
+
+    .view-toggle button.active {
+        background: #007bff;
+        color: #fff;
+    }
+
+    .header-ad {
+        margin: 15px 0;
+        text-align: center;
+    }
+
+    .ad-card {
+        background: #fff;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .ad-card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin-top: 10px;
+    }
+
+    .search-box {
+        flex: 1 1 100%;
+        display: flex;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 6px 10px;
+    }
+
+    .search-box i {
+        margin-right: 8px;
+    }
+
+    .search-box input {
+        border: none;
+        outline: none;
+        flex: 1;
+    }
+
+    .filter-group {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    @media (min-width: 600px) {
+        .controls {
+            flex-wrap: nowrap;
+        }
+
+        .search-box {
+            flex: 2;
+        }
+
+        .filter-group {
+            flex: 1;
+        }
+    }
+</style>
+
         
         <main>
             <!-- Grid View -->
