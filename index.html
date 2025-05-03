@@ -1022,7 +1022,7 @@
             adCard.innerHTML = `
                 <div class="book-cover" style="background:#f8f9fa;">
                     <a href="https://sawutser.top/4/9288245" target="_blank">
-                        <img src="https://i.ibb.co/27GSkPLM/pdf-download-image.png?text=Premium+Books" alt="বইপ্রেমীদের স্বপ্নের আশ্রয়">
+                        <img src="https://i.ibb.co/PZNpPv9v/pdf-download-image.png?text=Premium+Books" alt="বইপ্রেমীদের স্বপ্নের আশ্রয়">
                     </a>
                    <span class="ad-badge">Your</span>
                 </div>
@@ -1055,7 +1055,7 @@
             adItem.innerHTML = `
                 <div class="list-cover" style="background:#f8f9fa;">
                     <a href="https://sawutser.top/4/9288245" target="_blank">
-                        <img src="https://i.ibb.co/27GSkPLM/pdf-download-image.png?text=Ad" alt="বইপ্রেমীদের স্বপ্নের আশ্রয়">
+                        <img src="https://i.ibb.co/PZNpPv9v/pdf-download-image.png?text=Ad" alt="বইপ্রেমীদের স্বপ্নের আশ্রয়">
                     </a>
                     <span class="ad-badge">Your</span>
                 </div>
@@ -1123,8 +1123,8 @@
                 `;
                 gridContainer.appendChild(bookCard);
                 
-                // Insert ad after every 5th book
-                if ((index + 1) % 5 === 0) {
+                // Insert ad after every 4th book
+                if ((index + 1) % 4 === 0) {
                     gridContainer.appendChild(createGridAdCard());
                 }
             });
@@ -1186,8 +1186,8 @@
                 `;
                 listContainer.appendChild(bookItem);
                 
-                // Insert ad after every 5th book
-                if ((index + 1) % 5 === 0) {
+                // Insert ad after every 4th book
+                if ((index + 1) % 4 === 0) {
                     listContainer.appendChild(createListAdItem());
                 }
             });
