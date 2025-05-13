@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Coming Soon | JustBoiPDF</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
+    h1 {
+      font-size: 2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      color: #333333;
+    }
+
+    #countdown {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+      color: #ff6b6b;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    input[type="email"] {
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #cccccc;
+      border-radius: 6px;
+      font-size: 1em;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #1d72b8;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #155d8b;
+    }
+
+    .footer {
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #777777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📚 New Book Coming Soon!</h1>
+    <p>Stay tuned for our upcoming release. Sign up to be notified!</p>
+    <div id="countdown"></div>
+    <form id="notify-form">
+      <input type="email" placeholder="Enter your email" required />
+      <button type="submit">Notify Me</button>
+    </form>
+    <p class="footer">© 2025 JustBoiPDF.COM</p>
+  </div>
+
+  <script>
+    // Set the target date for the countdown (e.g., June 1, 2025)
+    const targetDate = new Date("2025-06-01T00:00:00").getTime();
+
+    const countdownElement = document.getElementById("countdown");
+
+    const countdownInterval = setInterval(() => {
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      if (timeLeft <= 0) {
+        clearInterval(countdownInterval);
+        countdownElement.innerHTML = "🎉 Available Now!";
+        return;
+      }
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      countdownElement.innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }, 1000);
+
+    // Handle form submission
+    document.getElementById("notify-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const email = this.querySelector("input[type='email']").value;
+      // Replace this with backend or third-party service integration
+      alert(`Thank you! We'll notify you at ${email}`);
+      this.reset();
+    });
+  </script>
+</body>
+</html>
