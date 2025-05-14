@@ -115,8 +115,7 @@
     document.getElementById("notify-form").addEventListener("submit", function (e) {
       e.preventDefault();
       const email = this.querySelector("input[type='email']").value;
-      // Replace this with backend or third-party service integration
-      alert(`Thank you! We'll notify you at ${email}`);
+      window.location.href = `mailto:justboipdf@gmail.com?subject=Notify Me&body=Please notify me at ${email} when the book is available.`;
       this.reset();
     });
   </script>
