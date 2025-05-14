@@ -1729,14 +1729,14 @@ modalDemoBtn.onclick = (e) => {
                     font-size: 0.9rem;
                 ">
                     &copy; 2025 JustBoiPDF.COM | All Rights Reserved. | 
-                    <a href="privacy-terms.html" style="
-                        color: rgba(255,255,255,0.7);
-                        text-decoration: none;
-                        transition: all 0.3s;
-                    " onmouseover="this.style.color='var(--primary-color)'" 
-                    onmouseout="this.style.color='rgba(255,255,255,0.7)'">
-                        Privacy Policy | Terms of Service
-                    </a>
+                    <a href="privacy-terms.html" 
+   style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;"
+   onmouseover="this.style.color='var(--primary-color)'" 
+   onmouseout="this.style.color='rgba(255,255,255,0.7)'"
+   onclick="window.open('privacy-terms.html', 'popupWindow', 'width=600,height=600,scrollbars=yes'); return false;">
+   Privacy Policy | Terms of Service
+</a>
+
                 </p>
             </div>
         </div>
