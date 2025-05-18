@@ -645,12 +645,13 @@
         <div class="filter-group">
             <label for="category-filter"><i class="fas fa-filter"></i></label>
             <select id="category-filter">
-                <option value="all">সকল বই</option>
-                <option value="islamic">ইসলামিক বই</option>
-                <option value="inspiration">অনুপ্রেরণা</option>
-                <option value="business">ব্যবসা</option>
-                <option value="science">বিজ্ঞান</option>
-            </select>
+    <option value="all">সকল বই</option>
+    <option value="ইসলামিক বই">ইসলামিক বই</option>
+    <option value="inspiration">অনুপ্রেরণা</option>
+    <option value="business">ব্যবসা</option>
+    <option value="science">বিজ্ঞান</option>
+    <option value="ব্যবসা">ব্যবসা</option> <!-- Added this to match book data -->
+</select>
         </div>
 
         <div class="filter-group">
@@ -1390,11 +1391,12 @@
             
             // Translate category
             const categoryMap = {
-                "islamic": "ইসলামিক বই",
-                "inspiration": "অনুপ্রেরণা",
-                "business": "ব্যবসা",
-                "science": "বিজ্ঞান"
-            };
+    "islamic": "ইসলামিক বই",
+    "inspiration": "অনুপ্রেরণা", 
+    "business": "ব্যবসা",
+    "science": "বিজ্ঞান",
+    "ব্যবসা": "business" // etc...
+};
             modalCategory.textContent = categoryMap[book.category] || book.category;
             
             modalDescription.textContent = book.description;
@@ -1454,18 +1456,29 @@ modalDemoBtn.onclick = (e) => {
         }
 
         // Filter and sort books based on current criteria
-        function filterAndSortBooks() {
-            const searchTerm = searchInput.value.toLowerCase();
-            const category = categoryFilter.value;
-            const sortOption = sortBy.value;
-            
-            // Filter by search term and category
-            filteredBooks = books.filter(book => {
-                const matchesSearch = book.title.toLowerCase().includes(searchTerm) || 
-                                    book.author.toLowerCase().includes(searchTerm);
-                const matchesCategory = category === 'all' || book.category === category;
-                return matchesSearch && matchesCategory;
-            });
+       function filterAndSortBooks() {
+    const searchTerm = searchInput.value.toLowerCase();
+    const category = categoryFilter.value;
+    const sortOption = sortBy.value;
+    
+    // Filter by search term and category
+    filteredBooks = books.filter(book => {
+        const matchesSearch = book.title.toLowerCase().includes(searchTerm) || 
+                            book.author.toLowerCase().includes(searchTerm);
+        
+        // Handle category matching more flexibly
+        let matchesCategory = true;
+        if (category !== 'all') {
+            // Check if either the category matches exactly or contains the filter value
+            matchesCategory = book.category === category || 
+                            (typeof book.category === 'string' && book.category.includes(category));
+        }
+        
+        return matchesSearch && matchesCategory;
+    });
+    
+    // Rest of your sorting and rendering code...
+}
             
             // Sort books
             filteredBooks.sort((a, b) => {
