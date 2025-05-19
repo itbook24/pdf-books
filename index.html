@@ -7,6 +7,29 @@
     <title>JustBoiPDF.Com</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        .quote-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+}
+
+.quote-card {
+  background: rgba(255,255,255,0.05);
+  padding: 15px;
+  border-radius: 8px;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  cursor: default;
+}
+
+.quote-card:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--primary-color);
+  transform: translateY(-3px);
+  border-left: 3px solid var(--primary-color);
+}
         .ad-container {
     margin: 20px 0;
     text-align: center;
@@ -1682,79 +1705,26 @@ modalDemoBtn.onclick = (e) => {
 </div>
 </div>
            <!-- Replace the Quick Links column with this -->
+
 <div>
-    <h3 style="
-        color: white;
-        margin-bottom: 25px;
-        font-size: 1.3rem;
-        position: relative;
-        padding-bottom: 10px;
-    ">
-        <span style="
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--primary-color);
-        "></span>
-        ইসলামিক উক্তি
-    </h3>
-    <ul style="list-style: none; padding-left: 0;">
-        <li style="margin-bottom: 12px; transition: all 0.3s; color: rgba(255,255,255,0.7);"
-            onmouseover="this.style.color='var(--primary-color)'; this.style.paddingLeft='10px';"
-            onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.paddingLeft='0';">
-            আল্লাহর উপর ভরসা করো।
-        </li>
-        <li style="margin-bottom: 12px; transition: all 0.3s; color: rgba(255,255,255,0.7);"
-            onmouseover="this.style.color='var(--primary-color)'; this.style.paddingLeft='10px';"
-            onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.paddingLeft='0';">
-            নামাজ হচ্ছে মুমিনের মেরাজ।
-        </li>
-        <li style="margin-bottom: 12px; transition: all 0.3s; color: rgba(255,255,255,0.7);"
-            onmouseover="this.style.color='var(--primary-color)'; this.style.paddingLeft='10px';"
-            onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.paddingLeft='0';">
-            সবরকারীদের সাথে আল্লাহ্‌ থাকেন।
-        </li>
-        <li style="margin-bottom: 12px; transition: all 0.3s; color: rgba(255,255,255,0.7);"
-            onmouseover="this.style.color='var(--primary-color)'; this.style.paddingLeft='10px';"
-            onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.paddingLeft='0';">
-            আল্লাহ সব দেখছেন, জানেন।
-        </li>
-        <li style="margin-bottom: 12px; transition: all 0.3s; color: rgba(255,255,255,0.7);"
-            onmouseover="this.style.color='var(--primary-color)'; this.style.paddingLeft='10px';"
-            onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.paddingLeft='0';">
-            দুনিয়া ক্ষণস্থায়ী, আখিরাত চিরস্থায়ী।
-        </li>
-        <li style="margin-bottom: 12px; transition: all 0.3s; color: rgba(255,255,255,0.7);"
-            onmouseover="this.style.color='var(--primary-color)'; this.style.paddingLeft='10px';"
-            onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.paddingLeft='0';">
-            সত্য বলো, মিথ্যা থেকে দূরে থাকো।
-        </li>
-        <li style="margin-bottom: 12px; transition: all 0.3s; color: rgba(255,255,255,0.7);"
-            onmouseover="this.style.color='var(--primary-color)'; this.style.paddingLeft='10px';"
-            onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.paddingLeft='0';">
-            রিজিক আল্লাহর হাতে।
-        </li>
-        <li style="margin-bottom: 12px; transition: all 0.3s; color: rgba(255,255,255,0.7);"
-            onmouseover="this.style.color='var(--primary-color)'; this.style.paddingLeft='10px';"
-            onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.paddingLeft='0';">
-            গীবত থেকে বেঁচে থাকো।
-        </li>
-        <li style="margin-bottom: 12px; transition: all 0.3s; color: rgba(255,255,255,0.7);"
-            onmouseover="this.style.color='var(--primary-color)'; this.style.paddingLeft='10px';"
-            onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.paddingLeft='0';">
-            আল্লাহর ভয়ে কাঁদো।
-        </li>
-        <li style="margin-bottom: 12px; transition: all 0.3s; color: rgba(255,255,255,0.7);"
-            onmouseover="this.style.color='var(--primary-color)'; this.style.paddingLeft='10px';"
-            onmouseout="this.style.color='rgba(255,255,255,0.7)'; this.style.paddingLeft='0';">
-            কুরআন পড়ো, বুঝো, আমল করো।
-        </li>
-    </ul>
+  <h3>
+    <span></span> ইসলামিক উক্তি
+  </h3>
+  <div class="quote-cards">
+    <div class="quote-card">আল্লাহর উপর ভরসা করো।</div>
+    <div class="quote-card">নামাজ হচ্ছে মুমিনের মেরাজ।</div>
+    <div class="quote-card">সবরকারীদের সাথে আল্লাহ্‌ থাকেন।</div>
+    <div class="quote-card">আল্লাহ সব দেখছেন, জানেন।</div>
+    <div class="quote-card">দুনিয়া ক্ষণস্থায়ী, আখিরাত চিরস্থায়ী।</div>
+    <div class="quote-card">সত্য বলো, মিথ্যা থেকে দূরে থাকো।</div>
+    <div class="quote-card">রিজিক আল্লাহর হাতে।</div>
+    <div class="quote-card">গীবত থেকে বেঁচে থাকো।</div>
+    <div class="quote-card">আল্লাহর ভয়ে কাঁদো।</div>
+    <div class="quote-card">কুরআন পড়ো, বুঝো, আমল করো।</div>
+  </div>
 </div>
 
-            
+     
            <!-- Ad Space Column -->
             <div style="
                 display: flex;
