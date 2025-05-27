@@ -1725,161 +1725,150 @@ modalDemoBtn.onclick = (e) => {
     </script>
 
     <!-- Footer Section -->
-    <footer style="
-        background-color: var(--dark-color); 
-        color: var(--light-color);
-        padding: 50px 0 0;
-        margin-top: 80px;
-        box-shadow: 0 -5px 15px rgba(0,0,0,0.1);
-    ">
-        <div class="container" style="
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            padding-bottom: 40px;
-        ">
-             <!-- About Column -->
-            <div>
-                <h3 style="
-                    color: white;
-                    margin-bottom: 25px;
-                    font-size: 1.3rem;
-                    position: relative;
-                    padding-bottom: 10px;
-                ">
-                    <span style="
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        width: 50px;
-                        height: 3px;
-                        background: var(--primary-color);
-                    "></span>
-                    JustBoiPDF.COM
-                </h3>
-                <p style="
-                    line-height: 1.7;
-                    margin-bottom: 20px;
-                    color: rgba(255,255,255,0.7);
-                ">
-                    The largest collection of free PDF books in Bengali and English. 
-                    Download your favorite books instantly.
-                </p>
-                <div style="display: flex; gap: 15px;">
-    <a href="https://facebook.com/justboipdf" target="_blank" style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        background: rgba(255,255,255,0.1);
-        color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-    " onmouseover="this.style.background='var(--primary-color)';this.style.transform='translateY(-3px)'" 
-    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://x.com/justboipdf" target="_blank" style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        background: rgba(255,255,255,0.1);
-        color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-    " onmouseover="this.style.background='var(--primary-color)';this.style.transform='translateY(-3px)'" 
-    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'">
-        <i class="fab fa-twitter"></i>
-    </a>
-    <a href="https://www.instagram.com/justboipdf" target="_blank" style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        background: rgba(255,255,255,0.1);
-        color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-    " onmouseover="this.style.background='var(--primary-color)';this.style.transform='translateY(-3px)'" 
-    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://sawutser.top/4/9288245" target="_blank" style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 36px;
-        height: 36px;
-        background: rgba(255,255,255,0.1);
-        color: white;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-    " onmouseover="this.style.background='var(--primary-color)';this.style.transform='translateY(-3px)'" 
-    onmouseout="this.style.background='rgba(255,255,255,0.1)';this.style.transform='translateY(0)'">
-        <i class="fab fa-youtube"></i>
-    </a>
-</div>
-</div>
-           <!-- Replace the Quick Links column with this -->
+<footer class="site-footer">
+  <div class="footer-container">
 
-<div>
-  <h3>
-    <span></span> ইসলামিক উক্তি
-  </h3>
-  <div class="quote-cards">
-    <div class="quote-card">আল্লাহর উপর ভরসা করো।</div>
-    <div class="quote-card">নামাজ হচ্ছে মুমিনের মেরাজ।</div>
-    <div class="quote-card">সবরকারীদের সাথে আল্লাহ্‌ থাকেন।</div>
-    <div class="quote-card">আল্লাহ সব দেখছেন, জানেন।</div>
-    <div class="quote-card">দুনিয়া ক্ষণস্থায়ী, আখিরাত চিরস্থায়ী।</div>
-    <div class="quote-card">সত্য বলো, মিথ্যা থেকে দূরে থাকো।</div>
-    <div class="quote-card">রিজিক আল্লাহর হাতে।</div>
-    <div class="quote-card">গীবত থেকে বেঁচে থাকো।</div>
-    <div class="quote-card">আল্লাহর ভয়ে কাঁদো।</div>
-    <div class="quote-card">কুরআন পড়ো, বুঝো, আমল করো।</div>
-  </div>
-</div>
+    <!-- About -->
+    <div class="footer-about">
+      <h3>JustBoiPDF.COM</h3>
+      <p>
+        The largest collection of free PDF books in Bengali and English.
+        Download your favorite books instantly.
+      </p>
+      <div class="footer-socials">
+        <a href="https://facebook.com/justboipdf" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://x.com/justboipdf" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/justboipdf" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://sawutser.top/4/9288245" target="_blank"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
 
-     
-           <!-- Ad Space Column -->
-            <div style="
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            ">
-                <div style="
-                    width: 300px;
-                    height: 250px;
-                    background: rgba(255,255,255,0.03);
-                    border: 1px dashed rgba(255,255,255,0.2);
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    color: rgba(255,255,255,0.3);
-                    border-radius: 4px;
-                ">
-                    <div class="book-card" style="margin:0; width:100%; height:100%;">
-                        <div class="book-cover" style="background:#f8f9fa; height:150px;">
-                            <a href="https://sawutser.top/4/9288245" target="_blank">
-                                <img src="https://i.ibb.co/35ZvYQ0V/pdf-download-now.jpg?text=Footer+Ad" alt="Footer Ad" style="object-fit:cover;">
-                            </a>
-                        </div>
-                        <div class="book-info" style="padding:10px;">
-                            <div class="book-title" style="font-size:0.9em;">Special Offer</div>
-                            <div class="book-actions" style="margin-top:10px;">
-                                <a href="https://sawutser.top/4/9288245" class="btn btn-demo" style="flex:1; padding:5px; font-size:0.8em;">
-                                    <i class="fas fa-info-circle"></i> Details
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Dynamic Islamic Quotes -->
+    <div class="footer-quotes">
+      <h3>📖 ইসলামিক উক্তি</h3>
+      <div id="quoteBox">আল্লাহর উপর ভরসা করো।</div>
+    </div>
+
+    <!-- Ad Block -->
+    <div class="footer-ad">
+      <a href="https://sawutser.top/4/9288245" target="_blank">
+        <img src="https://i.ibb.co/35ZvYQ0V/pdf-download-now.jpg" alt="Ad">
+        <div class="ad-text">
+          <h4>Special Offer</h4>
+          <span>Click for details</span>
         </div>
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Styles -->
+<style>
+  .site-footer {
+    background: #121212;
+    color: #f4f4f4;
+    padding: 60px 20px;
+    box-shadow: 0 -8px 20px rgba(0,0,0,0.3);
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .footer-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  .footer-about h3,
+  .footer-quotes h3 {
+    margin-bottom: 16px;
+    font-size: 1.4rem;
+    position: relative;
+  }
+
+  .footer-about p {
+    color: #ccc;
+    line-height: 1.6;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+
+  .footer-socials a {
+    background: rgba(255,255,255,0.1);
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    color: white;
+    transition: 0.3s ease;
+  }
+
+  .footer-socials a:hover {
+    background: #00cec9;
+    transform: scale(1.1);
+  }
+
+  .footer-quotes #quoteBox {
+    background: #1e1e1e;
+    padding: 16px;
+    border-left: 4px solid #00cec9;
+    font-style: italic;
+    font-size: 1rem;
+    color: #eee;
+    border-radius: 4px;
+    min-height: 60px;
+  }
+
+  .footer-ad img {
+    width: 100%;
+    border-radius: 6px;
+  }
+
+  .footer-ad .ad-text {
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .footer-ad .ad-text h4 {
+    margin: 4px 0;
+  }
+
+  .footer-ad .ad-text span {
+    font-size: 0.9rem;
+    color: #aaa;
+  }
+</style>
+
+<!-- Quote Rotator Script -->
+<script>
+  const quotes = [
+    "আল্লাহর উপর ভরসা করো।",
+    "নামাজ হচ্ছে মুমিনের মেরাজ।",
+    "সবরকারীদের সাথে আল্লাহ্‌ থাকেন।",
+    "আল্লাহ সব দেখছেন, জানেন।",
+    "দুনিয়া ক্ষণস্থায়ী, আখিরাত চিরস্থায়ী।",
+    "সত্য বলো, মিথ্যা থেকে দূরে থাকো।",
+    "রিজিক আল্লাহর হাতে।",
+    "গীবত থেকে বেঁচে থাকো।",
+    "আল্লাহর ভয়ে কাঁদো।",
+    "কুরআন পড়ো, বুঝো, আমল করো।"
+  ];
+
+  let index = 0;
+  setInterval(() => {
+    index = (index + 1) % quotes.length;
+    document.getElementById("quoteBox").innerText = quotes[index];
+  }, 4000);
+</script>
+
         
         <!-- Copyright Section -->
         <div style="
