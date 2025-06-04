@@ -22,30 +22,37 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
 
-  .about-card {
-  max-width: 420px;
-  margin: 50px auto;
-  padding: 30px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  text-align: center;
+body {
+  background-color: #000;
+  margin: 0;
+  padding: 0;
   font-family: 'Poppins', sans-serif;
-  border: 1px solid rgba(200, 200, 200, 0.2);
+}
+
+.about-card {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 30px;
+  background: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .about-title {
   font-size: 2rem;
   font-weight: 600;
-  color: #222;
+  color: #fff;
   margin-bottom: 16px;
 }
 
 .about-text {
   font-size: 1rem;
-  color: #444;
+  color: #ccc;
   margin-bottom: 24px;
+  line-height: 1.6;
 }
 
 .about-socials a {
@@ -55,9 +62,9 @@
   width: 42px;
   height: 42px;
   margin: 0 8px;
-  background-color: #f0f0f0;
+  background-color: #1a1a1a;
   border-radius: 50%;
-  color: #444;
+  color: #bbb;
   font-size: 1.2rem;
   transition: all 0.3s ease;
 }
@@ -66,7 +73,8 @@
   background-color: #007bff;
   color: #fff;
   transform: translateY(-3px);
-}      
+}
+        
         /* Special Offer Styling */
 .footer-ad {
   display: flex;
