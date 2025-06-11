@@ -1912,67 +1912,96 @@ modalDemoBtn.onclick = (e) => {
         });
     </script>
 
-  <!-- Footer Section -->
+ <!-- Footer Section -->
 <footer class="site-footer">
   <div class="footer-container">
 
-    <!-- About Card -->
-    <section class="footer-section about-card">
-      <a href="/" class="home-icon" title="Go to Home">
-        <i class="fas fa-home"></i>
-      </a>
-      <h3 class="footer-title">JustBoiPDF.COM</h3>
-      <p class="footer-text">
-        বাংলা ও ইংরেজি ভাষায় বিনামূল্যে পিডিএফ বইয়ের সবচেয়ে বড় সংগ্রহ। আপনার প্রিয় বই এখনই ডাউনলোড করুন!
-      </p>
-      <nav class="footer-socials" aria-label="Social Media Links">
-        <a href="https://facebook.com/justboipdf" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://x.com/justboipdf" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/justboipdf" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-        <a href="https://sawutser.top/4/9288245" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-      </nav>
-    </section>
+    <div class="about-card">
+  <a href="/" class="home-icon" title="Go to Home">
+    <i class="fas fa-home"></i>
+  </a>
+  <h3 class="about-title">JustBoiPDF.COM</h3>
+  <p class="about-text">
+    বাংলা ও ইংরেজি ভাষায় বিনামূল্যে পিডিএফ বইয়ের সবচেয়ে বড় সংগ্রহ। আপনার প্রিয় বই এখনই ডাউনলোড করুন!
+  </p>
+  <div class="about-socials">
+    <a href="https://facebook.com/justboipdf" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://x.com/justboipdf" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.instagram.com/justboipdf" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://sawutser.top/4/9288245" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+</div>
 
-    <!-- Islamic Quotes -->
-    <section class="footer-section footer-quotes">
-      <h3 class="footer-title">📖 ইসলামিক উক্তি</h3>
-      <div id="quoteBox" class="quote-box">আল্লাহর উপর ভরসা করো।</div>
-    </section>
 
-    <!-- Advertisement -->
-    <section class="footer-section footer-ad">
-      <a href="https://sawutser.top/4/9288245" target="_blank" class="offer-card" aria-label="Special Offer">
-        <img src="https://i.ibb.co/35ZvYQ0V/pdf-download-now.jpg" alt="Special Offer">
-        <div class="offer-details">
-          <h4>🎁 Special Offer</h4>
-          <p>Click for details</p>
-        </div>
-      </a>
-    </section>
+    <!-- Dynamic Islamic Quotes -->
+    <div class="footer-quotes">
+      <h3>📖 ইসলামিক উক্তি</h3>
+      <div id="quoteBox">আল্লাহর উপর ভরসা করো।</div>
+    </div>
 
+    <!-- Ad Block -->
+<div class="footer-ad">
+  <a href="https://sawutser.top/4/9288245" target="_blank" class="offer-card">
+    <img src="https://i.ibb.co/35ZvYQ0V/pdf-download-now.jpg" alt="Special Offer">
+    <div class="offer-details">
+      <h4>🎁 Special Offer</h4>
+      <p>Click for details</p>
+    </div>
+  </a>
+</div>
+      
   </div>
 
   <!-- Copyright -->
-  <div class="footer-bottom">
+  <div style="background: rgba(0,0,0,0.2); padding: 20px 0; text-align: center;">
     <div class="container">
-      <p>
-        &copy; 2025 JustBoiPDF.COM | All Rights Reserved. |
-        <a href="#" class="footer-link" onclick="openModal(event)">Privacy Policy | Terms of Service</a>
+      <p style="margin: 0; color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+        &copy; 2025 JustBoiPDF.COM | All Rights Reserved. | 
+        <a href="#" 
+          style="color: rgba(255,255,255,0.7); text-decoration: none; transition: all 0.3s;"
+          onmouseover="this.style.color='var(--primary-color)'"
+          onmouseout="this.style.color='rgba(255,255,255,0.7)'"
+          onclick="document.getElementById('popupModal').style.display='block'; document.getElementById('modalOverlay').style.display='block'; return false;">
+          Privacy Policy | Terms of Service
+        </a>
       </p>
     </div>
   </div>
 
   <!-- Modal -->
-  <div id="modalOverlay" class="modal-overlay" onclick="closeModal()"></div>
-  <div id="popupModal" class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-header">
-      <button class="close-btn" onclick="closeModal()" aria-label="Close Modal">✖</button>
+  <div id="popupModal" style="
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      height: 80%;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+      z-index: 1000;">
+    <div style="text-align: right; padding: 10px;">
+      <button onclick="document.getElementById('popupModal').style.display='none'; document.getElementById('modalOverlay').style.display='none';" 
+              style="background: none; border: none; font-size: 20px;">✖</button>
     </div>
-    <iframe src="privacy-terms.html" title="Privacy Policy and Terms" style="width: 100%; height: 90%; border: none;"></iframe>
+    <iframe src="privacy-terms.html" style="width: 100%; height: 90%; border: none;"></iframe>
+  </div>
+
+  <div id="modalOverlay" style="
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 999;" 
+      onclick="document.getElementById('popupModal').style.display='none'; this.style.display='none';">
   </div>
 </footer>
 
-<!-- Enhanced Styles -->
+<!-- Styles -->
 <style>
   .site-footer {
     background: #121212;
@@ -1990,18 +2019,13 @@ modalDemoBtn.onclick = (e) => {
     padding-bottom: 40px;
   }
 
-  .footer-section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .footer-title {
+  .footer-about h3,
+  .footer-quotes h3 {
     font-size: 1.4rem;
-    margin-bottom: 10px;
+    margin-bottom: 16px;
   }
 
-  .footer-text {
+  .footer-about p {
     color: #ccc;
     line-height: 1.6;
   }
@@ -2009,7 +2033,7 @@ modalDemoBtn.onclick = (e) => {
   .footer-socials {
     display: flex;
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
   }
 
   .footer-socials a {
@@ -2029,7 +2053,7 @@ modalDemoBtn.onclick = (e) => {
     transform: scale(1.1);
   }
 
-  .quote-box {
+  .footer-quotes #quoteBox {
     background: #1e1e1e;
     padding: 16px;
     border-left: 4px solid #00cec9;
@@ -2044,90 +2068,22 @@ modalDemoBtn.onclick = (e) => {
     border-radius: 6px;
   }
 
-  .offer-details {
+  .footer-ad .ad-text {
     text-align: center;
     margin-top: 8px;
-    color: #fff;
   }
 
-  .offer-details p {
+  .footer-ad .ad-text h4 {
+    margin: 4px 0;
+  }
+
+  .footer-ad .ad-text span {
     font-size: 0.9rem;
     color: #aaa;
   }
-
-  .footer-bottom {
-    background: rgba(0,0,0,0.2);
-    padding: 20px 0;
-    text-align: center;
-  }
-
-  .footer-link {
-    color: rgba(255,255,255,0.7);
-    text-decoration: none;
-    transition: all 0.3s;
-  }
-
-  .footer-link:hover {
-    color: var(--primary-color, #00cec9);
-  }
-
-  /* Modal Styling */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    z-index: 999;
-  }
-
-  .modal-box {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%;
-    max-width: 700px;
-    height: 80%;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.5);
-    z-index: 1000;
-    overflow: hidden;
-  }
-
-  .modal-header {
-    text-align: right;
-    padding: 10px;
-    background: #f0f0f0;
-  }
-
-  .close-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-  }
-
-  @media (max-width: 600px) {
-    .footer-title {
-      font-size: 1.2rem;
-    }
-
-    .quote-box {
-      font-size: 0.95rem;
-    }
-
-    .modal-box {
-      height: 90%;
-    }
-  }
 </style>
 
-<!-- JavaScript -->
+<!-- Quote Rotator Script -->
 <script>
   const quotes = [
     "আল্লাহর উপর ভরসা করো।",
@@ -2147,19 +2103,8 @@ modalDemoBtn.onclick = (e) => {
     index = (index + 1) % quotes.length;
     document.getElementById("quoteBox").innerText = quotes[index];
   }, 4000);
-
-  function openModal(e) {
-    e.preventDefault();
-    document.getElementById("popupModal").style.display = "block";
-    document.getElementById("modalOverlay").style.display = "block";
-  }
-
-  function closeModal() {
-    document.getElementById("popupModal").style.display = "none";
-    document.getElementById("modalOverlay").style.display = "none";
-  }
 </script>
 
-<!-- Font Awesome -->
+<!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
