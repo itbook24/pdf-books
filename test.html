@@ -891,9 +891,9 @@ body {
     <!-- Download Popup -->
 <div class="download-popup-overlay" id="downloadOverlay"></div>
 <div class="download-popup" id="downloadPopup">
-    <h3>Download Ready</h3>
-    <p>Your download will be available in:</p>
-    <div class="download-timer-display" id="downloadTimer">5</div>
+    <h3>ডাউনলোড শীঘ্রই শুরু হবে</h3>
+<p>আমরা আপনার ডাউনলোড প্রস্তুত করছি, অনুগ্রহ করে অপেক্ষা করুন:</p>
+    <div class="download-timer-display" id="downloadTimer">10</div>
     <div class="download-popup-buttons">
         <button class="download-popup-cancel" id="downloadCancel">Cancel</button>
         <button class="download-popup-proceed" id="downloadProceed" style="display:none;">
@@ -1586,13 +1586,13 @@ function showDownloadPopup(url, filename) {
     // Reset UI state
     proceedBtn.style.display = 'none';
     timerDisplay.style.display = 'block';
-    timerDisplay.textContent = '5';
+    timerDisplay.textContent = '10';
     
     popup.style.display = 'block';
     overlay.style.display = 'block';
     
     // Start countdown
-    let seconds = 5;
+    let seconds = 10;
     downloadTimerInterval = setInterval(() => {
         seconds--;
         timerDisplay.textContent = seconds;
