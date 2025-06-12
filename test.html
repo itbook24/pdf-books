@@ -19,8 +19,147 @@
 
 <!-- Meta Author -->
 <meta name="author" content="JustBoipdf.com">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+ .load-more-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .btn-custom {
+        background: none;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-family: inherit;
+        padding: 8px;
+    }
+
+    .red-text-bg {
+        background-color: red;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 4px;
+    }
+
+    .btn-custom i {
+        color: red;
+    }
+.home-icon {
+  display: inline-block;
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-bottom: 12px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.home-icon:hover {
+  color: #007bff;
+  transform: scale(1.2);
+}
+body {
+  background-color: #000;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.about-card {
+  max-width: 420px;
+  margin: 60px auto;
+  padding: 30px;
+  background: rgba(30, 30, 30, 0.85);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+.about-text {
+  font-size: 1rem;
+  color: #ccc;
+  margin-bottom: 24px;
+  line-height: 1.6;
+}
+
+.about-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 8px;
+  background-color: #1a1a1a;
+  border-radius: 50%;
+  color: #bbb;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.about-socials a:hover {
+  background-color: #007bff;
+  color: #fff;
+  transform: translateY(-3px);
+}
+        
+        /* Special Offer Styling */
+.footer-ad {
+  display: flex;
+  justify-content: center;
+}
+
+.offer-card {
+  background: #1c1c1c;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 320px;
+  width: 100%;
+  color: white;
+}
+
+.offer-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+.offer-card img {
+  width: 100%;
+  display: block;
+}
+
+.offer-details {
+  padding: 16px;
+  text-align: center;
+}
+
+.offer-details h4 {
+  font-size: 1.2rem;
+  margin: 0 0 8px;
+  color: #00cec9;
+}
+
+.offer-details p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin: 0;
+}
+
         
         .quote-cards {
   display: grid;
@@ -453,7 +592,7 @@
             opacity: 0.5;
             cursor: not-allowed;
         }
-        
+
         /* Load More Button */
         .load-more-container {
             text-align: center;
@@ -464,7 +603,7 @@
         #load-more-btn {
             padding: 10px 30px;
             font-size: 1em;
-        }
+        }  
         
         /* Empty State */
         .empty-state {
@@ -685,9 +824,10 @@
             <select id="category-filter">
                 <option value="all">সকল বই</option>
                 <option value="ইসলামিক বই">ইসলামিক বই</option>
-                <option value="অনুপ্রেরণা">অনুপ্রেরণা</option>
-                <option value="business">ব্যবসা</option>
-                <option value="science">বিজ্ঞান</option>
+                <option value="আত্মশুদ্ধি ও অনুপ্রেরণা">আত্মশুদ্ধি</option>
+                <option value="ইসলামি উপন্যাস">ইসলামি উপন্যাস</option>
+                <option value="পরিবার ও সামাজিক জীবন">পরিবার ও জীবন</option>
+                <option value="ইসলামে নারী">ইসলামে নারী</option>
             </select>
         </div>
 
@@ -843,12 +983,14 @@
                 <!-- Pagination buttons will be inserted here by JavaScript -->
             </div>
             
-            <!-- Load More Button -->
-            <div class="load-more-container">
-                <button id="load-more-btn" class="btn btn-demo">
-                    <i class="fas fa-plus"></i> Load 15 More Books
-                </button>
-            </div>
+            <!-- Load More Button --> 
+<div class="load-more-container">
+    <button class="btn-custom">
+        <i class="fas fa-plus"></i> 
+        <span class="red-text-bg">Load 15 More Books</span>
+    </button>
+</div>
+
         </main>
     </div>
 
@@ -897,11 +1039,86 @@
     <script>
         // Bengali book data
         const books = [
+           {
+                id: 26,
+                title: "ইলমুল মানতিক PDF",
+                author: "হুযাইফাহ কাসিম",
+                category: "ইসলামিক বই",
+                cover: "https://i.ibb.co/358zPHJ6/ilmul-mantek-pdf-download.jpg",
+                demoUrl: "https://drive.google.com/file/d/1SOlQkYBNC-5iZQGGhdvDqqCdBd2g6Lxt/view",
+                downloadUrl: "https://www.dropbox.com/scl/fi/dny16987lwfy248zuevr5/justboipdf.com.pdf?rlkey=jek38yroq6s85ywsbtpp415t0&st=o24xl20l&dl=1",
+                pages: 112,
+                rating: 5.0,
+                date: "2023-01-01",
+                featured: true,
+                favorite: false,
+                description: "[ বিষয় : জামাতে কাফিয়া ] এটি কোন অনুবাদগ্রন্থ নয়, পাঠদান অভিজ্ঞতার আলোকে রচিত মৌলিক কিতাব। কিতাবের শুরুতে কয়েকটি উপকারী আলোচনা যুক্ত হয়েছে। নতুন তালিবুল ইলমদের জন্য যা কিতাব ও বিষয়ের প্রয়োজনীয়তা ও প্রয়োগপদ্ধতি বুঝতে সহায়ক হবে। প্রতিটি পাঠ যৌক্তিক ও বোধগম্য অবয়বে বিন্যস্ত। প্রতিটি পাঠ উদাহরণ সহকারে উপস্থাপনের পর ‘মূলকথা’ শিরোনামে সংক্ষেপে তুলে ধরা হয়েছে, যা মুখস্থের ক্ষেত্রে সহায়ক। পাঠ-শেষে প্রয়োজনীয় অনুশীলনী যুক্ত হয়েছে। পাঠ-শেষে পঠিত সংজ্ঞাগুলো নকশা আকারে তুলে ধরা হয়েছে, যা মনে রাখার ক্ষেত্রে সহায়ক। যেকোন শাস্ত্রের প্রথম পাঠ মাতৃভাষায় হওয়া চাই’ এই মূলনীতি বিবেচনায় কিতাবটি প্রাথমিক স্তরে উর্দূ ‘তাইসীরুল মানতেক’-এর বিকল্পপাঠ হিসেবে প্রস্তাবিত।"
+            },
+            {
+                id: 25,
+                title: "কাল থেকে ভালো হয়ে যাব PDF",
+                author: "মাহিন মাহমুদ",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
+                cover: "https://i.ibb.co/zTZwNdKv/kal-theke-valo-hoye-jabo-justboipdf.png",
+                demoUrl: "https://drive.google.com/file/d/1RZ-jj5aqPBOx8lSVCbSzsJNXms8PWSDI/view",
+                downloadUrl: "https://www.dropbox.com/scl/fi/fy5jxfmdier4x7ri3pjjg/justboipdf.com.pdf?rlkey=e5jy8pvhpl9oo2yfugb3tsr25&st=d9k3w8tr&dl=1",
+                pages: 301,
+                rating: 4.0,
+                date: "2022-01-01",
+                featured: true,
+                favorite: false,
+                description: "[ বিষয় : আত্মশুদ্ধি ও অনুপ্রেরণা ] আজ নয় কাল। এখন নয় একটু পর। এই একটি ভাবনাই আমাকে ‘পরপারের পাথেয় সংগ্রহ প্রতিযোগিতা’ থেকে পিছিয়ে দেওয়ার জন্য যথেষ্ট।এই ভাবনার জনক আর কেউ না; অভিশপ্ত শয়তান। সে সারাক্ষণই আমাদের পেছনে লেগে আছে। ভালো হতে চাইলেই বাধা দেবে। পাশে বসে কানের কাছে ফিঁসফিঁস করে অনুরোধ করতে থাকবে—’স্যার, এত তাড়াতাড়ি ভালো হয়ে যাবেন? লাইফটা তাহলে ইনজয় করবে কে?… গুনাহ নিয়ে এত টেনশন করার তো কিছু নেই! আল্লাহ অতি দয়াবান। নিশ্চয় তিনি মাফ করে দেবেন। যত পারেন চালিয়ে যান। তা ছাড়া হায়াত তো পড়েই আছে! ভালো যদি হতেই চান, কাল থেকে হবেন; আজই কেন?"
+            },
+            {
+                id: 24,
+                title: "টাইম ম্যানেজমেন্ট PDF",
+                author: "ইসমাইল কামদার",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
+                cover: "https://i.ibb.co/cSXvTT8h/time-management-pdf-download.jpg",
+                demoUrl: "https://drive.google.com/file/d/1Qmav4VNVqwHGW644SQOj3OTM9oPiQVra/view",
+                downloadUrl: "https://www.dropbox.com/scl/fi/jbsdorf00xs3schpnyonk/.pdf?rlkey=fcdxi9ajy7kms0isc40ik09h4&st=ewt9g8hg&dl=1",
+                pages: 99,
+                rating: 4.4,
+                date: "2022-01-01",
+                featured: true,
+                favorite: false,
+                description: "[ বিষয় : আত্মশুদ্ধি ও অনুপ্রেরণা, প্রোডাক্টিভিটি ] ইমাম আবু হানিফা রহ.-এর রেশমি কাপড়ের কাজ করার একটি বড় ঘর ছিল। তাঁর কাছে অনেক পোশাক শ্রমিক ও কারিগর থাকত। অর্থাৎ তিনিও প্রায় ব্যস্ত ছিলেন। ইবনুল মুবারক রহ.-ও একজন ব্যবসায়ী ছিলেন। আবার তিনি ফিকহ, হাদীস ও জুহদের ইমামও ছিলেন।হামজা ইবনে হাবিব আজ-জাইয়্যাত রহ. । তিনি সাত কারিদের একজন ছিলেন। তিনি কুফা থেকে হালওয়ানে তেল আমদানি করতেন। ইমাম নববি রহ. তাঁর বাবাকে দোকানের কাজে সহায়তা করতেন। এই কাজ তাঁকে সে অল্প বয়সেও পবিত্র কুরআন হিফয করায় বাধা দিতে পারেনি।ওপরে যাদের উদ্বৃতি দেয়া হয়েছে, তাঁরা সবাই মানুষ ছিলেন, যান্ত্রিক রোবট নয়। তাদের পরিবার ছিল, সন্ন্যাসীর জীবন নয়। দুনিয়াবি প্রয়োজন ছিল, পেটের ক্ষুধা ছিল, পরিবারের চাহিদা ছিল। সব-ই তারা সাধ্য মতো পূরণ করতেন। তথাপি প্রায় সকলেই হয়েছেন যুগশ্রেষ্ঠ আলিম। কেউ বলতে পারে, ‘ভাই এগুলো এ্যাক্সেপশনাল কেইস।’ কিন্তু ইসলামের ইতিহাস বলে, মুসলিমরা এরকমই কর্মমুখোর ছিল। তারা সময়ের কদর করতেন, তাই সময় তাদের নিকট কল্যাণের অজস্র বারিধারা সহ হাজির হয়েছে। তাঁরা সত্যিকারের ইলমপিয়াসু ছিলেন, ইলমের ওপর আমল করতেন, তাই ইলম তাদের উভয় জাহানে করেছে সম্মানিত।সময় ব্যবস্থাপনা স্রেফ অমুসলিমদের জন্যই না, বরং আমাদের নেককার পূর্বপুরুষদেরও জীবনের একটি অংশ ছিল। তারা সময় ব্যবস্থাপনা শিখতেন, এবং সেখাতেন। সেই লক্ষ্য থেকেই ইসমাইল কামদার কুরআন সুন্নাহর আলোকে অসাধারণ এই বইটি বই রচনা করেছেন। এতে তিনি সময় ব্যবস্থাপনা নিয়ে কার্যকরী নানান কৌশল আলোচনা করেছেন এবং রকমারি রুটিন তৈরির দ্বারা পাঠকের জন্য অত্যন্ত সহজ করে দেয়া হয়েছে।"
+            },
+            {
+                id: 23,
+                title: "কুরবানী গাইডলাইন PDF",
+                author: "মাওলানা শিহাব সাকিব",
+                category: "ইসলামিক বই",
+                cover: "https://i.ibb.co/jZGXTBNw/kurbani-guideline-pdf-justboipdf-com.jpg",
+                demoUrl: "https://drive.google.com/file/d/1R6-jzB2Y3TGmicz6gHoMAOce14OIgFcn/view",
+                downloadUrl: "https://www.dropbox.com/scl/fi/hj3coe0ha4rhsfgpvq7qf/JustBoipdf.com.pdf?rlkey=9pawgvyumq1rzx0nz4ixhnsbc&st=8d61917p&dl=1",
+                pages: 27,
+                rating: 4.7,
+                date: "2020-01-04",
+                featured: true,
+                favorite: false,
+                description: "[ বিষয় : ইবাদত ও আমল, হজ্জ-উমরাহ ও কুরবানি ] “কুরবানী গাইডলাইন” বইটি কুরবানীর ইসলামী বিধান, নিয়ম-কানুন ও গুরুত্বপূর্ণ মাসআলা-মাসায়েল সহজ ভাষায় উপস্থাপন করে। মাওলানা শিহাব সাকিব অত্যন্ত সংক্ষিপ্ত অথচ পূর্ণাঙ্গভাবে কুরবানীর মূল উদ্দেশ্য, শরয়ী শর্ত, পশু নির্বাচনের নিয়ম, কুরবানীর সময়সীমা ও বণ্টননীতি তুলে ধরেছেন। বইটি মাত্র ২৭ পৃষ্ঠার হলেও এতে প্রয়োজনীয় সব দিকনির্দেশনা সন্নিবেশিত আছে, যা একজন মুসলিমকে সচেতনভাবে কুরবানী আদায় করতে সহায়তা করে। বিশেষ করে যারা কুরবানী বিষয়ে দ্বিধান্বিত হন কিংবা বিশুদ্ধ তথ্য চান, তাদের জন্য এটি অত্যন্ত উপযোগী একটি গ্রন্থ। লেখক সরল ভাষায় কুরআন ও হাদীসের দলিলসহ বিষয়গুলো ব্যাখ্যা করেছেন।"
+            },
+            {
+                id: 22,
+                title: "প্রাসাদপুত্র PDF",
+                author: "মাহিন মাহমুদ",
+                category: "ইসলামি উপন্যাস",
+                cover: "https://i.ibb.co/0P64RJb/prashadputro-pdf-download-free.webp",
+                demoUrl: "https://drive.google.com/file/d/1Q-iqwNjlnjUwFTob7fJnBtVeQ7BZq0GF/view",
+                downloadUrl: "https://www.dropbox.com/scl/fi/cvvkwbuzfpof536bapoh7/JustBoipdf.com.pdf?rlkey=7wkr6uhtvotlrqub8cu9xodb8&st=mm5hf6ib&dl=1",
+                pages: 122,
+                rating: 4.8,
+                date: "2020-01-06",
+                featured: true,
+                favorite: false,
+                description: "[ বিষয় : ইসলামি উপন্যাস ] আদি। বিশ্ববিদ্যালয়ে পড়ে। বিরাট বড়লোকের ছেলে। দ্বীনে আসার পর বাবার অবৈধ আয়-উপার্জন তাকে আর চুপ থাকতে দেয় না। প্রতিবাদ করে। তখনই ঘটে বিপত্তি। বাবার প্রাসাদোপম বাড়ি থেকে তাকে বিতাড়িত হতে হয়। প্রাসাদ ছেড়ে এসে, অতি সাধারণ একটা মেসে শুরু হয় আদি’র সাদাসিধে জীবন। যে জীবনে প্রাচুর্য নেই; কিন্তু হৃদয়ভরা প্রশান্তি আছে। আছে স্রষ্টাকে নিয়ে ভাবার অফুরন্ত উপকরণ। অন্যের উপকারের ভাবনা আদিকে তাড়িয়ে বেরায়। এই ভাবনা তাকে নিয়ে যায় সিলেটের শ্রীমঙ্গলে। একজন ইমাম সাহেবের উপকার করতে গিয়ে মহা সংকটে পড়ে আদি। ’আদি’ আমাদের গল্পের মূল ভাবনা হলেও, ইমাম সাহেবই যেন ছড়িয়ে আছেন এই গল্পের ‘অন্তে’। ইমাম সাহেবকে খুঁজতে গিয়ে ঘটতে থাকে নানান বিচিত্র ঘটনা! একে একে সামনে আসতে থাকে চরম কিছু বাস্তবতা। কে এই ইমাম! ট্রেনে আদির সঙ্গে পরিচয় হয় একজন বই-বালকের। স্মার্টফোনের এই যুগেও বইয়ের পাতায় ডুবে থাকাই যার নেশা। এই নেশার আড়ালে তার অন্য কোনো পেশা নেই তো!…কে এই বালক!! আদির ব্যাগ চুরি হয় ট্রেনেই। ব্যাগে ছিল জরুরি কিছু কাগজপত্র আর নগদ টাকা। ব্যাগ হাতিয়ে নেওয়াই চোরের উদ্দেশ্য ছিল না। তাহলে উদ্দেশ্যটা কী! কিছু বিভ্রাট। কিছু রোমাঞ্চ। অনেক রহস্য। আর, কিছু চরম সত্যের মুখোমুখি নিয়ে দাঁড় করাবে পাঠককে।"
+            },
             {
                 id: 21,
                 title: "হে আমার মুসলিম বোন PDF",
                 author: "ড. মুহাম্মদ ইবনে আবদুর রহমান আরিফী",
-                category: "অনুপ্রেরণা",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/C5J0Yt3R/hey-amar-muslim-bon-pdf-download.jpg",
                 demoUrl: "https://pdf.justboipdf.com/coming-soon.html",
                 downloadUrl: "#",
@@ -916,7 +1133,7 @@
                 id: 20,
                 title: "আত্মবিশ্বাস PDF",
                 author: "ড. মুহাম্মদ ইবনে আবদুর রহমান আরিফী",
-                category: "অনুপ্রেরণা",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/Gv25Jm8L/atto-bisshash-pdf-download.jpg",
                 demoUrl: "https://drive.google.com/file/d/1OsBO-SpSMt2urFWr_cR7E5USKwAp3GTm/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/h4y65oth0ecxplu22r4vh/justboipdf.com.pdf?rlkey=ygjovbb279dzbr5xnvwho0tfm&st=ehf5xr7b&dl=1",
@@ -931,7 +1148,7 @@
                 id: 19,
                 title: "আছে কোনো অভিযাত্রী PDF",
                 author: "আবদুল মালিক আল কাসিম",
-                category: "অনুপ্রেরণা",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/yF4nkVxP/ache-kono-ovijattri-pdf-download-justboipdf.jpg",
                 demoUrl: "https://drive.google.com/file/d/1O1cPvLqovwIrJzmFQlubeFr96udC5kEC/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/cuk14llojp4960yuu6uf2/justboipdf.pdf?rlkey=k0ai9qxkvoy9rbqc4r6ijky6r&st=ql3go0o7&dl=1",
@@ -946,7 +1163,7 @@
                 id: 18,
                 title: "পার্থিব জীবনে জান্নাতি সুখ PDF",
                 author: "ড. খালিদ আবু শাদি",
-                category: "অনুপ্রেরণা",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/XZ3stntb/parthibo-jibone-jannati-sukh-pdf-justboipdf.jpg",
                 demoUrl: "https://drive.google.com/file/d/1N_Aom-Uc3XUccUBxnqG7LzX6-Zk8hXyP/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/yyomurgjzv2d104ns7vek/pdf-justboipdf.com.pdf?rlkey=50alvlr0coj6whiblj5mkrbiy&st=wii9reqt&dl=1",
@@ -961,7 +1178,7 @@
                 id: 17,
                 title: "বিলিয়ন ডলার মুসলিম PDF",
                 author: "খুরাম মালিক",
-                category: "অনুপ্রেরণা",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/27bS9ZLq/billion-dollar-muslim-pdf-justboipdf.png",
                 demoUrl: "https://drive.google.com/file/d/1NFjcOP2B01ysexGl3jx1rFxrf7L9k_zq/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/nqruuqy1ozdvkclxa4bfo/pdf.justboipdf.com.pdf?rlkey=6dqf1t5q5ivpu8570nnq7yskb&st=hss17yj3&dl=1",
@@ -976,7 +1193,7 @@
                 id: 16,
                 title: "হে আমার মেয়ে PDF",
                 author: "শাইখ আলী তানতাভী",
-                category: "অনুপ্রেরণা",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/VYtQwgkF/he-amar-meye-pdf-justboipdf.jpg",
                 demoUrl: "https://drive.google.com/file/d/1N9xnK5_yynmw4NccgzfND0T3pjULTm0d/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/1qj5lvegz93joty08pa1k/pdf-pdf.justboipdf.com.pdf?rlkey=hqf1lov5w9idtzm8mdblo3tm7&st=e3xbwbkh&dl=1",
@@ -991,7 +1208,7 @@
                 id: 15,
                 title: "ফিরে এসো ক্ষমার পথে PDF",
                 author: "ড. মুহাম্মদ ইবনে আবদুর রহমান আরিফী",
-                category: "অনুপ্রেরণা",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/2xSgX5Q/fire-eso-khomar-pothe-pdf-justboipdf.jpg",
                 demoUrl: "https://drive.google.com/file/d/1N3Cynt2NF5pf4Uc10xEOwYMipZ5IeXBT/view",
                 downloadUrl: "https://drive.usercontent.google.com/uc?id=1N3Cynt2NF5pf4Uc10xEOwYMipZ5IeXBT&export=download",
@@ -1006,7 +1223,7 @@
                 id: 14,
                 title: "সময় কখনো ফিরে আসে না PDF",
                 author: "আবদুল মালিক আল কাসিম",
-                category: "অনুপ্রেরণা",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/nNmRPVGf/shomoy-kokhonow-fire-ashe-na-pdf-download-justboipdf.jpg",
                 demoUrl: "https://drive.google.com/file/d/1Lr9lvZGS5EIe4RPhUQAOmOhCqKmRctau/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/a6rta46n7pv5u4bd84lkg/JustBoipdf.com.pdf?rlkey=sreszm3qpc6hyrymeozlo5a2y&st=ipnz204h&dl=1",
@@ -1021,7 +1238,7 @@
                 id: 13,
                 title: "শো আপ : মুসলিম নারীদের প্রেরণার বার্তা PDF",
                 author: "নাইমা বি. রবার্ট",
-                category: "অনুপ্রেরণা",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/ccFhhjpq/show-up-pdf-download-justboipdf.jpg",
                 demoUrl: "https://drive.google.com/file/d/1Lq8wZ73pdCfSFjJRC6C5eH6LR3eICknL/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/w1cshk57m8ljl9yf28b7e/pdf-justboipdf.com.pdf?rlkey=vz6rq7lecjelcn40cb2u1ba3c&st=9hmdarbz&dl=1",
@@ -1036,7 +1253,7 @@
                 id: 12,
                 title: "কুরআন থেকে নেওয়া জীবনের পাঠ PDF",
                 author: "আরিফ আজাদ",
-                category: "ব্যবসা",
+                category: "ইসলামি উপন্যাস",
                 cover: "https://i.ibb.co/tM1TLsBF/quran-theke-neya-jiboner-path-pdf-justboipdf.jpg",
                 demoUrl: "https://drive.google.com/file/d/12MS4_ZWxB1UQhrdD8P9rodp1LHjrn_Xc/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/wkmapgq69lbgc75mzx51r/JustBoipdf.com.pdf?rlkey=q4dfxwfyao4t9sqxwnbf9pr32&st=5vo6n8l0&dl=1",
@@ -1051,7 +1268,7 @@
                 id: 11,
                 title: "ডাক দিয়ে যাই তোমায় হে মুসলিম তরুণী PDF",
                 author: " উসতাজ হাসসান শামসি পাশা",
-                category: "ইসলামিক বই",
+                category: "ইসলামে নারী",
                 cover: "https://i.ibb.co/h1fcswkP/dak-diye-jai-tomay-hey-muslim-toruni-pdf-justboipdf.webp",
                 demoUrl: "https://drive.google.com/file/d/1IBfeuDJ8UQHHEcwAGcSEsL8k82VMZp13/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/dujiukdw0ociv34p0qfeg/JustBoipdf.com.pdf?rlkey=ixr2ff8gu0b63h6geja2bc8gd&st=ft5ooq8w&dl=1",
@@ -1066,7 +1283,7 @@
                 id: 10,
                 title: "বেলা ফুরাবার আগে PDF",
                 author: " আরিফ আজাদ",
-                category: "ইসলামিক বই",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/yB8gnMXr/bela-furabar-age-pdf-justboipdf.webp",
                 demoUrl: "https://drive.google.com/file/d/1LQ1MllAnFGyX-NmKSIMbBVSQQRRgUXom/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/6udd482egm2v3zjrffulw/JustBoipdf.com-1.pdf?rlkey=mdt6dopbkp6fm87k3enl85cfm&st=jijaw2ty&dl=1",
@@ -1081,7 +1298,7 @@
                 id: 9,
                 title: "বিয়ের এপিঠ ওপিঠ PDF",
                 author: "জাকারিয়া মাসুদ",
-                category: "ইসলামিক বই",
+                category: "পরিবার ও সামাজিক জীবন",
                 cover: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh00uqcUiXxcvfffSxDNlFCMAj7Q-wh1JbS6haQArCwajXNshRuH0EhT2vsskbLwsKF1B7x-FDj5Rmtd7z2sQtIBK9f_wYsT5uh9EJzn1IJ9BQVp5k5uS-wZiWYLejhJK2EbR0dlT1wRm2kI4oIaMndkkZ81l5OQ7Fu39zk3YqqCIcFMlo9gg5-_VWdJ4bK/s389/Biyer-Epith-Opthit-pdf-download.webp",
                 demoUrl: "https://www.justboipdf.com/2024/05/biyer-epith-opith-pdf.html",
                 downloadUrl: "https://www.justboipdf.com/2024/05/biyer-epith-opith-pdf.html",
@@ -1090,7 +1307,7 @@
                 date: "2024-01-01",
                 featured: true,
                 favorite: false,
-                description: "বিয়ের সাথে অনেক স্বপ্ন জড়িয়ে আছে। নামটা শুনলেই মনে একটা উদ্দীপনা আসে। চোখে ভাসে এক রঙিন সংসারের দৃশ্য। যেখানে শুধু সুখ আর সুখ, ভালোবাসারা আর ভালোবাসা। চারিদিকে ছড়ানো শুধু লাভ ক্যান্ডি। হ্যাঁ, বিয়ের মাধ্যমে এসব অর্জন হয়। কিন্তু এটাই কি বিয়ের শেষকথা? এরপরে কি আর কোনো আখ্যান নেই? দায়িত্ব, কর্তব্য, জিম্মাদারি, পেরেশানি, মনোমালিন্য, অনাকাঙ্ক্ষিত পরিস্থিতি—এগুলো কি নেই? বিয়ের পূর্বে নানান ফ্যান্টাসি লালন করার কারণে, সংসার জীবনে এসে অনেকেই ভীষণ হোচট খায়। বিয়ের উল্টো পিঠ না-জানা থাকার ফলে বিপরীতধর্মী মানুষের সাথে মানিয়ে নিতে তার কষ্ট হয়। আবেগের মোহ কেটে যখন বাস্তবতা সামনে এসে দাঁড়ায়, তখন সে নিজেকে মনে করতে থাকে অস্ত্রহীন যোদ্ধার মতন। ধাক্কা খেতে খেতে অনেকেই হাল ছেড়ে দেয়। বাড়তে থাকে দাম্পত্য-কলহ, বিবাহ-বিচ্ছেদ। তাই বিয়ে সম্পর্কে সঠিক ধারণা রাখা সকলের ওপর জরুরি। সমস্ত ফ্যান্টাসি ঝেড়ে আমরা যদি সঠিক প্রস্তুতি নিতে পারি, তাহলে সংসারটা হয়ে উঠবে জান্নাতের একটি টুকরো। জীবনের তীব্র কষ্টের মূহূর্তগুলোও হয়ে উঠবে চরম প্রশান্তিকর। স্বামী-স্ত্রী-সন্তান-সন্ততি নিয়ে গড়ে উঠবে এক চোখ-জুড়ানো পরিবার। বইটিকে বলা যায় বিয়ে ও নারী-পুরুষের মনস্তত্ত্ব সম্পর্কে এক প্র্যাকটিক্যাল গাইডলাইন। এর প্রতিটি অধ্যায় আপনাকে দিবে বাস্তবতার সবক। সংসার জীবনে সঠিক পদক্ষেপ নিতেও উৎসাহ জাগাবে সমানতালে। বইটি যেমন অবিবাহিতদের জন্যে জরুরি, ঠিক তেমনি উপকারী বিবাহিতদের জন্যেও। অবিবাহিতরা যেমন বিয়ের আগেকার করণীয় দিক সম্পর্কে গাইডলাইন পাবেন, তেমনি বিবাহিতরা খুঁজে পাবেন সংসার-জীবনে ভারসাম্য আনার দারুণ সব সূত্র। এর বাইরে পশ্চিমা জীবনধারাকে ছুড়ে ফেলে ইসলামের কাছে আশ্রয় নেওয়ার তীব্র বাসনাও তৈরি হবে। ফ্যান্টাসি ঝেড়ে ফেলে আপনিও হয়ে উঠবেন দায়িত্ববান পুরুষ ও নারী।"
+                description: " [ বিষয় : পরিবার ও সামাজিক জীবন ] বিয়ের সাথে অনেক স্বপ্ন জড়িয়ে আছে। নামটা শুনলেই মনে একটা উদ্দীপনা আসে। চোখে ভাসে এক রঙিন সংসারের দৃশ্য। যেখানে শুধু সুখ আর সুখ, ভালোবাসারা আর ভালোবাসা। চারিদিকে ছড়ানো শুধু লাভ ক্যান্ডি। হ্যাঁ, বিয়ের মাধ্যমে এসব অর্জন হয়। কিন্তু এটাই কি বিয়ের শেষকথা? এরপরে কি আর কোনো আখ্যান নেই? দায়িত্ব, কর্তব্য, জিম্মাদারি, পেরেশানি, মনোমালিন্য, অনাকাঙ্ক্ষিত পরিস্থিতি—এগুলো কি নেই? বিয়ের পূর্বে নানান ফ্যান্টাসি লালন করার কারণে, সংসার জীবনে এসে অনেকেই ভীষণ হোচট খায়। বিয়ের উল্টো পিঠ না-জানা থাকার ফলে বিপরীতধর্মী মানুষের সাথে মানিয়ে নিতে তার কষ্ট হয়। আবেগের মোহ কেটে যখন বাস্তবতা সামনে এসে দাঁড়ায়, তখন সে নিজেকে মনে করতে থাকে অস্ত্রহীন যোদ্ধার মতন। ধাক্কা খেতে খেতে অনেকেই হাল ছেড়ে দেয়। বাড়তে থাকে দাম্পত্য-কলহ, বিবাহ-বিচ্ছেদ। তাই বিয়ে সম্পর্কে সঠিক ধারণা রাখা সকলের ওপর জরুরি। সমস্ত ফ্যান্টাসি ঝেড়ে আমরা যদি সঠিক প্রস্তুতি নিতে পারি, তাহলে সংসারটা হয়ে উঠবে জান্নাতের একটি টুকরো। জীবনের তীব্র কষ্টের মূহূর্তগুলোও হয়ে উঠবে চরম প্রশান্তিকর। স্বামী-স্ত্রী-সন্তান-সন্ততি নিয়ে গড়ে উঠবে এক চোখ-জুড়ানো পরিবার। বইটিকে বলা যায় বিয়ে ও নারী-পুরুষের মনস্তত্ত্ব সম্পর্কে এক প্র্যাকটিক্যাল গাইডলাইন। এর প্রতিটি অধ্যায় আপনাকে দিবে বাস্তবতার সবক। সংসার জীবনে সঠিক পদক্ষেপ নিতেও উৎসাহ জাগাবে সমানতালে। বইটি যেমন অবিবাহিতদের জন্যে জরুরি, ঠিক তেমনি উপকারী বিবাহিতদের জন্যেও। অবিবাহিতরা যেমন বিয়ের আগেকার করণীয় দিক সম্পর্কে গাইডলাইন পাবেন, তেমনি বিবাহিতরা খুঁজে পাবেন সংসার-জীবনে ভারসাম্য আনার দারুণ সব সূত্র। এর বাইরে পশ্চিমা জীবনধারাকে ছুড়ে ফেলে ইসলামের কাছে আশ্রয় নেওয়ার তীব্র বাসনাও তৈরি হবে। ফ্যান্টাসি ঝেড়ে ফেলে আপনিও হয়ে উঠবেন দায়িত্ববান পুরুষ ও নারী।"
             },
              {
                 id: 8,
@@ -1105,7 +1322,7 @@
                 date: "2008-08-01",
                 featured: true,
                 favorite: false,
-                description: "বর্তমান যুগ হলো প্রেজেন্টাশানের যুগ। একটা জিনিসকে আপনি কিভাবে, কতোটা সহজে, কতোটা সাবলীলভাবে, কতোটা মাধুর্যতায় প্রেজেন্টেশান করছেন তার উপর কিন্তু অনেক কিছুই নির্ভর করে। ন্যাচারালি, মানুষের একটা স্বভাব হচ্ছে – এরা তত্ত্বকথা খুব কম হজম করতে পারে। এরা চায় সহজবোধ্যতা। প্যারাডক্সিক্যাল সাজিদ এর লেখক আরিফ আজাদ ঠিক এই পদ্ধতিই বেছে নিয়েছেন। তিনি গতানুগতিক লেকচার বা তত্বকথার ধাঁচে না গিয়ে, বক্তব্যের বিষয়গুলোকে গল্পের ধাঁচে ফেলে সাজিয়েছেন। প্রতিটি গল্পের শুরুতেই আছে মজার, আগ্রহ উদ্দীপক একটি সূচনা। কোথাও বা গল্পের কেন্দ্রীয় চরিত্র সাজিদের সাথে তাঁর বন্ধু আরিফের খুনসুটি, কোথাও বা মজার কোন স্মৃতির রোমন্থন, কোথাও বা আছে সিরিয়াস কোন ব্যাপারে সিরিয়াস কোন হুশিয়ারি। গল্পে মজা আছে, আনন্দ আছে। মোটামুটি, সার্থক গল্পে যা যা উপাদান থাকা দরকার, যা যা থাকলে পাঠকের গল্প পাঠে বিরক্তি আসেনা, রুচি হারায় না- তার সবকিছুর এক সম্মিলিত সন্নিবেশ যেন লেখক আরিফ আজাদের এই সিরিজের একেকটি এপিসোড। গল্পে গল্পে যুক্তি খন্ডন, পাল্টা যুক্তি ছুঁড়ে দেওয়া, পরম মমতায় অবিশ্বাসের অন্ধকার দূরীকরণে এ যেন এক বিশ্বস্ত শিল্পী।"
+                description: " [ বিষয় : ইসলামি আদর্শ ও মতবাদ ] বর্তমান যুগ হলো প্রেজেন্টাশানের যুগ। একটা জিনিসকে আপনি কিভাবে, কতোটা সহজে, কতোটা সাবলীলভাবে, কতোটা মাধুর্যতায় প্রেজেন্টেশান করছেন তার উপর কিন্তু অনেক কিছুই নির্ভর করে। ন্যাচারালি, মানুষের একটা স্বভাব হচ্ছে – এরা তত্ত্বকথা খুব কম হজম করতে পারে। এরা চায় সহজবোধ্যতা। প্যারাডক্সিক্যাল সাজিদ এর লেখক আরিফ আজাদ ঠিক এই পদ্ধতিই বেছে নিয়েছেন। তিনি গতানুগতিক লেকচার বা তত্বকথার ধাঁচে না গিয়ে, বক্তব্যের বিষয়গুলোকে গল্পের ধাঁচে ফেলে সাজিয়েছেন। প্রতিটি গল্পের শুরুতেই আছে মজার, আগ্রহ উদ্দীপক একটি সূচনা। কোথাও বা গল্পের কেন্দ্রীয় চরিত্র সাজিদের সাথে তাঁর বন্ধু আরিফের খুনসুটি, কোথাও বা মজার কোন স্মৃতির রোমন্থন, কোথাও বা আছে সিরিয়াস কোন ব্যাপারে সিরিয়াস কোন হুশিয়ারি। গল্পে মজা আছে, আনন্দ আছে। মোটামুটি, সার্থক গল্পে যা যা উপাদান থাকা দরকার, যা যা থাকলে পাঠকের গল্প পাঠে বিরক্তি আসেনা, রুচি হারায় না- তার সবকিছুর এক সম্মিলিত সন্নিবেশ যেন লেখক আরিফ আজাদের এই সিরিজের একেকটি এপিসোড। গল্পে গল্পে যুক্তি খন্ডন, পাল্টা যুক্তি ছুঁড়ে দেওয়া, পরম মমতায় অবিশ্বাসের অন্ধকার দূরীকরণে এ যেন এক বিশ্বস্ত শিল্পী।"
             },
             {
                 id: 7,
@@ -1120,14 +1337,14 @@
                 date: "2019-02-15",
                 featured: true,
                 favorite: false,
-                description: "ইসলাম কারও শত্রু হতে আসেনি। ইসলাম এসেছে মানুষকে ভুলে যাওয়া ওয়াদা স্মরণ করিয়ে দিতে, যে ওয়াদা আমরা প্রত্যেকেই দিয়ে এসেছি আল্লাহর কাছে রূহের জগতে। এবং আমাদের আসল শত্রু ইবলিশ শয়তানকে চিনিয়ে দিতেই আল্লাহ্‌ পাঠিয়েছেন যুগে যুগে নবি রসূল। কিন্তু কিছু লোক সেই শত্রুকে ছেড়ে ইসলামকেই শত্রু হিশেবে নিয়েছে! এর পেছনে একাধিক কারণ থাকলেও অন্যতম একটি কারণ হচ্ছে, নষ্ট হওয়া ফিতরাতি বুঝ। সহজাত বিবেক যে বিষয়ে সাক্ষ্য দেবার কথা অনায়াসে, সে বিষয়েই সে সংশয়গ্রস্ত বিভিন্ন যুক্তিতে। কখনো বিজ্ঞান, কখনো জাতীয়তাবাদ, কখনও-বা পশ্চিমাদের বুলির প্রতিফলন ঘটে তাদের মাঝে। আপাদমস্তক এদেরকে যুক্তিবাদী মনে হলেও বস্তুত এদের অধিকাংশই স্রেফ বিদ্বেষ পোষণকারী। সত্য-মিথ্যার মানদণ্ডকে ঘুরিয়ে দেয়া, অতঃপর জেনে বুঝে ইসলামের সাথে শত্রুতায় লিপ্ত হওয়া—এটাই এদের উদ্দেশ্য। নাস্তিক্যবাদের আড়ালে এভাবে ইসলাম বিদ্বেষ লালন শুরু হয়েছে বেশ কয়েক বছর আগেই। তথাপি এদের কথার মারপ্যাঁচে পড়ে অনেক বুদ্ধিদীপ্ত যুবক-যুবতী ধরছে নাস্তিকতার পথ। এদের অনেকেই সত্য-সন্ধানী। সত্যের প্রতি বিনয়ী সেই যুব সমাজের জন্য আরিফ আজাদ নিয়ে আসে এই বাংলার জমিনে ‘প্যারাডক্সিক্যাল সাজিদ’। গল্পের আঙ্গিকে, যুক্তি এবং বিজ্ঞানের আলোকে সংশয়বাদীদের মাঝে প্রচলিত সকল প্রশ্নের জবাব তিনি লিখেছেন বইটিতে। ইতিপূর্বে পাঠক সমাজে ব্যাপক আলোড়ন সৃষ্টি করে এই বই। ছাত্র-শিক্ষক থেকে শুরু করে মানুষ দলে দলে কেনা শুরু করে বইটি এবং সংশয়ের পথ ছেড়ে ইসলামের পথে ফিরে আসে। সেই ধারাবাহিকতায় এবার প্যারাডক্সিক্যাল সাজিদ-২"
+                description: " [ বিষয় : ইসলামি আদর্শ ও মতবাদ ] ইসলাম কারও শত্রু হতে আসেনি। ইসলাম এসেছে মানুষকে ভুলে যাওয়া ওয়াদা স্মরণ করিয়ে দিতে, যে ওয়াদা আমরা প্রত্যেকেই দিয়ে এসেছি আল্লাহর কাছে রূহের জগতে। এবং আমাদের আসল শত্রু ইবলিশ শয়তানকে চিনিয়ে দিতেই আল্লাহ্‌ পাঠিয়েছেন যুগে যুগে নবি রসূল। কিন্তু কিছু লোক সেই শত্রুকে ছেড়ে ইসলামকেই শত্রু হিশেবে নিয়েছে! এর পেছনে একাধিক কারণ থাকলেও অন্যতম একটি কারণ হচ্ছে, নষ্ট হওয়া ফিতরাতি বুঝ। সহজাত বিবেক যে বিষয়ে সাক্ষ্য দেবার কথা অনায়াসে, সে বিষয়েই সে সংশয়গ্রস্ত বিভিন্ন যুক্তিতে। কখনো বিজ্ঞান, কখনো জাতীয়তাবাদ, কখনও-বা পশ্চিমাদের বুলির প্রতিফলন ঘটে তাদের মাঝে। আপাদমস্তক এদেরকে যুক্তিবাদী মনে হলেও বস্তুত এদের অধিকাংশই স্রেফ বিদ্বেষ পোষণকারী। সত্য-মিথ্যার মানদণ্ডকে ঘুরিয়ে দেয়া, অতঃপর জেনে বুঝে ইসলামের সাথে শত্রুতায় লিপ্ত হওয়া—এটাই এদের উদ্দেশ্য। নাস্তিক্যবাদের আড়ালে এভাবে ইসলাম বিদ্বেষ লালন শুরু হয়েছে বেশ কয়েক বছর আগেই। তথাপি এদের কথার মারপ্যাঁচে পড়ে অনেক বুদ্ধিদীপ্ত যুবক-যুবতী ধরছে নাস্তিকতার পথ। এদের অনেকেই সত্য-সন্ধানী। সত্যের প্রতি বিনয়ী সেই যুব সমাজের জন্য আরিফ আজাদ নিয়ে আসে এই বাংলার জমিনে ‘প্যারাডক্সিক্যাল সাজিদ’। গল্পের আঙ্গিকে, যুক্তি এবং বিজ্ঞানের আলোকে সংশয়বাদীদের মাঝে প্রচলিত সকল প্রশ্নের জবাব তিনি লিখেছেন বইটিতে। ইতিপূর্বে পাঠক সমাজে ব্যাপক আলোড়ন সৃষ্টি করে এই বই। ছাত্র-শিক্ষক থেকে শুরু করে মানুষ দলে দলে কেনা শুরু করে বইটি এবং সংশয়ের পথ ছেড়ে ইসলামের পথে ফিরে আসে। সেই ধারাবাহিকতায় এবার প্যারাডক্সিক্যাল সাজিদ-২"
             },
 
              {
                 id: 6,
                 title: "মা, মা, মা এবং বাবা PDF",
                 author: "আরিফ আজাদ",
-                category: "ইসলামিক বই",
+                category: "পরিবার ও সামাজিক জীবন",
                 cover: "https://i.ibb.co/dsQFSGQL/justboipdf.jpg",
                 demoUrl: "https://drive.google.com/file/d/1HV6OuJ3t3-qaIljzTv3PwOL3Cqn63Zux/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/10eo0z084jgsxbxv98qui/JustBoipdf.com.pdf?rlkey=y9tvffrb06112a5h7d62xsy2i&st=nqsv70fs&dl=1",
@@ -1142,7 +1359,7 @@
                 id: 5,
                 title: "ফেরা ১ PDF",
                 author: "নাইলাহ আমাতুল্লাহ, সিহিন্তা শরীফা",
-                category: "ইসলামিক বই",
+                category: "ইসলামি উপন্যাস",
                 cover: "https://i.ibb.co/TMjZGyBk/image.jpg",
                 demoUrl: "https://drive.google.com/file/d/1GhGH0F1NNyQIrdO5dZzZSGSRqvbHQ4d8/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/mk9ksh90yoayrh0s6k0qz/JustBoipdf.com.pdf?rlkey=gnmvairkhk73oxgtjcf0f0qjj&st=k5bjz74k&dl=1",
@@ -1151,13 +1368,13 @@
                 date: "2016-05-01",
                 featured: true,
                 favorite: false,
-                description: "[ বিষয় : ইসলামী সাহিত্য, দাওয়াহ, দ্বীনের পথে আহ্বান ] যাযাবরদের ক্যারাভান এটা। ঘুরে বেড়ায় এখানে ওখানে। কোনো গন্তব্য নেই। মেয়ে দুটো বড় হয়েছে যাযাবরদের এই তাবুতেই। একটা মেয়ে একটু ভাবুক। সূর্যের দিকে তাকিয়ে প্রায়ই ভাবে কোথায় যাচ্ছি? একদিন দলপতিদের কাছে গিয়ে বলল সে, ভুল পথে চলেছি আমরা। - প্রমাণ? ওই যে সূর্যটা দেখুন। আর ওই যে তারাগুলো। উহু, এটাই ঠিক পথ। এ পথেই আমাদের পূর্বপুরুষেরা ঘুরে বেড়াতেন। মেয়েটা উদভ্রান্তের মতো ঘুরল আরও কয়েকদিন ক্যারাভানটার সাথে। তারপর বুঝল এই নিরুদ্দেশ যাত্রা পরিণাম ভয়াবহ। এপথ ভুল পথ। সে জানে তার একটা নীড় আছে--কোথায় সেই নীড়? সেই নীড়ে ফেরার একটা পথ আছে। কোন সেই পথ? বিশাল দিগন্তে অভিযাত্রী দুই বোন। সংগ্রাম মুখর এক পর্যটন। কীভাবে ফিরেছিল তারা নীড়ে? ফেরার পরিক্রমায় স্বাগতম।"
+                description: "[ বিষয় : ইসলামী সাহিত্য, দাওয়াহ, দ্বীনের পথে আহ্বান, নওমুসলিমদের জন্য ] যাযাবরদের ক্যারাভান এটা। ঘুরে বেড়ায় এখানে ওখানে। কোনো গন্তব্য নেই। মেয়ে দুটো বড় হয়েছে যাযাবরদের এই তাবুতেই। একটা মেয়ে একটু ভাবুক। সূর্যের দিকে তাকিয়ে প্রায়ই ভাবে কোথায় যাচ্ছি? একদিন দলপতিদের কাছে গিয়ে বলল সে, ভুল পথে চলেছি আমরা। - প্রমাণ? ওই যে সূর্যটা দেখুন। আর ওই যে তারাগুলো। উহু, এটাই ঠিক পথ। এ পথেই আমাদের পূর্বপুরুষেরা ঘুরে বেড়াতেন। মেয়েটা উদভ্রান্তের মতো ঘুরল আরও কয়েকদিন ক্যারাভানটার সাথে। তারপর বুঝল এই নিরুদ্দেশ যাত্রা পরিণাম ভয়াবহ। এপথ ভুল পথ। সে জানে তার একটা নীড় আছে--কোথায় সেই নীড়? সেই নীড়ে ফেরার একটা পথ আছে। কোন সেই পথ? বিশাল দিগন্তে অভিযাত্রী দুই বোন। সংগ্রাম মুখর এক পর্যটন। কীভাবে ফিরেছিল তারা নীড়ে? ফেরার পরিক্রমায় স্বাগতম।"
             },
             {
                 id: 4,
                 title: "ফেরা ২ PDF",
                 author: "নাইলাহ আমাতুল্লাহ, সিহিন্তা শরীফা",
-                category: "ইসলামিক বই",
+                category: "ইসলামি উপন্যাস",
                 cover: "https://i.ibb.co/tM2LN03k/justboipdf.png",
                 demoUrl: "https://drive.google.com/file/d/1GiOUSONDZ1vTheOz7k4lM9GDpVA-qGUN/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/dumsjk7w7wf2wm0hqaaql/2-JustBoipdf.com.pdf?rlkey=fm8mtxyslfbcobjag6ibho3fe&st=3m0imie3&dl=1",
@@ -1166,13 +1383,13 @@
                 date: "2020-01-02",
                 featured: true,
                 favorite: false,
-                description: "[ বিষয় : ইসলামী সাহিত্য দাওয়াহ, দ্বীনের পথে আহ্বান ] জাগতিক নিয়মে, সব পাখি নীড়ে ফেরে। ফুল ফোটে, বৃষ্টি নামে এবং নদী তার আপন পথে বাঁক নেয়। কিন্তু, ফেরে না কেবল মানুষ। অহংকার আর অহমিকার দহনে তার বুকের ভেতরে জিইয়ে রাখে পাহাড়সম আগুন। সেই আগুনে ঝলসে যায় সে নিজে এবং ঝলসে দিতে চায় তার চারপাশ। মানুষ বড়ই অকৃতজ্ঞ আর বেপরোয়া। সে তার অস্তিত্বের কার্যকারণ ডিঙিয়ে নিজেকে আমিত্বের আসনে দেখতে চায়। নিজের ক্ষুদ্রাকৃতির প্রতি চূড়ান্ত ভাবলেশহীন হয়ে সে নিজেকে অনন্ত-অসীমে কল্পনা করে বসে। ফলে সে বিচ্যুত হয়। পদস্খলন ঘটে তার। যুগে যুগে যাদের ধ্বংসের পদধ্বনি আমরা শুনতে পাই, তাদের সকলের যেন একই গল্প, একই চিত্রনাট্য—ঔদ্ধত্য, অহংকার আর অনাচার। এক মহাসত্যকে পাশ কাটিয়ে, নিজেকে নিয়ন্ত্রকের আসনে যখনই সে আসীন করতে গেছে, তখনই ধ্বংস অনিবার্য হয়ে নিপতিত হয়েছে তার ওপর।তবু, কারও কারও গল্পটা অন্যরকম। তবু, কেউ কেউ ফিরে আসে। খুঁজে পায় পথ। খুঁজে নেয় অন্তিম অবসরের অনন্ত আবাসস্থল। ফিরে আসা এমন দুটো পবিত্র আত্মার যাপিত-জীবনের রং-তুলিতে নির্মিত আমাদের ফেরা-২।গল্পের ভেতরেও গল্প থাকে, পরিচ্ছেদের ভেতরেও থাকে উপ-পরিচ্ছেদ। আমাদের গল্পটা ভিন্ন। এই গল্পটা একেবারে ডুবে যাওয়ার গল্প নয়, বরং ডুবতে ডুবতে হঠাৎ মাঝ-সাগরে জাহাজের মাস্তুল পেয়ে যাবার মতোই। এই গল্পটি হারিয়ে যাবার গল্প নয়, বরং নিজেকে নতুনভাবে ফিরে পাবার উপাখ্যান। তাই, এই গল্পটি একটু অন্যরকম।দুজন হিন্দু বোন, যারা আশৈশব দেব-দেবীর পূজো-অর্চনা করেছে, মণ্ডপে যারা নিবেদন করেছে গভীর অনুরাগের নৈবেদ্য, তারা কোন জাদুকরী মন্ত্রে খুঁজে পেল ইসলাম? মন্দিরের ঘণ্টার শব্দ, পূজো-পার্বনের কীর্তনের সুর যাদের রক্তে মেশা, তারা কেনই-বা মগ্ন হলো মিনার থেকে ধেয়ে আসা আযানের ধ্বনিতে? ‘ফেরা-২’ এমনই এক যাপিত-জীবনের উপাখ্যান, কিংবা মহাকাব্যের চেয়েও বেশি কিছু।মূল বইটি উর্দু ভাষায় রচিত। লেখিকা বিনতু আদিলের জন্য আমাদের অন্তরের গভীর থেকে শ্রদ্ধা, ভালোবাসা আর দুআ রইল। আর জীবনের নতুন অনুচ্ছেদ যারা শুরু করতে যাচ্ছেন তাদের জীবন রঙিন এবং সুখময় হবে, অনন্ত আখিরাতে রহমানের আরশের সুশীতল ছায়ায় আশ্রিত হয়ে ধন্য হবেন, এই আমাদের প্রত্যাশা। সাথে, এই বইটি এমন হাজারো পথহারা পথিকের জন্য পথ খুঁজে পাওয়ার দিশা হবে, ঘুম ভাঙানোর কারণ হবে, এই কামনা।"
+                description: "[বিষয় : ইসলামী সাহিত্য, দাওয়াহ, দ্বীনের পথে আহ্বান, নওমুসলিমদের জন্য ] জাগতিক নিয়মে, সব পাখি নীড়ে ফেরে। ফুল ফোটে, বৃষ্টি নামে এবং নদী তার আপন পথে বাঁক নেয়। কিন্তু, ফেরে না কেবল মানুষ। অহংকার আর অহমিকার দহনে তার বুকের ভেতরে জিইয়ে রাখে পাহাড়সম আগুন। সেই আগুনে ঝলসে যায় সে নিজে এবং ঝলসে দিতে চায় তার চারপাশ। মানুষ বড়ই অকৃতজ্ঞ আর বেপরোয়া। সে তার অস্তিত্বের কার্যকারণ ডিঙিয়ে নিজেকে আমিত্বের আসনে দেখতে চায়। নিজের ক্ষুদ্রাকৃতির প্রতি চূড়ান্ত ভাবলেশহীন হয়ে সে নিজেকে অনন্ত-অসীমে কল্পনা করে বসে। ফলে সে বিচ্যুত হয়। পদস্খলন ঘটে তার। যুগে যুগে যাদের ধ্বংসের পদধ্বনি আমরা শুনতে পাই, তাদের সকলের যেন একই গল্প, একই চিত্রনাট্য—ঔদ্ধত্য, অহংকার আর অনাচার। এক মহাসত্যকে পাশ কাটিয়ে, নিজেকে নিয়ন্ত্রকের আসনে যখনই সে আসীন করতে গেছে, তখনই ধ্বংস অনিবার্য হয়ে নিপতিত হয়েছে তার ওপর।তবু, কারও কারও গল্পটা অন্যরকম। তবু, কেউ কেউ ফিরে আসে। খুঁজে পায় পথ। খুঁজে নেয় অন্তিম অবসরের অনন্ত আবাসস্থল। ফিরে আসা এমন দুটো পবিত্র আত্মার যাপিত-জীবনের রং-তুলিতে নির্মিত আমাদের ফেরা-২।গল্পের ভেতরেও গল্প থাকে, পরিচ্ছেদের ভেতরেও থাকে উপ-পরিচ্ছেদ। আমাদের গল্পটা ভিন্ন। এই গল্পটা একেবারে ডুবে যাওয়ার গল্প নয়, বরং ডুবতে ডুবতে হঠাৎ মাঝ-সাগরে জাহাজের মাস্তুল পেয়ে যাবার মতোই। এই গল্পটি হারিয়ে যাবার গল্প নয়, বরং নিজেকে নতুনভাবে ফিরে পাবার উপাখ্যান। তাই, এই গল্পটি একটু অন্যরকম।দুজন হিন্দু বোন, যারা আশৈশব দেব-দেবীর পূজো-অর্চনা করেছে, মণ্ডপে যারা নিবেদন করেছে গভীর অনুরাগের নৈবেদ্য, তারা কোন জাদুকরী মন্ত্রে খুঁজে পেল ইসলাম? মন্দিরের ঘণ্টার শব্দ, পূজো-পার্বনের কীর্তনের সুর যাদের রক্তে মেশা, তারা কেনই-বা মগ্ন হলো মিনার থেকে ধেয়ে আসা আযানের ধ্বনিতে? ‘ফেরা-২’ এমনই এক যাপিত-জীবনের উপাখ্যান, কিংবা মহাকাব্যের চেয়েও বেশি কিছু।মূল বইটি উর্দু ভাষায় রচিত। লেখিকা বিনতু আদিলের জন্য আমাদের অন্তরের গভীর থেকে শ্রদ্ধা, ভালোবাসা আর দুআ রইল। আর জীবনের নতুন অনুচ্ছেদ যারা শুরু করতে যাচ্ছেন তাদের জীবন রঙিন এবং সুখময় হবে, অনন্ত আখিরাতে রহমানের আরশের সুশীতল ছায়ায় আশ্রিত হয়ে ধন্য হবেন, এই আমাদের প্রত্যাশা। সাথে, এই বইটি এমন হাজারো পথহারা পথিকের জন্য পথ খুঁজে পাওয়ার দিশা হবে, ঘুম ভাঙানোর কারণ হবে, এই কামনা।"
             },
             {
                 id: 3,
                 title: "কাশ্মীরের শাহজাদী PDF",
                 author: "সায়ীদ উসমান",
-                category: "ইসলামিক বই",
+                category: "ইসলামি উপন্যাস",
                 cover: "https://i.ibb.co/nhh9dXy/justboipdf.jpg",
                 demoUrl: "https://drive.google.com/file/d/1OEr6lPOEUjEHqtuKUtB3Ye-rqC0gZzbp/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/ujvxdrsrqfykjcl9zaedr/JustBoipdf.com.pdf?rlkey=phs6asgigfq5krqpukths0z0k&st=yqaorm5b&dl=1",
@@ -1187,7 +1404,7 @@
                 id: 2,
                 title: "ফিলিস্তিনের স্বাধীনতা সংগ্রাম PDF",
                 author: "শায়খুল ইসলাম মুফতি তাকি উসমানি হাফি",
-                category: "ইসলামিক বই",
+                category: "ইসলামের ইতিহাস",
                 cover: "https://i.ibb.co/C3HxL29p/filistin-shadhinota-shongram.jpg",
                 demoUrl: "https://www.justboipdf.com/2024/05/biyer-epith-opith-pdf.html",
                 demoUrl: "https://pdf.justboipdf.com/coming-soon.html",
@@ -1202,7 +1419,7 @@
                 id: 1,
                 title: "ম্যাসেজ PDF",
                 author: "মিজানুর রহমান আজহারি",
-                category: "ইসলামিক বই",
+                category: "আত্মশুদ্ধি ও অনুপ্রেরণা",
                 cover: "https://i.ibb.co/svrMVJpy/book-message-mizanur-rahman-azhari.jpg",
                 demoUrl: "https://drive.google.com/file/d/1GdoFJr7YlEIw0C43aC_EivOGdWfZ_EnE/view",
                 downloadUrl: "https://www.dropbox.com/scl/fi/hpjod0hndmgpfnno1axxa/.-JustBoipdf.com.pdf?rlkey=dr2j6g6rzu0556mfbkuioi8s7&st=a19tiffz&dl=1",
@@ -1225,7 +1442,7 @@
         const sortBy = document.getElementById('sort-by');
         const emptyState = document.getElementById('empty-state');
         const pagination = document.getElementById('pagination');
-        const loadMoreBtn = document.getElementById('load-more-btn');
+        const loadMoreBtn = document.querySelector('.btn-custom');
         
         // Modal elements
         const bookModal = document.getElementById('book-modal');
@@ -1248,7 +1465,7 @@
         const closeEmbedBtn = document.getElementById('close-embed');
 
         // Pagination variables
-        const booksPerPage = 15; // Load 15 books at a time
+        const booksPerPage = 7; // Load 7 books at a time
         let currentPage = 1;
         let filteredBooks = [...books];
         let currentModalBookId = null;
@@ -1549,9 +1766,10 @@
             // Translate category
             const categoryMap = {
                 "ইসলামিক বই": "ইসলামিক বই",
-                "অনুপ্রেরণা": "অনুপ্রেরণা",
-                "business": "ব্যবসা",
-                "science": "বিজ্ঞান"
+                "আত্মশুদ্ধি ও অনুপ্রেরণা": "আত্মশুদ্ধি ও অনুপ্রেরণা",
+                "ইসলামি উপন্যাস": "ইসলামি উপন্যাস",
+                "পরিবার ও সামাজিক জীবন": "পরিবার ও সামাজিক জীবন",
+                "ইসলামে নারী": "ইসলামে নারী",
             };
             modalCategory.textContent = categoryMap[book.category] || book.category;
             
@@ -1724,24 +1942,26 @@ modalDemoBtn.onclick = (e) => {
         });
     </script>
 
-   <!-- Footer Section -->
+ <!-- Footer Section -->
 <footer class="site-footer">
   <div class="footer-container">
 
-    <!-- About -->
-    <div class="footer-about">
-      <h3>JustBoiPDF.COM</h3>
-      <p>
-        The largest collection of free PDF books in Bengali and English.
-        Download your favorite books instantly.
-      </p>
-      <div class="footer-socials">
-        <a href="https://facebook.com/justboipdf" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://x.com/justboipdf" target="_blank"><i class="fab fa-twitter"></i></a>
-        <a href="https://www.instagram.com/justboipdf" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://sawutser.top/4/9288245" target="_blank"><i class="fab fa-youtube"></i></a>
-      </div>
-    </div>
+    <div class="about-card">
+  <a href="/" class="home-icon" title="Go to Home">
+    <i class="fas fa-home"></i>
+  </a>
+  <h3 class="about-title">JustBoiPDF.COM</h3>
+  <p class="about-text">
+    বাংলা ও ইংরেজি ভাষায় বিনামূল্যে পিডিএফ বইয়ের সবচেয়ে বড় সংগ্রহ। আপনার প্রিয় বই এখনই ডাউনলোড করুন!
+  </p>
+  <div class="about-socials">
+    <a href="https://facebook.com/justboipdf" target="_blank"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://x.com/justboipdf" target="_blank"><i class="fab fa-twitter"></i></a>
+    <a href="https://www.instagram.com/justboipdf" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://sawutser.top/4/9288245" target="_blank"><i class="fab fa-youtube"></i></a>
+  </div>
+</div>
+
 
     <!-- Dynamic Islamic Quotes -->
     <div class="footer-quotes">
@@ -1750,16 +1970,16 @@ modalDemoBtn.onclick = (e) => {
     </div>
 
     <!-- Ad Block -->
-    <div class="footer-ad">
-      <a href="https://sawutser.top/4/9288245" target="_blank">
-        <img src="https://i.ibb.co/35ZvYQ0V/pdf-download-now.jpg" alt="Ad">
-        <div class="ad-text">
-          <h4>Special Offer</h4>
-          <span>Click for details</span>
-        </div>
-      </a>
+<div class="footer-ad">
+  <a href="https://sawutser.top/4/9288245" target="_blank" class="offer-card">
+    <img src="https://i.ibb.co/35ZvYQ0V/pdf-download-now.jpg" alt="Special Offer">
+    <div class="offer-details">
+      <h4>🎁 Special Offer</h4>
+      <p>Click for details</p>
     </div>
-
+  </a>
+</div>
+      
   </div>
 
   <!-- Copyright -->
@@ -1917,3 +2137,4 @@ modalDemoBtn.onclick = (e) => {
 
 <!-- Font Awesome for icons -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
