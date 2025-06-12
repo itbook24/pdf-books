@@ -983,12 +983,12 @@ body {
                 <!-- Pagination buttons will be inserted here by JavaScript -->
             </div>
             
-            <!-- Load More Button (no actual <button>) --> 
+            <!-- Load More Button --> 
 <div class="load-more-container">
-    <div class="load-more-clickable">
+    <button class="btn-custom">
         <i class="fas fa-plus"></i> 
-        <span class="red-text-bg">Load More</span>
-    </div>
+        <span class="red-text-bg">Load 15 More Books</span>
+    </button>
 </div>
 
         </main>
@@ -1465,7 +1465,7 @@ body {
         const closeEmbedBtn = document.getElementById('close-embed');
 
         // Pagination variables
-        const booksPerPage = 15; // Load 15 books at a time
+        const booksPerPage = 7; // Load 7 books at a time
         let currentPage = 1;
         let filteredBooks = [...books];
         let currentModalBookId = null;
