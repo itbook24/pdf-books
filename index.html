@@ -21,12 +21,30 @@
 <meta name="author" content="JustBoipdf.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
-  .red-text-bg {
+  .load-more-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+    }
+
+    .red-text-bg {
         background-color: red;
         color: white;
         padding: 4px 8px;
         border-radius: 4px;
-    }      
+    }
+
+    .btn-demo i {
+        margin-right: 6px;
+    }
+
+    .btn-demo {
+        background: none;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+    } 
 .home-icon {
   display: inline-block;
   font-size: 1.5rem;
@@ -569,6 +587,18 @@ body {
             opacity: 0.5;
             cursor: not-allowed;
         }
+
+          /* Load More Button */
+        .load-more-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        
+        #load-more-btn {
+            padding: 10px 30px;
+            font-size: 1em;
+        }
         
         /* Empty State */
         .empty-state {
@@ -948,11 +978,11 @@ body {
                 <!-- Pagination buttons will be inserted here by JavaScript -->
             </div>
             
-            <!-- Load More Button -->
-<div class="load-more-container" style="display: flex; justify-content: center; align-items: center;">
+            <!-- Load More Button --> 
+<div class="load-more-container">
     <button id="load-more-btn" class="btn btn-demo">
         <i class="fas fa-plus"></i> 
-        <span class="red-text-bg">Load 15 More Books</span>
+        <span class="red-text-bg">Load More</span>
     </button>
 </div>
 
