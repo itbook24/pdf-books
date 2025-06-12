@@ -21,6 +21,88 @@
 <meta name="author" content="JustBoipdf.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        /* Download Popup Styles */
+.download-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    text-align: center;
+    display: none;
+    width: 300px;
+    max-width: 90%;
+}
+
+.download-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 999;
+    display: none;
+}
+
+.download-popup h3 {
+    color: #2c3e50;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.download-popup p {
+    color: #7f8c8d;
+    margin-bottom: 15px;
+}
+
+.download-timer-display {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 15px 0;
+    color: #e74c3c;
+}
+
+.download-popup-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.download-popup-buttons button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.download-popup-cancel {
+    background: #95a5a6;
+    color: white;
+}
+
+.download-popup-cancel:hover {
+    background: #7f8c8d;
+}
+
+.download-popup-proceed {
+    background: #3498db;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.download-popup-proceed:hover {
+    background: #2980b9;
+}
  .load-more-container {
         display: flex;
         justify-content: center;
@@ -788,6 +870,7 @@ body {
     </style>
 </head>
 <body>
+    
     <div class="container">
         <!-- ✅ HTML -->
 <header class="site-header">
@@ -805,6 +888,20 @@ body {
         </div>
     </div>
 
+    <!-- Download Popup -->
+<div class="download-popup-overlay" id="downloadOverlay"></div>
+<div class="download-popup" id="downloadPopup">
+    <h3>Download Ready</h3>
+    <p>Your download will be available in:</p>
+    <div class="download-timer-display" id="downloadTimer">5</div>
+    <div class="download-popup-buttons">
+        <button class="download-popup-cancel" id="downloadCancel">Cancel</button>
+        <button class="download-popup-proceed" id="downloadProceed" style="display:none;">
+            <i class="fas fa-download"></i> Go to Download
+        </button>
+    </div>
+</div>
+    
     <!-- 🟨 Responsive Ad Card -->
     <div class="header-ad">
         <div class="ad-card">
@@ -1470,15 +1567,97 @@ body {
         let filteredBooks = [...books];
         let currentModalBookId = null;
 
-        // Function to trigger file download
-        function downloadFile(url, filename) {
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = filename || url.split('/').pop();
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
+       // Download Popup Variables
+let downloadTimerInterval;
+let currentDownloadUrl = '';
+let currentDownloadFilename = '';
+
+// Show Download Popup
+function showDownloadPopup(url, filename) {
+    currentDownloadUrl = url;
+    currentDownloadFilename = filename;
+    
+    const popup = document.getElementById('downloadPopup');
+    const overlay = document.getElementById('downloadOverlay');
+    const timerDisplay = document.getElementById('downloadTimer');
+    const cancelBtn = document.getElementById('downloadCancel');
+    const proceedBtn = document.getElementById('downloadProceed');
+    
+    // Reset UI state
+    proceedBtn.style.display = 'none';
+    timerDisplay.style.display = 'block';
+    timerDisplay.textContent = '5';
+    
+    popup.style.display = 'block';
+    overlay.style.display = 'block';
+    
+    // Start countdown
+    let seconds = 5;
+    downloadTimerInterval = setInterval(() => {
+        seconds--;
+        timerDisplay.textContent = seconds;
+        
+        if (seconds <= 0) {
+            clearInterval(downloadTimerInterval);
+            // Hide timer and show proceed button
+            timerDisplay.style.display = 'none';
+            proceedBtn.style.display = 'inline-flex';
+            document.querySelector('.download-popup p').textContent = 'Your download is ready!';
         }
+    }, 1000);
+    
+    // Cancel button handler
+    cancelBtn.onclick = () => {
+        clearInterval(downloadTimerInterval);
+        closeDownloadPopup();
+    };
+    
+    // Proceed button handler
+    proceedBtn.onclick = () => {
+        startDownload();
+        closeDownloadPopup();
+    };
+}
+
+// Start the download
+function startDownload() {
+    const a = document.createElement('a');
+    a.href = currentDownloadUrl;
+    a.download = currentDownloadFilename || currentDownloadUrl.split('/').pop();
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+}
+
+// Close the popup
+function closeDownloadPopup() {
+    document.getElementById('downloadPopup').style.display = 'none';
+    document.getElementById('downloadOverlay').style.display = 'none';
+    currentDownloadUrl = '';
+    currentDownloadFilename = '';
+}
+
+// Update download button event listeners
+document.addEventListener('click', (e) => {
+    // Handle grid view download buttons
+    if (e.target.classList.contains('btn-download') || 
+        e.target.parentElement.classList.contains('btn-download')) {
+        e.preventDefault();
+        const btn = e.target.classList.contains('btn-download') ? e.target : e.target.parentElement;
+        const url = btn.getAttribute('href') || btn.getAttribute('data-url');
+        const bookId = btn.getAttribute('data-id');
+        
+        let filename = '';
+        if (bookId) {
+            const book = books.find(b => b.id === parseInt(bookId));
+            if (book) {
+                filename = `${book.title}.pdf`;
+            }
+        }
+        
+        showDownloadPopup(url, filename);
+    }
+});
 
         // Create ad card for grid view
         function createGridAdCard() {
