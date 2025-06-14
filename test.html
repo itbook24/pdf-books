@@ -1230,119 +1230,109 @@ body {
         let currentModalBookId = null;
 
       // Download Popup Variables
-let downloadTimerInterval;
-let currentDownloadUrl = '';
-let currentDownloadFilename = '';
+        let downloadTimerInterval;
+        let currentDownloadUrl = '';
+        let currentDownloadFilename = '';
 
-// Show Download Popup (updated to include file info)
-function showDownloadPopup(url, filename, format, size) {
-    currentDownloadUrl = url;
-    currentDownloadFilename = filename;
-    
-    const popup = document.getElementById('downloadPopup');
-    const overlay = document.getElementById('downloadOverlay');
-    const timerDisplay = document.getElementById('downloadTimer');
-    const cancelBtn = document.getElementById('downloadCancel');
-    const proceedBtn = document.getElementById('downloadProceed');
-    
-    // Create or update file info display
-    let fileInfo = popup.querySelector('.file-info');
-    if (!fileInfo) {
-        fileInfo = document.createElement('div');
-        fileInfo.className = 'file-info';
-        fileInfo.innerHTML = `
-            <span class="file-name">${filename}</span>
-            <span class="file-details">
-                <span class="file-format">${format || 'PDF'}</span> • 
-                <span class="file-size">${size || ''}</span>
-            </span>
-        `;
-        popup.insertBefore(fileInfo, popup.querySelector('p'));
-    } else {
-        fileInfo.querySelector('.file-name').textContent = filename;
-        fileInfo.querySelector('.file-format').textContent = format || 'PDF';
-        fileInfo.querySelector('.file-size').textContent = size || '';
-    }
-    
-    // Reset UI state
-    proceedBtn.style.display = 'none';
-    timerDisplay.style.display = 'block';
-    timerDisplay.textContent = '10';
-    
-    popup.style.display = 'block';
-    overlay.style.display = 'block';
-    
-    // Start countdown
-    let seconds = 10;
-    downloadTimerInterval = setInterval(() => {
-        seconds--;
-        timerDisplay.textContent = seconds;
-        
-        if (seconds <= 0) {
-            clearInterval(downloadTimerInterval);
-            // Hide timer and show proceed button
-            timerDisplay.style.display = 'none';
-            proceedBtn.style.display = 'inline-flex';
-            document.querySelector('.download-popup p').textContent = 'আপনার ডাউনলোড প্রস্তুত!';
+        // Show Download Popup
+        function showDownloadPopup(url, filename, format, size) {
+            currentDownloadUrl = url;
+            currentDownloadFilename = filename;
+            
+            const popup = document.getElementById('downloadPopup');
+            const overlay = document.getElementById('downloadOverlay');
+            const timerDisplay = document.getElementById('downloadTimer');
+            const cancelBtn = document.getElementById('downloadCancel');
+            const proceedBtn = document.getElementById('downloadProceed');
+            const fileNameDisplay = document.getElementById('fileName');
+            const fileFormatDisplay = document.getElementById('fileFormat');
+            const fileSizeDisplay = document.getElementById('fileSize');
+            
+            // Set file info
+            fileNameDisplay.textContent = filename;
+            fileFormatDisplay.textContent = format || 'PDF';
+            fileSizeDisplay.textContent = size || '';
+            
+            // Reset UI state
+            proceedBtn.style.display = 'none';
+            timerDisplay.style.display = 'block';
+            timerDisplay.textContent = '10';
+            popup.querySelector('p').textContent = 'ডাউনলোড শুরু হবে:';
+            
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+            
+            // Start countdown
+            let seconds = 10;
+            downloadTimerInterval = setInterval(() => {
+                seconds--;
+                timerDisplay.textContent = seconds;
+                
+                if (seconds <= 0) {
+                    clearInterval(downloadTimerInterval);
+                    // Hide timer and show proceed button
+                    timerDisplay.style.display = 'none';
+                    proceedBtn.style.display = 'flex';
+                    popup.querySelector('p').textContent = 'ডাউনলোড শুরু করতে ক্লিক করুন';
+                }
+            }, 1000);
+            
+            // Cancel button handler
+            cancelBtn.onclick = () => {
+                clearInterval(downloadTimerInterval);
+                closeDownloadPopup();
+            };
+            
+            // Proceed button handler
+            proceedBtn.onclick = () => {
+                startDownload();
+                closeDownloadPopup();
+            };
         }
-    }, 1000);
-    
-    // Cancel button handler
-    cancelBtn.onclick = () => {
-        clearInterval(downloadTimerInterval);
-        closeDownloadPopup();
-    };
-    
-    // Proceed button handler
-    proceedBtn.onclick = () => {
-        startDownload();
-        closeDownloadPopup();
-    };
-}
 
-// Start the download (unchanged)
-function startDownload() {
-    const a = document.createElement('a');
-    a.href = currentDownloadUrl;
-    a.download = currentDownloadFilename || currentDownloadUrl.split('/').pop();
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-}
+        // Start the download
+        function startDownload() {
+            const a = document.createElement('a');
+            a.href = currentDownloadUrl;
+            a.download = currentDownloadFilename || currentDownloadUrl.split('/').pop();
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
 
-// Close the popup (unchanged)
-function closeDownloadPopup() {
-    document.getElementById('downloadPopup').style.display = 'none';
-    document.getElementById('downloadOverlay').style.display = 'none';
-    currentDownloadUrl = '';
-    currentDownloadFilename = '';
-}
+        // Close the popup
+        function closeDownloadPopup() {
+            document.getElementById('downloadPopup').style.display = 'none';
+            document.getElementById('downloadOverlay').style.display = 'none';
+            currentDownloadUrl = '';
+            currentDownloadFilename = '';
+        }
 
-// Update download button event listeners (modified to include file info)
-document.addEventListener('click', (e) => {
-    // Handle grid view download buttons
-    if (e.target.classList.contains('btn-download') || 
-        e.target.parentElement.classList.contains('btn-download')) {
-        e.preventDefault();
-        const btn = e.target.classList.contains('btn-download') ? e.target : e.target.parentElement;
-        const url = btn.getAttribute('href') || btn.getAttribute('data-url');
-        const bookId = btn.getAttribute('data-id');
-        
-        let filename = '';
-        let format = '';
-        let size = '';
-        
-        if (bookId) {
-            const book = books.find(b => b.id === parseInt(bookId));
-            if (book) {
-                filename = `${book.title}.pdf`;
-                format = book.fileFormat; // Add this property to your book objects
-                size = book.fileSize;    // Add this property to your book objects
+        // Update download button event listeners
+        document.addEventListener('click', (e) => {
+            // Handle grid view download buttons
+            if (e.target.classList.contains('btn-download') || 
+                e.target.parentElement.classList.contains('btn-download')) {
+                e.preventDefault();
+                const btn = e.target.classList.contains('btn-download') ? e.target : e.target.parentElement;
+                const url = btn.getAttribute('href') || btn.getAttribute('data-url');
+                const bookId = btn.getAttribute('data-id');
+                
+                let filename = '';
+                let format = '';
+                let size = '';
+                
+                if (bookId) {
+                    const book = books.find(b => b.id === parseInt(bookId));
+                    if (book) {
+                        filename = `${book.title}.pdf`;
+                        format = book.fileFormat || 'PDF';
+                        size = book.fileSize || '';
+                    }
+                }
+                
+                showDownloadPopup(url, filename, format, size);
             }
-        }
-        
-        showDownloadPopup(url, filename, format, size);
-    }
 });
 
         // Create ad card for grid view
