@@ -21,6 +21,36 @@
 <meta name="author" content="JustBoipdf.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+/* File Info Styles */
+.file-info {
+    background: #f8f9fa;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.file-name {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2c3e50;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-details {
+    display: block;
+    font-size: 0.9rem;
+    color: #7f8c8d;
+}
+
+/* Make the popup slightly wider to accommodate file info */
+.download-popup {
+    width: 350px;
+}
+        
         /* Download Popup Styles */
 .download-popup {
     position: fixed;
@@ -892,7 +922,13 @@ body {
 <div class="download-popup-overlay" id="downloadOverlay"></div>
 <div class="download-popup" id="downloadPopup">
     <h3>ডাউনলোড শীঘ্রই শুরু হবে</h3>
-<p>আমরা আপনার ডাউনলোড প্রস্তুত করছি, অনুগ্রহ করে অপেক্ষা করুন:</p>
+    <div class="file-info">
+        <span class="file-name" id="fileName"></span>
+        <span class="file-details">
+            <span id="fileFormat"></span> • <span id="fileSize"></span>
+        </span>
+    </div>
+    <p>আমরা আপনার ডাউনলোড প্রস্তুত করছি, অনুগ্রহ করে অপেক্ষা করুন:</p>
     <div class="download-timer-display" id="downloadTimer">10</div>
     <div class="download-popup-buttons">
         <button class="download-popup-cancel" id="downloadCancel">Cancel</button>
@@ -1526,6 +1562,8 @@ body {
                 featured: true,
                 favorite: false,
                 description: "[বিষয় : আত্মশুদ্ধি ও অনুপ্রেরণা ] ইসলাম এক নক্ষত্র, যার সংস্পর্শে সমস্ত আঁধার বিলীন হয়ে যায়, ঘোর অমানিশাও তাতে নিজেকে সঁপে দিয়ে আলোকোজ্জ্বল হয়। ইসলাম তো এমন এক জ্যোতিষ্ক, যা উৎসারিত হয়েছে আরশে আজিমের মহিমান্বিত রওশন থেকে। জাহেলিয়াত পরাজয় কবুল করেছিল ইসলামের বুকে আশ্রয় পেয়ে। এই পবিত্র দ্বীন আত্মাকে করেছে প্রশান্ত, চরিত্রকে করেছে নিষ্কলুষ, জীবনকে করেছে সার্থক, মানবতাকে দিয়েছে মুক্তি। এর আলোকচ্ছটা যে জমিনে পড়েছে, সেখানে অঙ্কুরিত হয়েছে শান্তির সবুজ তরু। এই রওশনের ঝলক যে হৃদয় ধারণ করেছে, সে হৃদয় হয়েছে দারাজ দিল। যে যুগ ধারণ করেছে, তা হয়েছে খইরুল কুরুন বা সর্বোত্তম যুগ। কিন্তু হায়! অজ্ঞতা ও অবহেলার কালো মেঘে সেই সূর্য আজ মেঘ লুপ্ত। আলোহীন এ ধরায় উঠে না প্রাণের জোয়ার। তোলে না কেউ আর মানবতার জয়োধ্বনি। অধিকার হারিয়ে মুমূর্ষুপ্রায় মানবতা। নব্য জাহেলিয়াতের এই গাঢ়-কালো মেঘপুঞ্জ চুর্ণ করতে দরকার একটি নির্ভেজাল ঈমানি দমকা হাওয়া; যে হাওয়ায় জ্ঞানের সৌরভ মিশে মোহিত করবে প্রতিটি হৃদয়। সেই মোহনীয় দক্ষিণা হাওয়ার গুঞ্জন তুলতেই আমাদের আয়োজন-‘ম্যাসেজ’।লেখক পরিচিতি: মিজানুর রহমান আজহারি। তরুণ চিন্তক এবং জনপ্রিয় ইসলামি আলোচক। বিশ্ববিখ্যাত আল আজহার ইউনিভার্সিটির তাফসির অ্যান্ড কুরআনিক সাইন্স ডিপার্টমেন্ট থেকে স্নাতক সম্পন্ন করেছেন। ইন্টারন্যাশনাল ইসলামিক ইউনিভার্সিটি মালয়েশিয়া-এর ডিপার্টমেন্ট অব কুরআন অ্যান্ড সুন্নাহ স্টাডিজ থেকে স্নাতকোত্তর শেষে সেখানেই  পিএইচডি গবেষণা করছেন। স্বপ্ন দেখেন-ইনসাফ, আদল ও ইহসানের ভিত্তিতে এক উন্নত সমাজকাঠামোর। তরুণ প্রজন্মকে উজ্জীবিত করার চেষ্টা করেন বিশ্বাসের পরশে। বোধ ও সামর্থ্যরে সর্বোচ্চটুকু দিয়ে কুরআন ও সুন্নাহর কথামালা তুলে ধরার প্রয়াস নেন জনপদ থেকে জনপদে, কি-বোর্ডে কিংবা ক্যামেরার সামনে।মিজানুর রহমান আজহারি। তরুণ চিন্তক এবং জনপ্রিয় ইসলামি আলোচক। বিশ্ববিখ্যাত আল আজহার ইউনিভার্সিটির তাফসির অ্যান্ড কুরআনিক সাইন্স ডিপার্টমেন্ট থেকে স্নাতক সম্পন্ন করেছেন। ইন্টারন্যাশনাল ইসলামিক ইউনিভার্সিটি মালয়েশিয়া-এর ডিপার্টমেন্ট অব কুরআন অ্যান্ড সুন্নাহ স্টাডিজ থেকে স্নাতকোত্তর শেষে সেখানেই  পিএইচডি গবেষণা করছেন। স্বপ্ন দেখেন-ইনসাফ, আদল ও ইহসানের ভিত্তিতে এক উন্নত সমাজকাঠামোর। তরুণ প্রজন্মকে উজ্জীবিত করার চেষ্টা করেন বিশ্বাসের পরশে। বোধ ও সামর্থ্যরে সর্বোচ্চটুকু দিয়ে কুরআন ও সুন্নাহর কথামালা তুলে ধরার প্রয়াস নেন জনপদ থেকে জনপদে, কি-বোর্ডে কিংবা ক্যামেরার সামনে।"
+                fileSize: "2.5 MB",  // New property
+                fileFormat: "PDF",    // New property
             },
         ];
 
@@ -1567,13 +1605,13 @@ body {
         let filteredBooks = [...books];
         let currentModalBookId = null;
 
-       // Download Popup Variables
+      // Download Popup Variables
 let downloadTimerInterval;
 let currentDownloadUrl = '';
 let currentDownloadFilename = '';
 
-// Show Download Popup
-function showDownloadPopup(url, filename) {
+// Show Download Popup (updated to include file info)
+function showDownloadPopup(url, filename, format, size) {
     currentDownloadUrl = url;
     currentDownloadFilename = filename;
     
@@ -1582,6 +1620,25 @@ function showDownloadPopup(url, filename) {
     const timerDisplay = document.getElementById('downloadTimer');
     const cancelBtn = document.getElementById('downloadCancel');
     const proceedBtn = document.getElementById('downloadProceed');
+    
+    // Create or update file info display
+    let fileInfo = popup.querySelector('.file-info');
+    if (!fileInfo) {
+        fileInfo = document.createElement('div');
+        fileInfo.className = 'file-info';
+        fileInfo.innerHTML = `
+            <span class="file-name">${filename}</span>
+            <span class="file-details">
+                <span class="file-format">${format || 'PDF'}</span> • 
+                <span class="file-size">${size || ''}</span>
+            </span>
+        `;
+        popup.insertBefore(fileInfo, popup.querySelector('p'));
+    } else {
+        fileInfo.querySelector('.file-name').textContent = filename;
+        fileInfo.querySelector('.file-format').textContent = format || 'PDF';
+        fileInfo.querySelector('.file-size').textContent = size || '';
+    }
     
     // Reset UI state
     proceedBtn.style.display = 'none';
@@ -1619,7 +1676,7 @@ function showDownloadPopup(url, filename) {
     };
 }
 
-// Start the download
+// Start the download (unchanged)
 function startDownload() {
     const a = document.createElement('a');
     a.href = currentDownloadUrl;
@@ -1629,7 +1686,7 @@ function startDownload() {
     document.body.removeChild(a);
 }
 
-// Close the popup
+// Close the popup (unchanged)
 function closeDownloadPopup() {
     document.getElementById('downloadPopup').style.display = 'none';
     document.getElementById('downloadOverlay').style.display = 'none';
@@ -1637,7 +1694,7 @@ function closeDownloadPopup() {
     currentDownloadFilename = '';
 }
 
-// Update download button event listeners
+// Update download button event listeners (modified to include file info)
 document.addEventListener('click', (e) => {
     // Handle grid view download buttons
     if (e.target.classList.contains('btn-download') || 
@@ -1648,14 +1705,19 @@ document.addEventListener('click', (e) => {
         const bookId = btn.getAttribute('data-id');
         
         let filename = '';
+        let format = '';
+        let size = '';
+        
         if (bookId) {
             const book = books.find(b => b.id === parseInt(bookId));
             if (book) {
                 filename = `${book.title}.pdf`;
+                format = book.fileFormat; // Add this property to your book objects
+                size = book.fileSize;    // Add this property to your book objects
             }
         }
         
-        showDownloadPopup(url, filename);
+        showDownloadPopup(url, filename, format, size);
     }
 });
 
