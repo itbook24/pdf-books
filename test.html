@@ -21,6 +21,37 @@
 <meta name="author" content="JustBoipdf.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        .modal-file-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.modal-file-info div {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.95rem;
+}
+
+.modal-file-info i {
+    color: #3498db;
+    font-size: 0.9rem;
+}
+
+.modal-file-info strong {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.modal-file-info span {
+    color: #34495e;
+}
 /* Improved File Info Styles */
         .file-info {
             background: #f1f8fe;  /* Lighter blue background */
@@ -1268,10 +1299,17 @@ body {
         let currentDownloadUrl = '';
         let currentDownloadFilename = '';
 
-        // Show Download Popup
-        function showDownloadPopup(url, filename, format, size) {
-            currentDownloadUrl = url;
-            currentDownloadFilename = filename;
+        function showDownloadPopup(url, filename, format, size, pages) {
+    currentDownloadUrl = url;
+    currentDownloadFilename = filename;
+    
+    // Set file info in popup
+    document.getElementById('fileName').textContent = filename;
+    document.getElementById('popup-file-format').textContent = format || 'PDF';
+    document.getElementById('popup-file-size').textContent = size || 'N/A';
+    
+    // ... rest of your existing popup code ...
+}
             
             const popup = document.getElementById('downloadPopup');
             const overlay = document.getElementById('downloadOverlay');
@@ -1636,12 +1674,47 @@ body {
             });
         }
 
-        // Show book details in modal
         function showBookDetails(bookId) {
-            const book = books.find(b => b.id === bookId);
-            if (!book) return;
-            
-            currentModalBookId = bookId;
+    const book = books.find(b => b.id === bookId);
+    if (!book) return;
+    
+    currentModalBookId = bookId;
+    
+    // ... your existing modal content population ...
+    
+    // Add file info to modal
+    document.getElementById('modal-file-format').textContent = book.fileFormat || 'PDF';
+    document.getElementById('modal-file-size').textContent = book.fileSize || 'N/A';
+    document.getElementById('modal-file-pages').textContent = book.pages ? `${book.pages} pages` : 'N/A';
+    
+    // Update modal button handlers
+    modalDemoBtn.onclick = (e) => {
+        e.preventDefault();
+        // Show file info in demo viewer or alert
+        alert(`Preparing Demo:\nFormat: ${book.fileFormat}\nSize: ${book.fileSize}\nPages: ${book.pages}`);
+        // Then proceed with your existing demo code
+        if (book.demoUrl.includes('drive.google.com')) {
+            const fileIdMatch = book.demoUrl.match(/\/file\/d\/([^\/]+)/);
+            if (fileIdMatch) {
+                embedViewer.src = `https://drive.google.com/file/d/${fileIdMatch[1]}/preview`;
+            }
+        }
+        embedModal.style.display = 'flex';
+    };
+    
+    modalDownloadBtn.onclick = (e) => {
+        e.preventDefault();
+        showDownloadPopup(
+            book.downloadUrl, 
+            `${book.title}.pdf`,
+            book.fileFormat,
+            book.fileSize,
+            book.pages
+        );
+    };
+    
+    bookModal.style.display = 'flex';
+}
             
             // Populate modal
             modalCoverImg.src = book.cover;
