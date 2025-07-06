@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NFC Social Media Card</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f4f4f4;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+      max-width: 350px;
+      text-align: center;
+    }
+
+    .card img {
+      width: 100px;
+      border-radius: 50%;
+      margin-bottom: 1rem;
+    }
+
+    .card h2 {
+      margin: 0.5rem 0 0.2rem;
+    }
+
+    .card p {
+      color: #555;
+      margin: 0.2rem 0 1rem;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .socials a {
+      text-decoration: none;
+      color: #444;
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+
+    .socials a:hover {
+      color: #0077ff;
+    }
+
+    .email {
+      font-size: 0.9rem;
+      color: #333;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #333;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .toast.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/100" alt="Profile Photo" />
+    <h2>Jane Doe</h2>
+    <p>Digital Marketer</p>
+    
+    <div class="socials">
+      <a href="https://instagram.com/yourusername" target="_blank">📷</a>
+      <a href="https://twitter.com/yourusername" target="_blank">🐦</a>
+      <a href="https://linkedin.com/in/yourusername" target="_blank">💼</a>
+    </div>
+
+    <div class="email" onclick="copyEmail()">jane@example.com</div>
+  </div>
+
+  <div id="toast" class="toast">Email copied!</div>
+
+  <script>
+    function copyEmail() {
+      const email = "jane@example.com";
+      navigator.clipboard.writeText(email).then(() => {
+        const toast = document.getElementById("toast");
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
